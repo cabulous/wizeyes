@@ -31,10 +31,10 @@ export default function BloodTestTrackerPage() {
         </p>
         <h3 className={styles.title}>Information Collection and Use</h3>
         <p>
-          It's important to note that our app is designed to store all your data
-          locally on your device or on your iCloud account. We do not collect,
-          transmit, or store any personal information through Blood Test
-          Tracker.
+          It is important to note that our app is designed to store all your
+          data locally on your device or on your iCloud account. We do not
+          collect, transmit, or store any personal information through Blood
+          Test Tracker.
         </p>
         <h3 className={styles.title}>Data Storage and Security</h3>
         <p>
@@ -46,7 +46,7 @@ export default function BloodTestTrackerPage() {
         <h3 className={styles.title}>iCloud</h3>
         <p>
           If you enable iCloud syncing, your data will be stored in your iCloud
-          account and will be subject to Apple's iCloud Terms and Conditions and
+          account and will be subject to Apple iCloud Terms and Conditions and
           Privacy Policy.
         </p>
         <h3 className={styles.title}>Changes to This Privacy Policy</h3>
