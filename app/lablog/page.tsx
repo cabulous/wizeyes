@@ -4,7 +4,7 @@ export default function BloodTestTrackerPage() {
   return (
     <div className={styles.main}>
       <div className={styles.wrapper}>
-        <h1>Blood Test Tracker</h1>
+        <h1>Lablog - Blood Test Tracker</h1>
 
         <h2 className={styles.title}>About</h2>
         <ul>
@@ -25,9 +25,9 @@ export default function BloodTestTrackerPage() {
         </p>
         <h3 className={styles.title}>Introduction</h3>
         <p>
-          Welcome to Blood Test Tracker. This Privacy Policy explains how we
-          handle your personal information and data. The policy is applicable to
-          the Blood Test Tracker app available on iOS devices.
+          Welcome to Lablog. This Privacy Policy explains how we handle your
+          personal information and data. The policy is applicable to the Lablog
+          app available on iOS devices.
         </p>
         <h3 className={styles.title}>Information Collection and Use</h3>
         <p>
@@ -38,10 +38,10 @@ export default function BloodTestTrackerPage() {
         </p>
         <h3 className={styles.title}>Data Storage and Security</h3>
         <p>
-          All data entered into Blood Test Tracker is stored locally on your
-          device and can be synced with your iCloud account. We do not have
-          access to any of the data you store in the app, and we do not store or
-          transmit your data to any external servers.
+          All data entered into Lablog is stored locally on your device and can
+          be synced with your iCloud account. We do not have access to any of
+          the data you store in the app, and we do not store or transmit your
+          data to any external servers.
         </p>
         <h3 className={styles.title}>iCloud</h3>
         <p>
