@@ -1,0 +1,14 @@
+.main {
+  background: linear-gradient(to bottom, #ffe5d5 0%, #ffd3b6 100%);
+  line-height: 1.5;
+}
+
+.wrapper {
+  max-width: 1000px;
+  padding: 2em;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 2em;
+}
