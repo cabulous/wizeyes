@@ -97,7 +97,8 @@ export default function KodaPage() {
           <li>
             <strong>Data Transfer:</strong> When you ask Koda for insights, the
             app organizes your relevant health information and sends it directly
-            from your device to OpenAI or Anthropic&apos;s servers
+            from your device to OpenAI or Anthropic&apos;s servers via our
+            backend API
           </li>
           <li>
             <strong>No Storage:</strong> Our backend API does not store your
