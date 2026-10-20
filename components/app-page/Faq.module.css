@@ -1,0 +1,127 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.intro {
+  position: sticky;
+  top: 120px;
+}
+
+.intro > div {
+  margin-bottom: 0;
+}
+
+.contact {
+  margin-top: 1.5rem;
+  color: var(--ink-soft);
+}
+
+.contact a {
+  color: var(--coral-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.item {
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-clay),
+    0 0 0 1px var(--line);
+  transition: box-shadow 250ms;
+}
+
+.item[open] {
+  box-shadow:
+    var(--shadow-float),
+    0 0 0 1px var(--line);
+}
+
+.item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px 20px 26px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.item summary::-webkit-details-marker {
+  display: none;
+}
+
+.item h3 {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
+}
+
+.toggle {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--coral-wash);
+  color: var(--coral-deep);
+  transition:
+    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 200ms;
+}
+
+.item[open] .toggle {
+  transform: rotate(45deg);
+  background: var(--coral);
+  color: #fff;
+}
+
+.item p {
+  padding: 0 26px 24px;
+  max-width: 40em;
+  color: var(--ink-soft);
+}
+
+.item p a {
+  color: var(--coral-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .item[open] p {
+    animation: open 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intro {
+    position: static;
+  }
+}

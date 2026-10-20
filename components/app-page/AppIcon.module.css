@@ -1,0 +1,7 @@
+.icon {
+  display: block;
+  flex: none;
+  /* The source art bakes in light corners; Apple's mask radius is ~22.4%. */
+  border-radius: 23%;
+  box-shadow: 0 0 0 0.5px rgba(84, 52, 38, 0.12);
+}

@@ -1,0 +1,115 @@
+.hero {
+  position: relative;
+  padding-block: clamp(36px, 8vw, 104px) clamp(56px, 9vw, 120px);
+  overflow: clip;
+}
+
+/* A warm glow behind the visual, like light across a clay tile. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto 35%;
+  height: 120%;
+  background: radial-gradient(closest-side, var(--coral-wash), transparent 75%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 88px);
+}
+
+.copy {
+  max-width: 600px;
+}
+
+.title {
+  margin-top: 0.45em;
+  font-size: clamp(2.875rem, 6.6vw, 5.5rem);
+  line-height: 0.98;
+}
+
+.lead {
+  margin-top: 1.5rem;
+  max-width: 31em;
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 2.25rem;
+}
+
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.secondary svg {
+  color: var(--coral-deep);
+  transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.secondary:hover svg {
+  transform: translateX(4px);
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2rem;
+  list-style: none;
+}
+
+.facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.4em 0.85em 0.4em 0.65em;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-clay),
+    0 0 0 1px var(--line);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.facts svg {
+  color: var(--coral-deep);
+}
+
+.visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 920px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .copy {
+    max-width: 640px;
+  }
+
+  .hero::before {
+    inset: 30% -30% auto -30%;
+  }
+}

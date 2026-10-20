@@ -1,0 +1,62 @@
+.section {
+  overflow: clip;
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+/* Soft halo of coral behind the icon. */
+.inner::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -40px;
+  width: min(720px, 120%);
+  aspect-ratio: 1.6;
+  background: radial-gradient(closest-side, var(--coral-wash), transparent);
+}
+
+.inner > * {
+  position: relative;
+}
+
+.icon {
+  margin-bottom: 32px;
+  filter: drop-shadow(0 30px 34px rgba(150, 55, 40, 0.35));
+  rotate: -4deg;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .icon {
+    animation: bob 6s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes bob {
+  to {
+    translate: 0 -10px;
+    rotate: 3deg;
+  }
+}
+
+.title {
+  max-width: 12em;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.body {
+  max-width: 30em;
+  margin: 1.1rem 0 2.2rem;
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  color: var(--ink-soft);
+}
+
+.meta {
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
