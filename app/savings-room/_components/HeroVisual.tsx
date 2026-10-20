@@ -2,6 +2,7 @@ import type { AppContent } from "@/content/types";
 import { AppIcon } from "@/components/app-page/AppIcon";
 import { Icon, type IconName } from "@/components/app-page/Icon";
 import { PhoneOverview } from "./PhoneOverview";
+import { TiltStage } from "./TiltStage";
 import styles from "./HeroVisual.module.css";
 
 const chips: {
@@ -30,13 +31,15 @@ const chips: {
   },
 ];
 
-/** The phone resting on a coral clay tile, echoing the piggy on the app icon. */
+/**
+ * The phone resting on a coral clay tile, echoing the piggy on the app icon.
+ * Its cards tilt with the pointer, as they tilt with the device in the app.
+ */
 export function HeroVisual({ app }: { app: AppContent }) {
   return (
-    <div
+    <TiltStage
       className={styles.stage}
-      role="img"
-      aria-label="Savings Room's Overview screen with sample RRSP, TFSA and FHSA accounts, each showing how much has been contributed and how much room is left this year."
+      label="Savings Room's Overview screen with sample RRSP, TFSA and FHSA accounts, each showing how much has been contributed and how much room is left this year."
     >
       <div className={styles.tile} />
       <div className={styles.phone}>
@@ -56,6 +59,6 @@ export function HeroVisual({ app }: { app: AppContent }) {
           </span>
         </div>
       ))}
-    </div>
+    </TiltStage>
   );
 }

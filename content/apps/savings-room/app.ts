@@ -3,7 +3,7 @@ import type { AppContent } from "@/content/types";
 /**
  * Savings Room (repo: cabulous/TaxSavingsTracker, bundle
  * com.wizeyes.www.TaxSavingsTracker). Every claim below is backed by the
- * app's source as of v1.6; re-check it there before changing a feature claim.
+ * app's source as of v1.7; re-check it there before changing a feature claim.
  */
 export const savingsRoom: AppContent = {
   slug: "savings-room",
@@ -33,7 +33,6 @@ export const savingsRoom: AppContent = {
   schemaCategory: "FinanceApplication",
   platforms: ["iPhone", "iPad"],
   minimumOS: "iOS 17.0",
-  version: "1.6",
   pricing: "One-time purchase",
   icon: {
     src: "/apps/savings-room/icon-512.png",
@@ -190,7 +189,7 @@ export const extras = {
   room: {
     eyebrow: "Contribution room",
     title: "See your room *before* you contribute.",
-    lead: "Every account shows what you've put in and what's left, for this year and, where it applies, for life. Blue is what you've contributed; green is the room you have left.",
+    lead: "Every account shows what you've put in and what's left, for this year and, where it applies, for life. Coral shows what you've contributed; the bold figure on the right is the room you have left.",
     hint: "Drag to add contributions",
   },
 };

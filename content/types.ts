@@ -28,7 +28,6 @@ export type AppContent = {
   schemaCategory: "FinanceApplication" | "HealthApplication";
   platforms: string[];
   minimumOS: string;
-  version: string;
   /**
    * How people pay, e.g. "One-time purchase" or "Free with subscription".
    * Never an amount: prices change and vary by region, so the App Store

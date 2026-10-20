@@ -1,14 +1,17 @@
 /*
  * Everything is sized in iOS points via --pt, so the whole phone scales from
- * one variable. 393 × 852 pt is the iPhone 15/16 screen.
+ * one variable. 393 × 852 pt is the iPhone 15/16 screen. Colours are the
+ * page tokens: since v1.7 the app uses the same palette (Theme.swift).
  */
 .phone {
   --pt: 0.72px;
-  --screen-bg: #f2f2f7;
-  --card-bg: #ffffff;
-  --label: #000000;
-  --secondary: rgba(60, 60, 67, 0.6);
-  --tint: #007aff;
+  --card-rim: rgba(255, 255, 255, 0.9);
+  --card-shadow: 110, 55, 35;
+  --card-shadow-near: 0.06;
+  --card-shadow-far: 0.16;
+  --tilt-light: rgba(255, 255, 255, 0.45);
+  --tilt-shade: rgba(110, 55, 35, 0.09);
+  --serif: ui-serif, "New York", var(--font-display), Georgia, serif;
 
   position: relative;
   width: calc(393 * var(--pt) + 24px);
@@ -31,21 +34,29 @@
 
 @media (prefers-color-scheme: dark) {
   .phone {
-    --screen-bg: #000000;
-    --card-bg: #1c1c1e;
-    --label: #ffffff;
-    --secondary: rgba(235, 235, 245, 0.6);
-    --tint: #0a84ff;
+    --card-rim: rgba(255, 255, 255, 0.06);
+    --card-shadow: 0, 0, 0;
+    --card-shadow-near: 0.3;
+    --card-shadow-far: 0.45;
+    --tilt-light: rgba(255, 255, 255, 0.07);
+    --tilt-shade: rgba(0, 0, 0, 0.16);
   }
 }
 
+/* RoomBackground: cream page with a coral glow at the top right. */
 .screen {
   position: relative;
   height: calc(852 * var(--pt));
   overflow: hidden;
   border-radius: calc(55 * var(--pt));
-  background: var(--screen-bg);
-  color: var(--label);
+  background:
+    radial-gradient(
+      calc(420 * var(--pt)) calc(420 * var(--pt)) at 85% 0,
+      var(--coral-wash),
+      transparent
+    ),
+    var(--cream);
+  color: var(--ink);
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans),
     system-ui, sans-serif;
@@ -94,74 +105,146 @@
   width: calc(44 * var(--pt));
   height: calc(44 * var(--pt));
   border-radius: 50%;
-  background: var(--card-bg);
-  color: var(--tint);
+  background: var(--surface);
+  color: var(--coral-deep);
   font-size: calc(22 * var(--pt));
-  box-shadow: 0 calc(2 * var(--pt)) calc(10 * var(--pt)) rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 calc(2 * var(--pt)) calc(10 * var(--pt)) rgba(var(--card-shadow), 0.08);
 }
 
 .largeTitle {
   padding: calc(6 * var(--pt)) calc(20 * var(--pt)) calc(10 * var(--pt));
+  font-family: var(--serif);
   font-size: calc(34 * var(--pt));
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-weight: 500;
 }
 
 .list {
   display: grid;
-  gap: calc(20 * var(--pt));
-  padding: 0 calc(16 * var(--pt));
+  gap: calc(16 * var(--pt));
+  padding: calc(8 * var(--pt)) calc(16 * var(--pt)) 0;
 }
 
+/*
+ * ClayCard + TiltsWithDevice: a warm surface with a hairline, a lit top rim
+ * and a low shadow. With tilt, the low side recedes and shades, the high side
+ * lightens, and the shadow slides toward the low side.
+ */
 .card {
-  padding: calc(16 * var(--pt)) calc(20 * var(--pt)) calc(18 * var(--pt));
+  --tx: var(--tilt-x, 0);
+  --ty: var(--tilt-y, 0);
+
+  position: relative;
+  display: grid;
+  gap: calc(8 * var(--pt));
+  padding: calc(18 * var(--pt));
   border-radius: calc(24 * var(--pt));
-  background: var(--card-bg);
+  background: var(--surface);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    inset 0 2px 0 -1px var(--card-rim),
+    0 1px 1px rgba(var(--card-shadow), var(--card-shadow-near)),
+    calc(var(--tx) * 14 * var(--pt)) calc((14 - var(--ty) * 14) * var(--pt))
+      calc(24 * var(--pt)) rgba(var(--card-shadow), var(--card-shadow-far));
+  transform: perspective(calc(1100 * var(--pt))) rotateY(calc(var(--tx) * 8deg))
+    rotateX(calc(var(--ty) * 8deg));
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    atan2(var(--tx), var(--ty)),
+    var(--tilt-light),
+    var(--tilt-shade)
+  );
+  opacity: min(1, hypot(var(--tx), var(--ty)));
+  pointer-events: none;
 }
 
 .cardHead {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  font-size: calc(17 * var(--pt));
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: calc(20 * var(--pt));
+  font-weight: 500;
 }
 
 .cardHead svg {
-  color: #8e8e93;
+  margin-top: calc(6 * var(--pt));
+  color: var(--ink-faint);
 }
 
 .room {
-  padding-top: calc(16 * var(--pt));
+  padding-top: calc(12 * var(--pt));
 }
 
 .recurring {
-  display: flex;
-  justify-content: space-between;
-  padding-top: calc(18 * var(--pt));
+  display: grid;
+  gap: calc(10 * var(--pt));
+  padding-top: calc(12 * var(--pt));
 }
 
-.recurringAmount {
-  color: var(--tint);
+.dashed {
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--line) 0 calc(6 * var(--pt)),
+    transparent calc(6 * var(--pt)) calc(12 * var(--pt))
+  );
+}
+
+.recurringRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.credit {
+  color: var(--coral-ink);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 
 .recurringNext {
   display: inline-flex;
   align-items: center;
-  gap: calc(5 * var(--pt));
-  color: var(--secondary);
+  gap: calc(6 * var(--pt));
+  color: var(--ink-soft);
 }
 
-.sectionHeader {
-  padding: calc(26 * var(--pt)) calc(36 * var(--pt)) calc(8 * var(--pt));
-  font-size: calc(13 * var(--pt));
+.recurringNext svg {
+  color: var(--ink-faint);
+}
+
+/* Eyebrow: small uppercase label with a coral dot. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--pt));
+  padding: calc(16 * var(--pt)) 0 0 calc(4 * var(--pt));
+  font-size: calc(12 * var(--pt));
+  font-weight: 600;
+  letter-spacing: calc(1.4 * var(--pt));
   text-transform: uppercase;
-  color: var(--secondary);
+  color: var(--coral-ink);
 }
 
-.transaction {
-  display: grid;
+.eyebrow::before {
+  content: "";
+  width: calc(6 * var(--pt));
+  height: calc(6 * var(--pt));
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 calc(4 * var(--pt)) var(--coral-wash);
+}
+
+.transactions {
   gap: calc(14 * var(--pt));
+  padding: calc(14 * var(--pt));
 }
 
 .txRow {
@@ -172,16 +255,24 @@
 
 .txAccount {
   display: grid;
-  gap: calc(6 * var(--pt));
+  gap: calc(8 * var(--pt));
+  font-family: var(--serif);
+  font-weight: 600;
 }
 
 .txAccount small {
+  font-family:
+    -apple-system, BlinkMacSystemFont, var(--font-sans), system-ui, sans-serif;
   font-size: calc(12 * var(--pt));
-  color: var(--secondary);
+  font-weight: 400;
+  color: var(--ink-soft);
 }
 
 .txDate {
-  color: #8e8e93;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(6 * var(--pt));
+  color: var(--ink-faint);
 }
 
 @media (max-width: 520px) {

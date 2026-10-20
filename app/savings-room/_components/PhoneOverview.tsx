@@ -2,9 +2,10 @@ import { RoomBar } from "./RoomBar";
 import styles from "./PhoneOverview.module.css";
 
 /**
- * The app's Overview screen (Overview.swift → AccountRow.swift), rebuilt in
- * HTML with sample numbers. Layout and colours follow the app; the figures
- * are illustrative.
+ * The app's Overview screen (v1.7: Overview.swift, AccountRow.swift,
+ * TransactionRow.swift, Theme.swift), rebuilt in HTML with sample numbers.
+ * Layout, type and colours follow the app; the figures are illustrative.
+ * Cards read --tilt-x and --tilt-y from TiltStage, like the app's DeviceTilt.
  */
 const accounts = [
   {
@@ -90,8 +91,8 @@ export function PhoneOverview() {
                 <span>{account.name}</span>
                 <svg
                   viewBox="0 0 24 24"
-                  width="0.75em"
-                  height="0.75em"
+                  width="0.6em"
+                  height="0.6em"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="3.4"
@@ -108,47 +109,57 @@ export function PhoneOverview() {
               ))}
               {account.recurring && (
                 <div className={styles.recurring}>
-                  <span className={styles.recurringAmount}>
-                    {account.recurring.amount}
-                  </span>
-                  <span className={styles.recurringNext}>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="0.85em"
-                      height="0.85em"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M4 11V9.5A3.5 3.5 0 0 1 7.5 6H19m-3-3 3 3-3 3m4 4v1.5a3.5 3.5 0 0 1-3.5 3.5H5m3 3-3-3 3-3" />
-                    </svg>
-                    {account.recurring.next}
+                  <span className={styles.dashed} />
+                  <span className={styles.recurringRow}>
+                    <span className={styles.credit}>
+                      {account.recurring.amount}
+                    </span>
+                    <span className={styles.recurringNext}>
+                      <RepeatIcon />
+                      {account.recurring.next}
+                    </span>
                   </span>
                 </div>
               )}
             </div>
           ))}
-        </div>
-        <p className={styles.sectionHeader}>Recent Transactions</p>
-        <div className={styles.list}>
-          <div className={`${styles.card} ${styles.transaction}`}>
+          <p className={styles.eyebrow}>Recent Transactions</p>
+          <div className={`${styles.card} ${styles.transactions}`}>
             <div className={styles.txRow}>
               <span className={styles.txAccount}>
                 💰 TFSA
                 <small>Payday top-up</small>
               </span>
-              <span className={styles.txDate}>Oct 1, 2026</span>
+              <span className={styles.txDate}>
+                <RepeatIcon />
+                Oct 1, 2026
+              </span>
             </div>
             <div className={styles.txRow}>
-              <span className={styles.recurringAmount}>+ $500.00</span>
+              <span className={styles.credit}>+ $500.00</span>
               <span>Wealthsimple</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function RepeatIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="0.85em"
+      height="0.85em"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 11V9.5A3.5 3.5 0 0 1 7.5 6H19m-3-3 3 3-3 3m4 4v1.5a3.5 3.5 0 0 1-3.5 3.5H5m3 3-3-3 3-3" />
+    </svg>
   );
 }
 
