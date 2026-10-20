@@ -56,44 +56,45 @@
 }
 
 .segmented button[aria-pressed="true"] {
-  background: #fff;
-  color: #1c1c1e;
+  background: var(--surface);
+  color: var(--ink);
   box-shadow: 0 3px 8px rgba(120, 40, 25, 0.22);
 }
 
-/* An iOS grouped-list cell, like AccountRow in the app. */
+/* The app's clay account card (AccountRow + ClayCard in Theme.swift). */
 .card {
   display: grid;
   gap: 18px;
-  padding: 18px 20px 20px;
+  padding: 20px 22px 22px;
   border-radius: 24px;
-  background: #fff;
-  color: #000;
+  background: var(--surface);
+  color: var(--ink);
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans),
     system-ui, sans-serif;
   font-size: 0.9375rem;
   letter-spacing: -0.01em;
   box-shadow:
+    inset 0 0 0 1px var(--line),
+    inset 0 2px 0 -1px rgba(255, 255, 255, 0.9),
     0 2px 4px rgba(120, 40, 25, 0.12),
     0 30px 50px -24px rgba(120, 40, 25, 0.55);
 }
 
 @media (prefers-color-scheme: dark) {
   .card {
-    background: #1c1c1e;
-    color: #fff;
-  }
-
-  .segmented button[aria-pressed="true"] {
-    background: #1c1c1e;
-    color: #fff;
+    box-shadow:
+      inset 0 0 0 1px var(--line),
+      inset 0 2px 0 -1px rgba(255, 255, 255, 0.06),
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      0 30px 50px -24px rgba(0, 0, 0, 0.6);
   }
 }
 
 .cardHead {
-  font-size: 1.0625rem;
-  font-weight: 600;
+  font-family: ui-serif, "New York", var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .slider {

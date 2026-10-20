@@ -110,6 +110,45 @@
   }
 }
 
+/*
+ * Registered so the touch-screen sway can animate them. On devices with a fine
+ * pointer, TiltStage sets them from the pointer instead.
+ */
+@property --tilt-x {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --tilt-y {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+/* No pointer to follow: sway the cards gently, as if the phone were in a hand. */
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .stage {
+    animation: sway 11s ease-in-out infinite;
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    --tilt-x: 0;
+    --tilt-y: 0;
+  }
+  30% {
+    --tilt-x: 0.55;
+    --tilt-y: 0.25;
+  }
+  65% {
+    --tilt-x: -0.45;
+    --tilt-y: -0.2;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .phone,
   .piggy,

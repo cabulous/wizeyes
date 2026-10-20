@@ -1,54 +1,63 @@
+/* Mirrors ContributionRoom.swift and RoomMeter in the app (v1.7). */
 .room {
-  --ios-blue: #007aff;
-  /* Apple's increased-contrast green: same hue as the app, legible on white. */
-  --ios-green: #248a3d;
-  --ios-secondary: rgba(60, 60, 67, 0.6);
-  --ios-track: rgba(120, 120, 128, 0.16);
-
   display: grid;
   gap: 0.66em;
 }
 
-@media (prefers-color-scheme: dark) {
-  .room {
-    --ios-blue: #0a84ff;
-    --ios-green: #30d158;
-    --ios-secondary: rgba(235, 235, 245, 0.6);
-    --ios-track: rgba(120, 120, 128, 0.36);
-  }
-}
-
 .row {
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
   gap: 1em;
   font-variant-numeric: tabular-nums;
 }
 
-.secondary {
-  color: var(--ios-secondary);
+/* The app's serif display face: New York on Apple devices, Fraunces elsewhere. */
+.label {
+  font-family: ui-serif, "New York", var(--font-display), Georgia, serif;
+  font-size: 1.07em;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.limit {
+  color: var(--ink-faint);
 }
 
 .contributed {
-  color: var(--ios-blue);
+  color: var(--coral-ink);
+  font-weight: 500;
 }
 
 .remaining {
-  color: var(--ios-green);
+  color: var(--ink);
   font-weight: 600;
 }
 
 .track {
-  height: 0.5em;
+  height: 0.67em;
   border-radius: 999px;
-  background: var(--ios-track);
+  background: color-mix(in oklab, var(--ink) 9%, transparent);
   overflow: hidden;
 }
 
 .fill {
+  position: relative;
   height: 100%;
   border-radius: inherit;
-  background: var(--ios-blue);
+  background: linear-gradient(90deg, var(--coral-light), var(--coral));
+}
+
+/* The meter's lit top edge. */
+.fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 4px;
+  right: 4px;
+  height: 1px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 /* Same timing as the app: wait 0.3s, then ease in over 1s. Delayed a little more for page load. */

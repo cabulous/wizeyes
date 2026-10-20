@@ -51,9 +51,14 @@ Redesigned so far: **Savings Room** at `/savings-room` (source app:
 - **Facts come from the app.** Every claim in `app.ts` must be backed by the
   app's source code, App Store listing or privacy policy. Each `app.ts` names
   its source repo. Do not invent features, limits or ratings.
-- **No prices.** Prices change and vary by region; the App Store listing is
-  the source of truth. Describe how people pay (`pricing`) and link to the
-  store instead, in visible copy, Markdown and structured data alike.
+- **No prices or version numbers.** Both change with every release (prices
+  also vary by region); the App Store listing is the source of truth.
+  Describe how people pay (`pricing`) and link to the store instead, in
+  visible copy, Markdown and structured data alike.
+- **The app and the site share one design.** Savings Room's `Theme.swift`
+  uses the same tokens as `app/savings-room/theme.module.css`, and the phone
+  mock-up and demos mirror the app's views. When the app's look changes,
+  update `_components/` to match, citing the Swift file each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
   policy itself changes, and bump `lastUpdated` when you do.
 - **Never break a URL.** Moving a page means adding a redirect in

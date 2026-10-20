@@ -19,7 +19,6 @@ export function appJsonLd(app: AppContent) {
         image: absoluteUrl(app.icon.src),
         applicationCategory: app.schemaCategory,
         operatingSystem: `${app.minimumOS} or later`,
-        softwareVersion: app.version,
         featureList: app.features.items.map((feature) => feature.title),
         publisher: { "@id": `${site.url}/#organization` },
         ...(store ? { installUrl: store, downloadUrl: store } : {}),

@@ -2,9 +2,9 @@ import { money } from "./money";
 import styles from "./RoomBar.module.css";
 
 /**
- * Web twin of the app's ContributionRoom view: label and room on top, a
- * progress bar, then contributed (blue) and room left (green) underneath.
- * Sizes are in em, so the parent's font-size scales it.
+ * Web twin of the app's ContributionRoom view and RoomMeter: a serif label
+ * and the room on top, a coral meter, then contributed (coral) and room left
+ * (ink) underneath. Sizes are in em, so the parent's font-size scales it.
  */
 export function RoomBar({
   label,
@@ -18,12 +18,12 @@ export function RoomBar({
   /** "fill" plays the app's fill-on-appear animation; "follow" eases to new values. */
   motion?: "none" | "fill" | "follow";
 }) {
-  const progress = room > 0 ? Math.min(contributed / room, 1) : 0;
+  const progress = room > 0 ? Math.min(Math.max(contributed / room, 0), 1) : 0;
   return (
     <div className={styles.room}>
       <div className={styles.row}>
-        <span className={styles.secondary}>{label}</span>
-        <span className={styles.secondary}>{money(room)}</span>
+        <span className={styles.label}>{label}</span>
+        <span className={styles.limit}>{money(room)}</span>
       </div>
       <div className={styles.track}>
         <div
