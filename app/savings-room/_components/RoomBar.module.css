@@ -1,0 +1,77 @@
+.room {
+  --ios-blue: #007aff;
+  /* Apple's increased-contrast green: same hue as the app, legible on white. */
+  --ios-green: #248a3d;
+  --ios-secondary: rgba(60, 60, 67, 0.6);
+  --ios-track: rgba(120, 120, 128, 0.16);
+
+  display: grid;
+  gap: 0.66em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .room {
+    --ios-blue: #0a84ff;
+    --ios-green: #30d158;
+    --ios-secondary: rgba(235, 235, 245, 0.6);
+    --ios-track: rgba(120, 120, 128, 0.36);
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.secondary {
+  color: var(--ios-secondary);
+}
+
+.contributed {
+  color: var(--ios-blue);
+}
+
+.remaining {
+  color: var(--ios-green);
+  font-weight: 600;
+}
+
+.track {
+  height: 0.5em;
+  border-radius: 999px;
+  background: var(--ios-track);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ios-blue);
+}
+
+/* Same timing as the app: wait 0.3s, then ease in over 1s. Delayed a little more for page load. */
+.growIn {
+  animation: grow 1s cubic-bezier(0.42, 0, 1, 1) 0.7s both;
+}
+
+.follow {
+  transition: width 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes grow {
+  from {
+    width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .growIn {
+    animation: none;
+  }
+
+  .follow {
+    transition: none;
+  }
+}

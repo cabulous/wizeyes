@@ -1,0 +1,111 @@
+.section {
+  padding-block: clamp(56px, 8vw, 104px);
+  background: var(--sand);
+  border-block: 1px solid var(--line);
+  overflow: clip;
+}
+
+.rows {
+  display: grid;
+  gap: 14px;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: drift 48s linear infinite;
+}
+
+.reverse .track {
+  animation-direction: reverse;
+  animation-duration: 56s;
+}
+
+.rows:hover .track {
+  animation-play-state: paused;
+}
+
+.pills {
+  display: flex;
+  gap: 12px;
+  padding-right: 12px;
+  list-style: none;
+}
+
+.pills li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.7em 1.25em;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.region {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.account {
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-clay),
+    0 0 0 1px var(--line);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.1875rem;
+  font-variation-settings: "SOFT" 100;
+}
+
+.bank {
+  border: 1px dashed color-mix(in oklab, var(--ink-faint) 60%, transparent);
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+
+.bank svg {
+  color: var(--coral-deep);
+}
+
+@keyframes drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rows {
+    -webkit-mask-image: none;
+    mask-image: none;
+    width: var(--page);
+    margin-inline: auto;
+  }
+
+  .track {
+    width: auto;
+    animation: none;
+  }
+
+  .pills {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .copy {
+    display: none;
+  }
+}

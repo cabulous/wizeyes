@@ -1,0 +1,135 @@
+/*
+ * Savings Room palette, sampled from the app icon: a cream piggy bank on a
+ * matte coral tile. Components read these tokens; nothing else hard-codes colour.
+ */
+.theme {
+  --cream: #fbf4ee;
+  --sand: #f4e8de;
+  --surface: #fffaf6;
+  --ink: #2a1b15;
+  --ink-soft: #6b564b;
+  --ink-faint: #9c8679;
+  --line: rgba(84, 52, 38, 0.12);
+  --coral: #eb7c6c;
+  --coral-light: #f39a8b;
+  --coral-deep: #c15343;
+  --coral-ink: #a8402f;
+  --coral-wash: #f9ddd5;
+  --cocoa: #2a1b15;
+  --on-cocoa: #f7ede6;
+
+  --shadow-clay:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 0 rgba(120, 70, 50, 0.05), 0 1px 2px rgba(110, 55, 35, 0.06),
+    0 18px 40px -22px rgba(110, 55, 35, 0.32);
+  --shadow-float:
+    0 2px 4px rgba(110, 55, 35, 0.06), 0 24px 48px -16px rgba(110, 55, 35, 0.28);
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --page: min(1180px, 100% - 2 * var(--gutter));
+  --radius-xl: clamp(28px, 4vw, 44px);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+
+  min-height: 100vh;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme {
+    --cream: #17100d;
+    --sand: #1f1612;
+    --surface: #271c17;
+    --ink: #f7ede6;
+    --ink-soft: #cdb9ad;
+    --ink-faint: #947e72;
+    --line: rgba(255, 228, 212, 0.11);
+    --coral: #ef8676;
+    --coral-light: #f6a497;
+    --coral-deep: #ef8676;
+    --coral-ink: #f6a497;
+    --coral-wash: rgba(239, 134, 118, 0.14);
+    --cocoa: #241813;
+    --on-cocoa: #f7ede6;
+
+    --shadow-clay:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3),
+      0 18px 40px -22px rgba(0, 0, 0, 0.7);
+    --shadow-float:
+      0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 48px -16px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Paint the overscroll area to match, and keep anchored headings clear of the sticky nav. */
+:global(html):has(.theme) {
+  background: #fbf4ee;
+  scroll-padding-top: 104px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(html):has(.theme) {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :global(html):has(.theme) {
+    background: #17100d;
+  }
+}
+
+/* Matte, clay-like grain over the whole page. */
+.theme::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  /* No mix-blend-mode: blending over animated layers shows their bounding boxes in Chromium. */
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .35 0 0 0 0 .3 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Base element styles use :where() so any component class overrides them. */
+:where(.theme) :where(h1, h2, h3) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 420;
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 0;
+  letter-spacing: -0.022em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+:where(.theme) :where(h1, h2, h3) em {
+  font-style: italic;
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
+  color: var(--coral-deep);
+}
+
+:where(.theme) :where(p, li) {
+  text-wrap: pretty;
+}
+
+:where(.theme) :where(a) {
+  color: inherit;
+}
+
+:where(.theme) :where(a, button, input, summary):focus-visible {
+  outline: 2.5px solid var(--coral-deep);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+:where(.theme) ::selection {
+  background: var(--coral-wash);
+  color: var(--ink);
+}
