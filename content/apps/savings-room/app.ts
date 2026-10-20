@@ -9,8 +9,8 @@ export const savingsRoom: AppContent = {
   slug: "savings-room",
   name: "Savings Room",
   storeName: "Savings Room: Track CRA & IRS",
-  // TODO: add the numeric App Store ID to enable download buttons and the Smart App Banner.
-  appStoreId: undefined,
+  // https://apps.apple.com/us/app/savings-room-track-cra-irs/id6747324658
+  appStoreId: "6747324658",
   tagline:
     "Track contribution room for your RRSP, TFSA, FHSA, 401(k), IRA and more, privately on iPhone and iPad.",
   seoTitle: "Savings Room: RRSP, TFSA, FHSA & IRA Contribution Room Tracker",
