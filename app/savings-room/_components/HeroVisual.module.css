@@ -16,8 +16,8 @@
   border-radius: 23%;
   background: radial-gradient(
     120% 120% at 28% 18%,
-    var(--coral-light) 0%,
-    var(--coral) 42%,
+    var(--accent-light) 0%,
+    var(--accent) 42%,
     #d9634f 100%
   );
   box-shadow:
@@ -65,8 +65,8 @@
   width: 34px;
   height: 34px;
   border-radius: 11px;
-  background: var(--coral-wash);
-  color: var(--coral-deep);
+  background: var(--accent-wash);
+  color: var(--accent-deep);
 }
 
 .chipText {

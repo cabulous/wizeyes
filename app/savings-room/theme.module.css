@@ -1,29 +1,46 @@
 /*
  * Savings Room palette, sampled from the app icon: a cream piggy bank on a
  * matte coral tile. Components read these tokens; nothing else hard-codes colour.
+ * The token names are shared by every app theme (see AGENTS.md); the values
+ * are this app's. The app's Theme.swift mirrors them as roomCream, roomCoral...
  */
 .theme {
-  --cream: #fbf4ee;
-  --sand: #f4e8de;
+  --bg: #fbf4ee;
+  --bg-alt: #f4e8de;
   --surface: #fffaf6;
   --ink: #2a1b15;
   --ink-soft: #6b564b;
   --ink-faint: #9c8679;
   --line: rgba(84, 52, 38, 0.12);
-  --coral: #eb7c6c;
-  --coral-light: #f39a8b;
-  --coral-deep: #c15343;
-  --coral-ink: #a8402f;
-  --coral-wash: #f9ddd5;
-  --cocoa: #2a1b15;
-  --on-cocoa: #f7ede6;
+  --accent: #eb7c6c;
+  --accent-light: #f39a8b;
+  --accent-deep: #c15343;
+  --accent-ink: #a8402f;
+  --accent-wash: #f9ddd5;
+  --accent-shade: #d9634f;
+  --on-accent: #fff;
+  --panel: #2a1b15;
+  --on-panel: #f7ede6;
+  /* Fixed across light and dark: the panel is dark in both. */
+  --panel-accent: #f39a8b;
+  --panel-glow: #eb7c6c;
+  --icon-ring: rgba(84, 52, 38, 0.12);
 
-  --shadow-clay:
+  --shadow-card:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
     inset 0 -2px 0 rgba(120, 70, 50, 0.05), 0 1px 2px rgba(110, 55, 35, 0.06),
     0 18px 40px -22px rgba(110, 55, 35, 0.32);
   --shadow-float:
     0 2px 4px rgba(110, 55, 35, 0.06), 0 24px 48px -16px rgba(110, 55, 35, 0.28);
+  --shadow-button:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 1px 2px rgba(42, 27, 21, 0.2),
+    0 14px 30px -14px rgba(42, 27, 21, 0.6);
+  --shadow-button-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 4px rgba(42, 27, 21, 0.2),
+    0 20px 36px -14px rgba(42, 27, 21, 0.6);
+  --shadow-panel: 0 40px 80px -40px rgba(42, 27, 21, 0.6);
+  --shadow-accent: rgba(193, 83, 67, 0.6);
+  --shadow-icon: 0 30px 34px rgba(150, 55, 40, 0.35);
 
   --gutter: clamp(16px, 4vw, 40px);
   --page: min(1180px, 100% - 2 * var(--gutter));
@@ -32,7 +49,7 @@
   --radius-md: 18px;
 
   min-height: 100vh;
-  background: var(--cream);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 1.0625rem;
@@ -44,22 +61,22 @@
 
 @media (prefers-color-scheme: dark) {
   .theme {
-    --cream: #17100d;
-    --sand: #1f1612;
+    --bg: #17100d;
+    --bg-alt: #1f1612;
     --surface: #271c17;
     --ink: #f7ede6;
     --ink-soft: #cdb9ad;
     --ink-faint: #947e72;
     --line: rgba(255, 228, 212, 0.11);
-    --coral: #ef8676;
-    --coral-light: #f6a497;
-    --coral-deep: #ef8676;
-    --coral-ink: #f6a497;
-    --coral-wash: rgba(239, 134, 118, 0.14);
-    --cocoa: #241813;
-    --on-cocoa: #f7ede6;
+    --accent: #ef8676;
+    --accent-light: #f6a497;
+    --accent-deep: #ef8676;
+    --accent-ink: #f6a497;
+    --accent-wash: rgba(239, 134, 118, 0.14);
+    --panel: #241813;
+    --on-panel: #f7ede6;
 
-    --shadow-clay:
+    --shadow-card:
       inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3),
       0 18px 40px -22px rgba(0, 0, 0, 0.7);
     --shadow-float:
@@ -112,7 +129,7 @@
   font-variation-settings:
     "SOFT" 100,
     "WONK" 1;
-  color: var(--coral-deep);
+  color: var(--accent-deep);
 }
 
 :where(.theme) :where(p, li) {
@@ -124,12 +141,12 @@
 }
 
 :where(.theme) :where(a, button, input, summary):focus-visible {
-  outline: 2.5px solid var(--coral-deep);
+  outline: 2.5px solid var(--accent-deep);
   outline-offset: 3px;
   border-radius: 8px;
 }
 
 :where(.theme) ::selection {
-  background: var(--coral-wash);
+  background: var(--accent-wash);
   color: var(--ink);
 }

@@ -11,8 +11,8 @@
   border-radius: var(--radius-xl);
   background: radial-gradient(
     120% 120% at 25% 15%,
-    var(--coral-light) 0%,
-    var(--coral) 45%,
+    var(--accent-light) 0%,
+    var(--accent) 45%,
     #d9634f 100%
   );
   box-shadow:
@@ -103,7 +103,7 @@
   padding: 16px 18px 18px;
   border-radius: 20px;
   background: color-mix(in oklab, var(--surface) 92%, transparent);
-  box-shadow: var(--shadow-clay);
+  box-shadow: var(--shadow-card);
 }
 
 .sliderLabel {
@@ -138,7 +138,7 @@
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    var(--coral) var(--p),
+    var(--accent) var(--p),
     var(--line) var(--p)
   );
 }
@@ -148,7 +148,7 @@
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    var(--coral) var(--p),
+    var(--accent) var(--p),
     var(--line) var(--p)
   );
 }

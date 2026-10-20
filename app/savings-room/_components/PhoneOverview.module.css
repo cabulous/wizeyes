@@ -52,10 +52,10 @@
   background:
     radial-gradient(
       calc(420 * var(--pt)) calc(420 * var(--pt)) at 85% 0,
-      var(--coral-wash),
+      var(--accent-wash),
       transparent
     ),
-    var(--cream);
+    var(--bg);
   color: var(--ink);
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans),
@@ -106,7 +106,7 @@
   height: calc(44 * var(--pt));
   border-radius: 50%;
   background: var(--surface);
-  color: var(--coral-deep);
+  color: var(--accent-deep);
   font-size: calc(22 * var(--pt));
   box-shadow:
     0 0 0 1px var(--line),
@@ -204,7 +204,7 @@
 }
 
 .credit {
-  color: var(--coral-ink);
+  color: var(--accent-ink);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
@@ -230,7 +230,7 @@
   font-weight: 600;
   letter-spacing: calc(1.4 * var(--pt));
   text-transform: uppercase;
-  color: var(--coral-ink);
+  color: var(--accent-ink);
 }
 
 .eyebrow::before {
@@ -238,8 +238,8 @@
   width: calc(6 * var(--pt));
   height: calc(6 * var(--pt));
   border-radius: 50%;
-  background: var(--coral);
-  box-shadow: 0 0 0 calc(4 * var(--pt)) var(--coral-wash);
+  background: var(--accent);
+  box-shadow: 0 0 0 calc(4 * var(--pt)) var(--accent-wash);
 }
 
 .transactions {

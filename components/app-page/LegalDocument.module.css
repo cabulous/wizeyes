@@ -12,7 +12,7 @@
 }
 
 .breadcrumb a {
-  color: var(--coral-ink);
+  color: var(--accent-ink);
   font-weight: 600;
   text-decoration: none;
 }
@@ -37,7 +37,7 @@
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow:
-    var(--shadow-clay),
+    var(--shadow-card),
     0 0 0 1px var(--line);
 }
 
@@ -67,8 +67,8 @@
   height: 20px;
   margin-top: 3px;
   border-radius: 50%;
-  background: var(--coral);
-  color: #fff;
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .layout {
@@ -116,7 +116,7 @@
 }
 
 .prose li::marker {
-  color: var(--coral);
+  color: var(--accent);
 }
 
 .prose strong {
@@ -124,7 +124,7 @@
 }
 
 .prose a {
-  color: var(--coral-ink);
+  color: var(--accent-ink);
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -168,7 +168,7 @@
 }
 
 .toc a:hover {
-  border-color: var(--coral);
+  border-color: var(--accent);
   color: var(--ink);
 }
 
@@ -180,7 +180,7 @@
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow:
-    var(--shadow-clay),
+    var(--shadow-card),
     0 0 0 1px var(--line);
 }
 

@@ -74,6 +74,28 @@ Redesigned so far: **Savings Room** at `/savings-room` (source app:
   `prefers-reduced-motion`, and works at 390px wide without horizontal scroll.
 - Match the existing formatting (Prettier defaults: `npx prettier --write <files>`).
 
+## Theme tokens
+
+Shared sections in `components/app-page/` read only these custom properties,
+so each app restyles them from its `app/<slug>/theme.module.css`:
+
+| Token | Role |
+| --- | --- |
+| `--bg`, `--bg-alt` | Page and alternate band backgrounds |
+| `--surface` | Cards, chips, nav |
+| `--ink`, `--ink-soft`, `--ink-faint` | Text, strongest to faintest |
+| `--line`, `--icon-ring` | Hairlines; the ring around app icons |
+| `--accent`, `--accent-light`, `--accent-deep`, `--accent-shade` | Brand colour and its tints, light to dark |
+| `--accent-ink`, `--accent-wash`, `--on-accent` | Accent text on the page; accent tint fill; text on accent fills |
+| `--panel`, `--on-panel`, `--panel-accent`, `--panel-glow` | The dark privacy panel and the accents inside it |
+| `--shadow-card`, `--shadow-float` | Card at rest and lifted (include any outline here) |
+| `--shadow-button`, `--shadow-button-hover`, `--shadow-panel`, `--shadow-accent`, `--shadow-icon` | Download button, privacy panel, accent coins, app icon drop shadow |
+| `--font-display`, `--font-sans` | Set by the app's layout via `next/font` |
+| `--page`, `--gutter`, `--radius-xl`, `--radius-lg`, `--radius-md` | Layout |
+
+Headings, emphasis and other element defaults are styled in each theme file,
+so apps can differ in type as well as colour.
+
 ## Adding the next app page
 
 1. Write `content/apps/<slug>/app.ts` (typed as `AppContent`) and
