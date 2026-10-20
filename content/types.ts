@@ -29,14 +29,12 @@ export type AppContent = {
   platforms: string[];
   minimumOS: string;
   version: string;
-  /** `model` is how people pay, e.g. "One-time purchase" or "Free with subscription". */
-  price: {
-    amount: string;
-    currency: string;
-    display: string;
-    model: string;
-    note: string;
-  };
+  /**
+   * How people pay, e.g. "One-time purchase" or "Free with subscription".
+   * Never an amount: prices change and vary by region, so the App Store
+   * listing is the only place a price should appear.
+   */
+  pricing: string;
   /** 512px PNG under /public. */
   icon: { src: string; alt: string };
   /** Browser UI and social-card colour, sampled from the app icon. */

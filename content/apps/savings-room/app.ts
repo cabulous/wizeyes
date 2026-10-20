@@ -34,13 +34,7 @@ export const savingsRoom: AppContent = {
   platforms: ["iPhone", "iPad"],
   minimumOS: "iOS 17.0",
   version: "1.6",
-  price: {
-    amount: "0.99",
-    currency: "CAD",
-    display: "CA$0.99",
-    model: "One-time purchase",
-    note: "Prices vary by region.",
-  },
+  pricing: "One-time purchase",
   icon: {
     src: "/apps/savings-room/icon-512.png",
     alt: "Savings Room app icon: a cream piggy bank with a red maple leaf on a coral tile",

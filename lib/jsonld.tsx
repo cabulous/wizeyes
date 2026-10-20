@@ -21,11 +21,6 @@ export function appJsonLd(app: AppContent) {
         operatingSystem: `${app.minimumOS} or later`,
         softwareVersion: app.version,
         featureList: app.features.items.map((feature) => feature.title),
-        offers: {
-          "@type": "Offer",
-          price: app.price.amount,
-          priceCurrency: app.price.currency,
-        },
         publisher: { "@id": `${site.url}/#organization` },
         ...(store ? { installUrl: store, downloadUrl: store } : {}),
       },

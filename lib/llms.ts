@@ -61,7 +61,7 @@ export function appMarkdown(app: AppContent): string {
     `- Developer: ${site.company} (${site.email})`,
     `- Category: ${app.category}`,
     `- Platforms: ${app.platforms.join(", ")}, ${app.minimumOS} or later`,
-    `- Price: ${app.price.display}, ${app.price.model.toLowerCase()}. ${app.price.note}`,
+    `- Pricing: ${app.pricing}. The App Store listing has the current price.`,
     `- Version: ${app.version}`,
     "",
     `## ${plainText(app.features.title)}`,

@@ -50,7 +50,10 @@ Redesigned so far: **Savings Room** at `/savings-room` (source app:
 
 - **Facts come from the app.** Every claim in `app.ts` must be backed by the
   app's source code, App Store listing or privacy policy. Each `app.ts` names
-  its source repo. Do not invent features, prices, limits or ratings.
+  its source repo. Do not invent features, limits or ratings.
+- **No prices.** Prices change and vary by region; the App Store listing is
+  the source of truth. Describe how people pay (`pricing`) and link to the
+  store instead, in visible copy, Markdown and structured data alike.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
   policy itself changes, and bump `lastUpdated` when you do.
 - **Never break a URL.** Moving a page means adding a redirect in
