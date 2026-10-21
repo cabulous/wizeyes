@@ -53,11 +53,28 @@
 
 .tabs button[aria-pressed="true"] {
   background: var(--accent);
-  color: #002537;
+  color: var(--on-accent);
   transform: translate(3px, 3px);
   box-shadow:
     var(--outline),
     1px 1px 0 0 var(--ink);
+}
+
+/* Dark mode's hard shadows are black (see --shadow-card), so hover and press keep that colour. */
+@media (prefers-color-scheme: dark) and (hover: hover) {
+  .tabs button:hover {
+    box-shadow:
+      var(--outline),
+      5px 5px 0 0 #000;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tabs button[aria-pressed="true"] {
+    box-shadow:
+      var(--outline),
+      1px 1px 0 0 #000;
+  }
 }
 
 .legend {
@@ -206,7 +223,7 @@
   padding: 3px 10px;
   border-radius: 999px;
   background: var(--accent);
-  color: #002537;
+  color: var(--on-accent);
   font-size: 0.75rem;
   font-weight: 700;
   white-space: nowrap;

@@ -28,7 +28,7 @@
 
 .back {
   background: var(--accent);
-  color: #002537;
+  color: var(--on-accent);
   rotate: 2.5deg;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .back .star {
-  color: #002537;
+  color: var(--on-accent);
 }
 
 @keyframes drift {

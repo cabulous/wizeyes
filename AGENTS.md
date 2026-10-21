@@ -49,7 +49,7 @@ Redesigned so far:
   Its old URL `/taxsavingtracker` redirects to `/savings-room/privacy`.
 - **Spendwise** at `/spendwise` (source app: `cabulous/SpendWise`). The slug
   didn't change, so the old policy URL now opens the marketing page, which
-  links to the policy at `/spendwise/privacy` from its nav, privacy section and
+  links to the policy at `/spendwise/privacy` from its privacy section and
   footer.
 
 ## Rules

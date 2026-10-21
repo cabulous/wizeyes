@@ -36,19 +36,9 @@
   padding: 16px 18px;
   border-radius: 18px;
   background: var(--bg);
-  box-shadow:
-    0 0 0 2px var(--ink),
-    4px 4px 0 0 var(--ink);
+  box-shadow: var(--shadow-card);
   font-size: 0.9375rem;
   line-height: 1.4;
-}
-
-@media (prefers-color-scheme: dark) {
-  :is(.automation, .editor, .payment, .budget, .summary, .csv) {
-    box-shadow:
-      0 0 0 2px var(--ink),
-      4px 4px 0 0 #000;
-  }
 }
 
 /* Alerts: the Shortcuts automation */
@@ -89,16 +79,17 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  color: #002537;
   box-shadow: 0 0 0 2px var(--ink);
 }
 
 .mailIcon {
   background: var(--mark-card);
+  color: var(--ink);
 }
 
 .runIcon {
   background: var(--accent);
+  color: var(--on-accent);
 }
 
 .token {
@@ -178,7 +169,7 @@
   padding: 5px 12px;
   border-radius: 999px;
   background: var(--accent);
-  color: #002537;
+  color: var(--on-accent);
   font-size: 0.875rem;
   font-weight: 700;
   box-shadow:

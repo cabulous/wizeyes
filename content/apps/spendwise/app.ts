@@ -39,7 +39,7 @@ export const spendwise: AppContent = {
     "Turn your bank's email alerts into a private spending tracker with budgets, on iPhone and iPad.",
   seoTitle: "Spendwise: Private Expense Tracker That Reads Your Bank Alerts",
   description:
-    "Spendwise turns your bank's purchase alerts into a private spending log, with budgets and summaries. No bank login; your data stays on your device and in iCloud.",
+    "Spendwise turns your bank's purchase alerts into a private spending log with budgets and summaries. No bank login; your data stays on your device and in iCloud.",
   keywords: [
     "expense tracker",
     "spending tracker",
@@ -65,7 +65,7 @@ export const spendwise: AppContent = {
   hero: {
     eyebrow: "For iPhone & iPad · No bank login",
     title: "Let your bank alerts *do the bookkeeping*.",
-    lead: "Set up one Shortcuts automation, and every purchase alert your bank emails becomes a transaction with the amount, merchant, card and date already filled in. Budgets and summaries follow, and everything stays on your iPhone.",
+    lead: "Set up one Shortcuts automation, and every purchase alert your bank emails becomes a transaction with the amount, merchant, card and date already filled in. Budgets and summaries follow, and it all stays on your devices and in your own iCloud.",
     facts: ["No bank login", "Reads email alerts", "Syncs with your iCloud"],
   },
 

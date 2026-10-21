@@ -5,6 +5,7 @@ import type {
   AlertPart,
   alerts as allAlerts,
 } from "@/content/apps/spendwise/app";
+import ui from "@/components/app-page/ui.module.css";
 import styles from "./AlertDemo.module.css";
 
 type Alert = (typeof allAlerts)[number];
@@ -128,7 +129,7 @@ export function AlertDemo({
           <span className={styles.chip}>Add Transaction</span>
         </div>
 
-        <div className={styles.result} aria-live="polite">
+        <div className={styles.result}>
           <p className={styles.resultHead}>
             {icon}
             <span>Spendwise</span>
@@ -165,6 +166,13 @@ export function AlertDemo({
           )}
         </div>
       </div>
+
+      {/* Outside the keyed stage, so it stays mounted and its updates get announced. */}
+      <p className={ui.srOnly} aria-live="polite">
+        {replay
+          ? `${added} ${alert.result.merchant}, ${alert.result.amount}, ${alert.result.card}, ${alert.result.date}.`
+          : ""}
+      </p>
     </div>
   );
 }

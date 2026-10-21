@@ -67,7 +67,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
-/* Two selectors, not :is(), so the first card's own rules below can override this. */
+/* Plain selector lists, not :is(), so each card's own rules below can override these. */
 .card:first-child .visual,
 .card:last-child:nth-child(3n) .visual {
   grid-column: 2;
@@ -76,13 +76,15 @@
   margin: 0;
 }
 
-:is(.card:first-child, .card:last-child:nth-child(3n)) .title {
+.card:first-child .title,
+.card:last-child:nth-child(3n) .title {
   grid-column: 1;
   grid-row: 1;
   align-self: end;
 }
 
-:is(.card:first-child, .card:last-child:nth-child(3n)) .body {
+.card:first-child .body,
+.card:last-child:nth-child(3n) .body {
   grid-column: 1;
   grid-row: 2;
 }
@@ -111,6 +113,11 @@
     margin-bottom: 24px;
   }
 
+  /* Back in a flex column, `end` would push the title to the right edge. */
+  .card:last-child:nth-child(3n) .title {
+    align-self: auto;
+  }
+
   .card:last-child:nth-child(even) {
     grid-column: 1 / -1;
   }
@@ -128,5 +135,9 @@
 
   .card:first-child .visual {
     margin-bottom: 24px;
+  }
+
+  .card:first-child .title {
+    align-self: auto;
   }
 }

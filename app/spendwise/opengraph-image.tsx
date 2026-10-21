@@ -2,27 +2,16 @@ import { readFileSync } from "fs";
 import path from "path";
 import { ImageResponse } from "next/og";
 import { spendwise as app } from "@/content/apps/spendwise/app";
+import { googleFont as font } from "@/lib/og";
 
 export const alt = `${app.name}: ${app.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const lines = ["Let your bank alerts", "do the bookkeeping"];
+// The hero title, "Let your bank alerts *do the bookkeeping*.", split around its emphasis.
+const [lead, mark = "", tail = ""] = app.hero.title.split("*");
+const lines = [lead.trim(), mark];
 const detail = app.hero.facts.join(" · ");
-
-/** Fetches just the glyphs we need from Google Fonts, at build time. */
-async function font(family: string, text: string) {
-  const css = await (
-    await fetch(
-      `https://fonts.googleapis.com/css2?family=${family}&text=${encodeURIComponent(text)}`,
-    )
-  ).text();
-  const src = css.match(
-    /src: url\((.+?)\) format\('(opentype|truetype)'\)/,
-  )?.[1];
-  if (!src) throw new Error(`Could not load ${family} for the social card.`);
-  return (await fetch(src)).arrayBuffer();
-}
 
 /** Mint, navy and pink from the icon, in the page's flat sticker style. */
 export default async function OpenGraphImage() {
@@ -89,7 +78,7 @@ export default async function OpenGraphImage() {
             >
               {lines[1]}
             </span>
-            .
+            {tail}
           </span>
         </div>
         <div
@@ -111,7 +100,7 @@ export default async function OpenGraphImage() {
           name: "Bricolage",
           data: await font(
             "Bricolage+Grotesque:opsz,wdth,wght@96,96,740",
-            lines.join("") + ".",
+            lines.join("") + tail,
           ),
           weight: 700,
         },
