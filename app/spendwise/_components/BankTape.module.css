@@ -1,0 +1,156 @@
+.section {
+  position: relative;
+  display: grid;
+  /* A fixed column, so the strips are sized by the page, not by their long tracks. */
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: clamp(56px, 7vw, 88px);
+  overflow: clip;
+}
+
+/* Both strips share one grid cell, so they cross in the middle. */
+.tape {
+  grid-area: 1 / 1;
+  width: 112%;
+  margin-left: -6%;
+  padding-block: 14px;
+  box-shadow:
+    0 2px 0 0 var(--ink),
+    0 -2px 0 0 var(--ink);
+  overflow: clip;
+}
+
+.front {
+  z-index: 1;
+  background: var(--panel);
+  color: var(--on-panel);
+  rotate: -2deg;
+}
+
+.back {
+  background: var(--accent);
+  color: #002537;
+  rotate: 2.5deg;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: drift 60s linear infinite;
+}
+
+.back .track {
+  animation-direction: reverse;
+  animation-duration: 44s;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-right: 22px;
+  white-space: nowrap;
+}
+
+.items,
+.banks {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  font-variation-settings: "wdth" 92;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.back .items {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-variation-settings: "wdth" 100;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.label {
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--panel-accent);
+  color: #002537;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.banks {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+}
+
+.banks li {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.star {
+  flex: none;
+  color: var(--panel-accent);
+}
+
+.back .star {
+  color: #002537;
+}
+
+@keyframes drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (hover: hover) {
+  .section:hover .track {
+    animation-play-state: paused;
+  }
+}
+
+/* Narrow screens: too short for the strips to cross, so the pink one peeks out above. */
+@media (max-width: 680px) {
+  .back {
+    translate: 0 -36px;
+    rotate: 3deg;
+  }
+}
+
+/* Still: one strip, the list wrapped and centred, nothing doubled. */
+@media (prefers-reduced-motion: reduce) {
+  .back,
+  .copy {
+    display: none;
+  }
+
+  .front {
+    width: 100%;
+    margin-left: 0;
+    padding: 18px var(--gutter);
+    rotate: none;
+  }
+
+  .track {
+    width: auto;
+    animation: none;
+  }
+
+  .items {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    white-space: normal;
+  }
+
+  .banks {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 22px;
+  }
+}

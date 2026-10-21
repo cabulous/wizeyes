@@ -7,6 +7,9 @@ policy page and a Markdown version for AI assistants.
 - Savings Room: [`/savings-room`](https://wizeyes.com/savings-room) ·
   [privacy](https://wizeyes.com/savings-room/privacy) ·
   [Markdown](https://wizeyes.com/savings-room.md)
+- Spendwise: [`/spendwise`](https://wizeyes.com/spendwise) ·
+  [privacy](https://wizeyes.com/spendwise/privacy) ·
+  [Markdown](https://wizeyes.com/spendwise.md)
 - Site index for AI assistants: [`/llms.txt`](https://wizeyes.com/llms.txt)
 
 ## Develop

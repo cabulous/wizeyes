@@ -67,7 +67,9 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
-:is(.card:first-child, .card:last-child:nth-child(3n)) .visual {
+/* Two selectors, not :is(), so the first card's own rules below can override this. */
+.card:first-child .visual,
+.card:last-child:nth-child(3n) .visual {
   grid-column: 2;
   grid-row: 1 / span 2;
   min-height: 0;

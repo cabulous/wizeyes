@@ -18,7 +18,8 @@ content/                        All words and facts. Edit copy here, never in co
 
 components/app-page/            Generic, data-driven page sections:
                                 AppNav, Hero, SectionHeader, FeatureGrid, Steps,
-                                PrivacyPanel, Faq, CtaBand, AppFooter, LegalDocument.
+                                PrivacyPanel, Faq, CtaBand, AppFooter, LegalDocument,
+                                plus PhoneFrame (an iPhone outline for screen mock-ups).
 
 app/<slug>/layout.tsx           Fonts, palette, nav and footer for one app's pages.
 app/<slug>/theme.module.css     That app's colour tokens (sampled from its icon).
@@ -38,13 +39,18 @@ app/md/[slug]/route.ts          Markdown twin of each app page, served at /<slug
 app/robots.ts, app/sitemap.ts
 ```
 
-Legacy pages: `app/{benefittracker,familyassets,koda,lablog,medicalrecord,solobooks,spendwise}/`
+Legacy pages: `app/{benefittracker,familyassets,koda,lablog,medicalrecord,solobooks}/`
 are the old privacy-only pages. They are linked from App Store listings, so
 their URLs must keep working until each app is moved to the new model.
 
-Redesigned so far: **Savings Room** at `/savings-room` (source app:
-`cabulous/TaxSavingsTracker`). Its old URL `/taxsavingtracker` redirects to
-`/savings-room/privacy`.
+Redesigned so far:
+
+- **Savings Room** at `/savings-room` (source app: `cabulous/TaxSavingsTracker`).
+  Its old URL `/taxsavingtracker` redirects to `/savings-room/privacy`.
+- **Spendwise** at `/spendwise` (source app: `cabulous/SpendWise`). The slug
+  didn't change, so the old policy URL now opens the marketing page, which
+  links to the policy at `/spendwise/privacy` from its nav, privacy section and
+  footer.
 
 ## Rules
 
@@ -57,8 +63,10 @@ Redesigned so far: **Savings Room** at `/savings-room` (source app:
   visible copy, Markdown and structured data alike.
 - **The app and the site share one design.** Savings Room's `Theme.swift`
   uses the same tokens as `app/savings-room/theme.module.css`, and the phone
-  mock-up and demos mirror the app's views. When the app's look changes,
-  update `_components/` to match, citing the Swift file each one mirrors.
+  mock-up and demos mirror the app's views. Spendwise keeps the stock iOS
+  look, so its mock-ups use system colours while the page around them takes
+  its palette from the icon. When an app's look changes, update `_components/`
+  to match, citing the Swift file each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
   policy itself changes, and bump `lastUpdated` when you do.
 - **Never break a URL.** Moving a page means adding a redirect in
@@ -67,7 +75,8 @@ Redesigned so far: **Savings Room** at `/savings-room` (source app:
   HTML. Use server components; reach for `"use client"` only for real
   interaction (see `RoomDemo.tsx`), and render meaningful initial state.
 - **Copy formatting** is limited to `*emphasis*`, `**strong**` and
-  `[links](/path)`. In headings, `*emphasis*` renders as the coral italic.
+  `[links](/path)`. In headings, `*emphasis*` renders in the app's accent
+  style: Savings Room's coral italic, Spendwise's pink highlighter.
 - **Styling** uses CSS Modules and the tokens in `app/<slug>/theme.module.css`.
   Base element styles are wrapped in `:where()` so any component class wins.
 - **Every visual** supports dark mode (`prefers-color-scheme`) and
@@ -79,19 +88,20 @@ Redesigned so far: **Savings Room** at `/savings-room` (source app:
 Shared sections in `components/app-page/` read only these custom properties,
 so each app restyles them from its `app/<slug>/theme.module.css`:
 
-| Token | Role |
-| --- | --- |
-| `--bg`, `--bg-alt` | Page and alternate band backgrounds |
-| `--surface` | Cards, chips, nav |
-| `--ink`, `--ink-soft`, `--ink-faint` | Text, strongest to faintest |
-| `--line`, `--icon-ring` | Hairlines; the ring around app icons |
-| `--accent`, `--accent-light`, `--accent-deep`, `--accent-shade` | Brand colour and its tints, light to dark |
-| `--accent-ink`, `--accent-wash`, `--on-accent` | Accent text on the page; accent tint fill; text on accent fills |
-| `--panel`, `--on-panel`, `--panel-accent`, `--panel-glow` | The dark privacy panel and the accents inside it |
-| `--shadow-card`, `--shadow-float` | Card at rest and lifted (include any outline here) |
-| `--shadow-button`, `--shadow-button-hover`, `--shadow-panel`, `--shadow-accent`, `--shadow-icon` | Download button, privacy panel, accent coins, app icon drop shadow |
-| `--font-display`, `--font-sans` | Set by the app's layout via `next/font` |
-| `--page`, `--gutter`, `--radius-xl`, `--radius-lg`, `--radius-md` | Layout |
+| Token                                                                                          | Role                                                                                             |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `--bg`, `--bg-alt`                                                                             | Page and alternate band backgrounds                                                              |
+| `--surface`                                                                                    | Cards, chips, nav                                                                                |
+| `--ink`, `--ink-soft`, `--ink-faint`                                                           | Text, strongest to faintest                                                                      |
+| `--line`, `--icon-ring`                                                                        | Hairlines; the ring around app icons                                                             |
+| `--accent`, `--accent-light`, `--accent-deep`, `--accent-shade`                                | Brand colour and its tints, light to dark                                                        |
+| `--accent-ink`, `--accent-wash`, `--on-accent`                                                 | Accent text on the page; accent tint fill; text on accent fills                                  |
+| `--panel`, `--on-panel`, `--panel-accent`, `--panel-glow`, `--panel-em`                        | The dark privacy panel, the accents inside it, and its heading emphasis colour                   |
+| `--shadow-card`, `--shadow-float`                                                              | Card at rest and lifted (include any outline here)                                               |
+| `--shadow-button`, `--shadow-button-hover`, `--shadow-panel`, `--shadow-coin`, `--shadow-icon` | Download button, privacy panel, step coins, app icon drop shadow (`filter: drop-shadow()` value) |
+| `--coin-fill`, `--coin-font-style`, `--coin-axes`                                              | Step coins: background, and the number's `font-style` and `font-variation-settings`              |
+| `--font-display`, `--font-sans`                                                                | Set by the app's layout via `next/font`                                                          |
+| `--page`, `--gutter`, `--radius-xl`, `--radius-lg`, `--radius-md`                              | Layout                                                                                           |
 
 Headings, emphasis and other element defaults are styled in each theme file,
 so apps can differ in type as well as colour.
@@ -106,8 +116,8 @@ so apps can differ in type as well as colour.
    icon in `theme.module.css`, then replace `_components/` with visuals drawn
    from the app's real screens.
 4. Retire the old page: delete `app/<old-slug>/`, add a redirect to
-   `/<slug>/privacy` in `next.config.js`, and remove it from `legacyPages` in
-   `app/sitemap.ts`.
+   `/<slug>/privacy` in `next.config.js` (unless the slug is unchanged, as
+   with Spendwise), and remove it from `legacyPages` in `app/sitemap.ts`.
 5. Check: `npm run lint && npm run typecheck && npm run build`, then open
    `/<slug>`, `/<slug>/privacy`, `/<slug>.md` and `/llms.txt`.
 

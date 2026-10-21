@@ -1,0 +1,250 @@
+/* The app's stock iOS look: grouped list on system grey, blue tint, green income. */
+.screen {
+  --ios-bg: #f2f2f7;
+  --ios-cell: #ffffff;
+  --ios-label: #000000;
+  --ios-secondary: rgba(60, 60, 67, 0.6);
+  --ios-fill: rgba(118, 118, 128, 0.12);
+  --ios-tint: #007aff;
+  /* Apple's increased-contrast green: same hue as the app's, legible on white. */
+  --ios-green: #248a3d;
+
+  background: var(--ios-bg);
+  color: var(--ios-label);
+}
+
+@media (prefers-color-scheme: dark) {
+  .screen {
+    --ios-bg: #000000;
+    --ios-cell: #1c1c1e;
+    --ios-label: #ffffff;
+    --ios-secondary: rgba(235, 235, 245, 0.6);
+    --ios-fill: rgba(118, 118, 128, 0.24);
+    --ios-tint: #0a84ff;
+    --ios-green: #30d158;
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: calc(18 * var(--pt));
+  height: calc(44 * var(--pt));
+  padding: 0 calc(18 * var(--pt));
+  font-size: calc(17 * var(--pt));
+  color: var(--ios-tint);
+}
+
+.largeTitle {
+  padding: 0 calc(20 * var(--pt)) calc(8 * var(--pt));
+  font-size: calc(34 * var(--pt));
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 calc(16 * var(--pt));
+  padding: calc(2 * var(--pt));
+  border-radius: calc(9 * var(--pt));
+  background: var(--ios-fill);
+  font-size: calc(13 * var(--pt));
+  text-align: center;
+}
+
+.segmented span {
+  padding: calc(6 * var(--pt)) 0;
+}
+
+.selected {
+  border-radius: calc(7 * var(--pt));
+  background: var(--ios-cell);
+  font-weight: 600;
+  box-shadow: 0 calc(3 * var(--pt)) calc(8 * var(--pt)) rgba(0, 0, 0, 0.12);
+}
+
+.cashflow {
+  padding: calc(10 * var(--pt)) calc(16 * var(--pt)) calc(4 * var(--pt));
+}
+
+.sentence {
+  font-size: calc(13 * var(--pt));
+}
+
+.sentence b {
+  font-weight: 700;
+}
+
+.income {
+  color: var(--ios-green);
+}
+
+.expense {
+  color: var(--ios-tint);
+}
+
+.bars {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: calc(8 * var(--pt)) calc(8 * var(--pt));
+  margin: calc(10 * var(--pt)) 0;
+}
+
+.barLabel {
+  font-size: calc(11 * var(--pt));
+  color: var(--ios-secondary);
+}
+
+.bar {
+  height: calc(24 * var(--pt));
+  border-radius: calc(4 * var(--pt));
+}
+
+.barIncome {
+  width: 100%;
+  background: var(--ios-green);
+}
+
+.barExpense {
+  width: 60%;
+  background: var(--ios-tint);
+}
+
+.totals {
+  display: flex;
+  justify-content: space-between;
+  font-size: calc(17 * var(--pt));
+  font-weight: 600;
+}
+
+.sectionHeader {
+  padding: calc(14 * var(--pt)) calc(36 * var(--pt)) calc(7 * var(--pt));
+  font-size: calc(13 * var(--pt));
+  color: var(--ios-secondary);
+}
+
+.list {
+  margin: 0 calc(16 * var(--pt));
+  border-radius: calc(12 * var(--pt));
+  background: var(--ios-cell);
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  gap: calc(12 * var(--pt));
+  padding: calc(12 * var(--pt)) calc(16 * var(--pt));
+}
+
+.row + .row {
+  box-shadow:
+    inset calc(16 * var(--pt)) 0.5px 0 0 var(--ios-cell),
+    inset 0 0.5px 0 0 rgba(60, 60, 67, 0.29);
+}
+
+.rowTop,
+.rowBottom {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(8 * var(--pt));
+}
+
+.rowTop {
+  align-items: flex-start;
+}
+
+.rowBottom {
+  align-items: flex-end;
+}
+
+.rowText {
+  display: grid;
+  gap: calc(2 * var(--pt));
+}
+
+.detail {
+  font-size: calc(12 * var(--pt));
+  color: var(--ios-secondary);
+}
+
+.date,
+.card {
+  color: #8e8e93;
+  white-space: nowrap;
+}
+
+.card {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--pt));
+}
+
+.amount,
+.amountIncome {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.amountIncome {
+  color: var(--ios-green);
+}
+
+/* The transaction the alert just added: flashes, then settles like any row. */
+.newRow {
+  animation: arrive 1.6s ease-out 2.4s both;
+}
+
+@keyframes arrive {
+  0% {
+    background: transparent;
+  }
+  20% {
+    background: #ffcbcb;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .newRow {
+    animation-name: arrive-dark;
+  }
+}
+
+@keyframes arrive-dark {
+  20% {
+    background: rgba(253, 154, 168, 0.32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newRow {
+    animation: none;
+  }
+}
+
+.tabBar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: auto;
+  padding: calc(7 * var(--pt)) calc(8 * var(--pt)) calc(30 * var(--pt));
+  border-top: 0.5px solid rgba(60, 60, 67, 0.29);
+  background: color-mix(in srgb, var(--ios-cell) 92%, transparent);
+  font-size: calc(10 * var(--pt));
+  font-weight: 500;
+  color: #8e8e93;
+}
+
+.tab {
+  display: grid;
+  justify-items: center;
+  gap: calc(2 * var(--pt));
+}
+
+.tabActive {
+  color: var(--ios-tint);
+}

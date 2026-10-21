@@ -32,7 +32,8 @@ export function LegalDocument({
           <span aria-current="page">{doc.title}</span>
         </nav>
         <h1 className={styles.title}>
-          {app.name} <em>{doc.title}</em>
+          {app.name} <br />
+          <em>{doc.title}</em>
         </h1>
         <p className={styles.updated}>
           Last updated{" "}

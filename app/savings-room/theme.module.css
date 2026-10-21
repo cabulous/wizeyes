@@ -24,6 +24,7 @@
   /* Fixed across light and dark: the panel is dark in both. */
   --panel-accent: #f39a8b;
   --panel-glow: #eb7c6c;
+  --panel-em: var(--accent-light);
   --icon-ring: rgba(84, 52, 38, 0.12);
 
   --shadow-card:
@@ -39,8 +40,21 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 4px rgba(42, 27, 21, 0.2),
     0 20px 36px -14px rgba(42, 27, 21, 0.6);
   --shadow-panel: 0 40px 80px -40px rgba(42, 27, 21, 0.6);
-  --shadow-accent: rgba(193, 83, 67, 0.6);
+  --shadow-coin:
+    inset 0 0 0 5px rgba(255, 255, 255, 0.16),
+    inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 0 0 8px var(--bg-alt),
+    0 18px 30px -12px rgba(193, 83, 67, 0.6);
   --shadow-icon: 0 30px 34px rgba(150, 55, 40, 0.35);
+
+  /* Step coins: glossy clay, numbered in Fraunces' soft italic. */
+  --coin-fill: radial-gradient(
+    120% 120% at 30% 20%,
+    var(--accent-light),
+    var(--accent) 55%,
+    var(--accent-shade)
+  );
+  --coin-font-style: italic;
+  --coin-axes: "SOFT" 100, "WONK" 1;
 
   --gutter: clamp(16px, 4vw, 40px);
   --page: min(1180px, 100% - 2 * var(--gutter));

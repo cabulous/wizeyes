@@ -113,7 +113,9 @@
     max-width: 640px;
   }
 
+  /* Ends at the hero's bottom edge, so the glow fades out instead of being cut off. */
   .hero::before {
-    inset: 30% -30% auto -30%;
+    inset: 30% -30% 0 -30%;
+    height: auto;
   }
 }

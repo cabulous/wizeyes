@@ -41,24 +41,13 @@
   height: 72px;
   margin-bottom: 26px;
   border-radius: 50%;
-  background: radial-gradient(
-    120% 120% at 30% 20%,
-    var(--accent-light),
-    var(--accent) 55%,
-    var(--accent-shade)
-  );
+  background: var(--coin-fill);
   color: var(--on-accent);
   font-family: var(--font-display), Georgia, serif;
   font-size: 2rem;
-  font-style: italic;
-  font-variation-settings:
-    "SOFT" 100,
-    "WONK" 1;
-  box-shadow:
-    inset 0 0 0 5px rgba(255, 255, 255, 0.16),
-    inset 0 2px 0 rgba(255, 255, 255, 0.35),
-    0 0 0 8px var(--bg-alt),
-    0 18px 30px -12px var(--shadow-accent);
+  font-style: var(--coin-font-style);
+  font-variation-settings: var(--coin-axes);
+  box-shadow: var(--shadow-coin);
 }
 
 .title {
