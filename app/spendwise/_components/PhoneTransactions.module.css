@@ -1,30 +1,10 @@
-/* The app's stock iOS look: grouped list on system grey, blue tint, green income. */
+/*
+ * The app's stock iOS look: grouped list on system grey, blue tint, green
+ * income. The --ios-* colours come from the Spendwise theme.
+ */
 .screen {
-  --ios-bg: #f2f2f7;
-  --ios-cell: #ffffff;
-  --ios-label: #000000;
-  --ios-secondary: rgba(60, 60, 67, 0.6);
-  --ios-fill: rgba(118, 118, 128, 0.12);
-  --ios-separator: rgba(60, 60, 67, 0.29);
-  --ios-tint: #007aff;
-  /* Apple's increased-contrast green: same hue as the app's, legible on white. */
-  --ios-green: #248a3d;
-
   background: var(--ios-bg);
   color: var(--ios-label);
-}
-
-@media (prefers-color-scheme: dark) {
-  .screen {
-    --ios-bg: #000000;
-    --ios-cell: #1c1c1e;
-    --ios-label: #ffffff;
-    --ios-secondary: rgba(235, 235, 245, 0.6);
-    --ios-fill: rgba(118, 118, 128, 0.24);
-    --ios-separator: rgba(84, 84, 88, 0.6);
-    --ios-tint: #0a84ff;
-    --ios-green: #30d158;
-  }
 }
 
 .toolbar {
@@ -174,7 +154,7 @@
 
 .date,
 .card {
-  color: #8e8e93;
+  color: var(--ios-gray);
   white-space: nowrap;
 }
 
@@ -238,7 +218,7 @@
   background: color-mix(in srgb, var(--ios-cell) 92%, transparent);
   font-size: calc(10 * var(--pt));
   font-weight: 500;
-  color: #8e8e93;
+  color: var(--ios-gray);
 }
 
 .tab {

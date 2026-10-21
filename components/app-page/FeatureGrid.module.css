@@ -2,7 +2,9 @@
  * Three columns of plain cards. From 681px the first card is a wide tile
  * (text left, visual right); from 961px a last card that would sit alone in
  * its row stretches into a full-width strip. Both layouts live in min-width
- * queries, so narrower screens need nothing undone.
+ * queries, so narrower screens need nothing undone. The .02px keeps
+ * fractional widths (browser zoom) from falling between them and the
+ * max-width queries below.
  */
 .grid {
   display: grid;
@@ -61,7 +63,7 @@
   font-size: 1.0625rem;
 }
 
-@media (min-width: 681px) {
+@media (min-width: 680.02px) {
   .card:first-child {
     display: grid;
     grid-column: span 2;
@@ -89,7 +91,7 @@
   }
 }
 
-@media (min-width: 961px) {
+@media (min-width: 960.02px) {
   .card:last-child:nth-child(3n) {
     display: grid;
     grid-column: 1 / -1;

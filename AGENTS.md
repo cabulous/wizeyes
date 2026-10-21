@@ -32,6 +32,7 @@ lib/markdown.tsx                Small Markdown subset: parse + render to React.
 lib/content.ts                  Loads content/apps/<slug>/*.md with frontmatter.
 lib/llms.ts                     Builds /llms.txt, /llms-full.txt and /<slug>.md.
 lib/jsonld.tsx                  schema.org MobileApplication + FAQPage graph.
+lib/og.ts                       googleFont(): fetches a font's glyphs for a social card at build time.
 
 app/llms.txt, app/llms-full.txt Machine-readable site index (https://llmstxt.org).
 app/md/[slug]/route.ts          Markdown twin of each app page, served at /<slug>.md

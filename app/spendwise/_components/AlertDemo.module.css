@@ -218,19 +218,11 @@
 
 /* The shortcut's result, in the system look the app uses. */
 .result {
-  --ios-secondary: rgba(60, 60, 67, 0.6);
-
   padding: 14px 16px 16px;
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans),
     system-ui, sans-serif;
   rotate: 1deg;
-}
-
-@media (prefers-color-scheme: dark) {
-  .result {
-    --ios-secondary: rgba(235, 235, 245, 0.6);
-  }
 }
 
 .resultHead {

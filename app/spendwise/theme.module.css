@@ -33,6 +33,19 @@
   --mark-date: #dcd5f7;
   --mark-bank: #c7ecd8;
 
+  /* iOS system colours, for mock-ups of the app's stock iOS screens. */
+  --ios-bg: #f2f2f7;
+  --ios-cell: #ffffff;
+  --ios-label: #000000;
+  --ios-secondary: rgba(60, 60, 67, 0.6);
+  --ios-gray: #8e8e93;
+  --ios-fill: rgba(118, 118, 128, 0.12);
+  --ios-separator: rgba(60, 60, 67, 0.29);
+  --ios-tint: #007aff;
+  /* Apple's increased-contrast green: same hue as the app's, legible on white. */
+  --ios-green: #248a3d;
+  --ios-switch: #34c759;
+
   /*
    * Hard offset shadows: navy in light mode, black in dark. Components use
    * --offset for every sticker shadow, so dark mode only swaps this one value.
@@ -93,6 +106,16 @@
     --mark-card: #1f5168;
     --mark-date: #463c73;
     --mark-bank: #1e5a44;
+
+    --ios-bg: #000000;
+    --ios-cell: #1c1c1e;
+    --ios-label: #ffffff;
+    --ios-secondary: rgba(235, 235, 245, 0.6);
+    --ios-fill: rgba(118, 118, 128, 0.24);
+    --ios-separator: rgba(84, 84, 88, 0.6);
+    --ios-tint: #0a84ff;
+    --ios-green: #30d158;
+    --ios-switch: #30d158;
 
     /* The shadow tokens above pick this up, and --ink for their outlines. */
     --offset: #000;

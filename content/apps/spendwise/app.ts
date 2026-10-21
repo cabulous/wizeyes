@@ -101,7 +101,7 @@ export const spendwise: AppContent = {
       {
         id: "export",
         title: "Search, tidy up, take it with you",
-        body: "Search every transaction, edit many at once, and export them all to a CSV file whenever you like.",
+        body: "Search each month's transactions, edit several at once, and export everything to a CSV file whenever you like.",
       },
     ],
   },

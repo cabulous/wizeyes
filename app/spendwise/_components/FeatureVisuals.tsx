@@ -1,4 +1,4 @@
-import { daysAgo, isoDate, weekday } from "./sampleDates";
+import { Icon } from "@/components/app-page/Icon";
 import styles from "./FeatureVisuals.module.css";
 
 /**
@@ -23,18 +23,7 @@ function Automation() {
     <div className={styles.automation}>
       <div className={styles.block}>
         <span className={`${styles.blockIcon} ${styles.mailIcon}`}>
-          <svg
-            viewBox="0 0 24 24"
-            width="20"
-            height="20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinejoin="round"
-          >
-            <rect x="3" y="5.5" width="18" height="13" rx="2.5" />
-            <path d="m4 7 8 6 8-6" />
-          </svg>
+          <Icon name="mail" size={20} strokeWidth={2} />
         </span>
         <p>
           <small>When</small>I get an email from{" "}
@@ -112,24 +101,13 @@ function CardPayment() {
             TD VISA
             <span className={styles.caption}>All recorded</span>
           </span>
-          <span className={styles.muted}>{weekday(daysAgo(6))}</span>
+          <span className={styles.muted}>Thursday</span>
         </div>
         <div className={styles.itemRow}>
           <strong>$482.10</strong>
           <span className={styles.flowCards}>
             RBC Chequing
-            <svg
-              viewBox="0 0 24 24"
-              width="12"
-              height="12"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
+            <Icon name="arrowRight" size={12} strokeWidth={2.6} />
             TD Cash Back
           </span>
         </div>
@@ -210,7 +188,7 @@ function Csv() {
   ];
   const rows = [
     [
-      isoDate(daysAgo(0)),
+      "2026-10-20",
       "37.32",
       "$",
       "Walmart",
@@ -221,7 +199,7 @@ function Csv() {
       "",
     ],
     [
-      isoDate(daysAgo(1)),
+      "2026-10-19",
       "25.0",
       "$",
       "Uber Eats",
@@ -247,7 +225,7 @@ function Csv() {
           <path d="M6 2.5h8l4.5 4.5v14.5H6Z" />
           <path d="M14 2.5V7h4.5" />
         </svg>
-        spendwise-transactions-{isoDate(daysAgo(0))}-21-04-12.csv
+        spendwise-transactions-2026-10-20-21-04-12.csv
       </p>
       <pre className={styles.code}>
         <span className={styles.codeHead}>{header.join(",")}</span>

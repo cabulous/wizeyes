@@ -1,5 +1,5 @@
+import { Icon } from "@/components/app-page/Icon";
 import { PhoneFrame } from "@/components/app-page/PhoneFrame";
-import { daysAgo, monthHeader, weekday } from "./sampleDates";
 import styles from "./PhoneTransactions.module.css";
 
 /**
@@ -7,6 +7,10 @@ import styles from "./PhoneTransactions.module.css";
  * TransactionListGrouped, TransactionItem, ContentView's tab bar), rebuilt
  * in HTML with sample data. It keeps the app's stock iOS look; bank logos
  * beside card names are left out. The first row is the alert just added.
+ *
+ * Like the hero's alert, the sample is set on one fixed day, Tuesday 20
+ * October 2026, so its relative labels (Today, Friday) always agree with
+ * its month and dates, as they would in the app.
  */
 type Row = {
   merchant: string;
@@ -38,7 +42,7 @@ const rows: Row[] = [
   {
     merchant: "Payroll",
     detail: "Income",
-    date: weekday(daysAgo(4)),
+    date: "Friday",
     // TransactionItem formats amounts with "%.2f": no thousands separator.
     amount: "+ $2600.00",
     income: true,
@@ -47,7 +51,7 @@ const rows: Row[] = [
   {
     merchant: "TD VISA",
     detail: "All recorded",
-    date: weekday(daysAgo(6)),
+    date: "Thursday",
     amount: "$482.10",
     card: "RBC Chequing",
     paid: "TD Cash Back",
@@ -105,7 +109,7 @@ export function PhoneTransactions() {
         </div>
       </div>
 
-      <p className={styles.sectionHeader}>{monthHeader(daysAgo(0))}</p>
+      <p className={styles.sectionHeader}>October 2026</p>
       <div className={styles.list}>
         {rows.map((row) => (
           <div
@@ -129,18 +133,7 @@ export function PhoneTransactions() {
                 {row.card}
                 {row.paid && (
                   <>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="0.8em"
-                      height="0.8em"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
+                    <Icon name="arrowRight" size="0.8em" strokeWidth={2.6} />
                     {row.paid}
                   </>
                 )}

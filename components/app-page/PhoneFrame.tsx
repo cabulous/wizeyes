@@ -17,8 +17,9 @@ export function PhoneFrame({
   return (
     <div className={styles.phone}>
       <div className={`${styles.screen} ${screenClassName}`}>
-        <div className={styles.island} />
-        <div className={styles.status}>
+        {/* Device chrome, not content: hidden from assistive tech. */}
+        <div className={styles.island} aria-hidden="true" />
+        <div className={styles.status} aria-hidden="true">
           <span>9:41</span>
           <StatusIcons />
         </div>

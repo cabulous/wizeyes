@@ -129,7 +129,7 @@
   width: 46px;
   height: 28px;
   border-radius: 999px;
-  background: #34c759;
+  background: var(--ios-switch);
   box-shadow: 0 0 0 2px var(--ink);
 }
 
@@ -157,7 +157,9 @@
   background: var(--surface);
   box-shadow: inset 0 0 0 1.5px var(--line);
   font-weight: 600;
-  text-decoration: line-through 2px var(--accent-deep);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--accent-deep);
+  text-decoration-thickness: 2px;
 }
 
 .suggestion {
@@ -252,22 +254,12 @@
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: #007aff;
+  background: var(--ios-tint);
 }
 
 .spent {
-  color: #007aff;
+  color: var(--ios-tint);
   font-weight: 600;
-}
-
-@media (prefers-color-scheme: dark) {
-  .progress span {
-    background: #0a84ff;
-  }
-
-  .spent {
-    color: #409cff;
-  }
 }
 
 .tip {
