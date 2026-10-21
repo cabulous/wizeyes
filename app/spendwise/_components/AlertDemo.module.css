@@ -47,7 +47,7 @@
     transform: translate(-1px, -1px);
     box-shadow:
       var(--outline),
-      5px 5px 0 0 var(--ink);
+      5px 5px 0 0 var(--offset);
   }
 }
 
@@ -57,24 +57,7 @@
   transform: translate(3px, 3px);
   box-shadow:
     var(--outline),
-    1px 1px 0 0 var(--ink);
-}
-
-/* Dark mode's hard shadows are black (see --shadow-card), so hover and press keep that colour. */
-@media (prefers-color-scheme: dark) and (hover: hover) {
-  .tabs button:hover {
-    box-shadow:
-      var(--outline),
-      5px 5px 0 0 #000;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .tabs button[aria-pressed="true"] {
-    box-shadow:
-      var(--outline),
-      1px 1px 0 0 #000;
-  }
+    1px 1px 0 0 var(--offset);
 }
 
 .legend {
@@ -229,7 +212,7 @@
   white-space: nowrap;
   box-shadow:
     0 0 0 2px var(--ink),
-    2px 2px 0 0 var(--ink);
+    2px 2px 0 0 var(--offset);
   rotate: -3deg;
 }
 

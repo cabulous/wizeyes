@@ -10,7 +10,7 @@
   --surface: #fffaf0;
   --ink: #002537;
   --ink-soft: #2f4f5f;
-  --ink-faint: #5d7885;
+  --ink-faint: #476370;
   --line: rgba(0, 37, 55, 0.16);
   --accent: #fd9aa8;
   --accent-light: #ffcbcb;
@@ -33,15 +33,20 @@
   --mark-date: #dcd5f7;
   --mark-bank: #c7ecd8;
 
+  /*
+   * Hard offset shadows: navy in light mode, black in dark. Components use
+   * --offset for every sticker shadow, so dark mode only swaps this one value.
+   */
+  --offset: var(--ink);
   --outline: 0 0 0 2px var(--ink);
-  --shadow-card: var(--outline), 4px 4px 0 0 var(--ink);
-  --shadow-float: var(--outline), 7px 7px 0 0 var(--ink);
+  --shadow-card: var(--outline), 4px 4px 0 0 var(--offset);
+  --shadow-float: var(--outline), 7px 7px 0 0 var(--offset);
   --shadow-button: var(--outline), 3px 3px 0 0 var(--accent);
   --shadow-button-hover: var(--outline), 5px 5px 0 0 var(--accent);
   --shadow-panel: 8px 8px 0 0 var(--accent);
   --shadow-coin:
-    0 0 0 2px var(--ink), 0 0 0 9px var(--bg-alt), 3px 3px 0 9px var(--ink);
-  --shadow-icon: 4px 5px 0 var(--ink);
+    0 0 0 2px var(--ink), 0 0 0 9px var(--bg-alt), 3px 3px 0 9px var(--offset);
+  --shadow-icon: 4px 5px 0 var(--offset);
 
   /* Step coins: flat pink stickers, numbered in the heading weight. */
   --coin-fill: var(--accent);
@@ -90,14 +95,8 @@
     --mark-date: #463c73;
     --mark-bank: #1e5a44;
 
-    --outline: 0 0 0 2px #e8f6f3;
-    --shadow-card: var(--outline), 4px 4px 0 0 #000;
-    --shadow-float: var(--outline), 7px 7px 0 0 #000;
-    --shadow-button: var(--outline), 3px 3px 0 0 var(--accent);
-    --shadow-button-hover: var(--outline), 5px 5px 0 0 var(--accent);
-    --shadow-coin:
-      0 0 0 2px #e8f6f3, 0 0 0 9px var(--bg-alt), 3px 3px 0 9px #000;
-    --shadow-icon: 4px 5px 0 #000;
+    /* The shadow tokens above pick this up, and --ink for their outlines. */
+    --offset: #000;
   }
 }
 
@@ -171,5 +170,5 @@
 
 :where(.theme) ::selection {
   background: var(--accent-light);
-  color: #002537;
+  color: var(--on-accent);
 }

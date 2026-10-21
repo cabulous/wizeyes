@@ -5,6 +5,7 @@
   --ios-label: #000000;
   --ios-secondary: rgba(60, 60, 67, 0.6);
   --ios-fill: rgba(118, 118, 128, 0.12);
+  --ios-separator: rgba(60, 60, 67, 0.29);
   --ios-tint: #007aff;
   /* Apple's increased-contrast green: same hue as the app's, legible on white. */
   --ios-green: #248a3d;
@@ -20,6 +21,7 @@
     --ios-label: #ffffff;
     --ios-secondary: rgba(235, 235, 245, 0.6);
     --ios-fill: rgba(118, 118, 128, 0.24);
+    --ios-separator: rgba(84, 84, 88, 0.6);
     --ios-tint: #0a84ff;
     --ios-green: #30d158;
   }
@@ -142,7 +144,7 @@
 .row + .row {
   box-shadow:
     inset calc(16 * var(--pt)) 0.5px 0 0 var(--ios-cell),
-    inset 0 0.5px 0 0 rgba(60, 60, 67, 0.29);
+    inset 0 0.5px 0 0 var(--ios-separator);
 }
 
 .rowTop,
@@ -232,7 +234,7 @@
   grid-template-columns: repeat(4, 1fr);
   margin-top: auto;
   padding: calc(7 * var(--pt)) calc(8 * var(--pt)) calc(30 * var(--pt));
-  border-top: 0.5px solid rgba(60, 60, 67, 0.29);
+  border-top: 0.5px solid var(--ios-separator);
   background: color-mix(in srgb, var(--ios-cell) 92%, transparent);
   font-size: calc(10 * var(--pt));
   font-weight: 500;

@@ -230,7 +230,7 @@
     120% 120% at 30% 20%,
     var(--accent-light),
     var(--accent) 50%,
-    #d9634f
+    var(--accent-shade)
   );
   color: #fff;
   box-shadow:

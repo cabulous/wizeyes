@@ -3,19 +3,28 @@ import path from "path";
 import { ImageResponse } from "next/og";
 import { spendwise as app } from "@/content/apps/spendwise/app";
 import { googleFont as font } from "@/lib/og";
+import { plainText } from "@/lib/markdown";
 
 export const alt = `${app.name}: ${app.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// The hero title, "Let your bank alerts *do the bookkeeping*.", split around its emphasis.
-const [lead, mark = "", tail = ""] = app.hero.title.split("*");
+// The hero title, "Let your bank alerts *do the bookkeeping*.", split around its
+// one *emphasis*. Any other shape is drawn as plain text without a highlight.
+const emphasis = /^([^*]*)\*([^*]+)\*([^*]*)$/.exec(app.hero.title);
+const [lead, mark, tail] = emphasis
+  ? emphasis.slice(1)
+  : [plainText(app.hero.title), "", ""];
 const lines = [lead.trim(), mark];
 const detail = app.hero.facts.join(" · ");
 
 /** Mint, navy and pink from the icon, in the page's flat sticker style. */
 export default async function OpenGraphImage() {
   const icon = readFileSync(path.join(process.cwd(), "public", app.icon.src));
+  const [display, sans] = await Promise.all([
+    font("Bricolage+Grotesque:opsz,wdth,wght@96,96,740", lines.join("") + tail),
+    font("Instrument+Sans:wght@600", app.name.toUpperCase() + detail),
+  ]);
   return new ImageResponse(
     <div
       style={{
@@ -25,7 +34,7 @@ export default async function OpenGraphImage() {
         alignItems: "center",
         gap: 72,
         padding: "0 88px",
-        background: "#e0f2ef",
+        background: app.themeColor,
         color: "#002537",
       }}
     >
@@ -96,22 +105,8 @@ export default async function OpenGraphImage() {
     {
       ...size,
       fonts: [
-        {
-          name: "Bricolage",
-          data: await font(
-            "Bricolage+Grotesque:opsz,wdth,wght@96,96,740",
-            lines.join("") + tail,
-          ),
-          weight: 700,
-        },
-        {
-          name: "Instrument Sans",
-          data: await font(
-            "Instrument+Sans:wght@600",
-            app.name.toUpperCase() + detail,
-          ),
-          weight: 600,
-        },
+        { name: "Bricolage", data: display, weight: 700 },
+        { name: "Instrument Sans", data: sans, weight: 600 },
       ],
     },
   );

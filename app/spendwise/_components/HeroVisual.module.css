@@ -16,23 +16,20 @@
   border-radius: 28%;
   background: var(--accent-light);
   box-shadow:
-    0 0 0 2.5px #002537,
-    10px 10px 0 0 #002537;
+    0 0 0 2.5px var(--ink),
+    10px 10px 0 0 var(--offset);
   transform: translate(-50%, -46%) rotate(6deg);
 }
 
 @media (prefers-color-scheme: dark) {
   .tile {
     background: #7d3a46;
-    box-shadow:
-      0 0 0 2.5px #e8f6f3,
-      10px 10px 0 0 #000;
   }
 }
 
 .phone {
-  --phone-frame: #002537;
-  --phone-shadow: 0 0 0 2.5px #002537, 8px 8px 0 0 #002537;
+  --phone-frame: var(--ink);
+  --phone-shadow: 0 0 0 2.5px var(--ink), 8px 8px 0 0 var(--offset);
 
   position: relative;
   transform: rotate(-2.5deg);
@@ -41,7 +38,6 @@
 @media (prefers-color-scheme: dark) {
   .phone {
     --phone-frame: #021521;
-    --phone-shadow: 0 0 0 2.5px #e8f6f3, 8px 8px 0 0 #000;
   }
 }
 
@@ -166,7 +162,7 @@
   text-transform: uppercase;
   box-shadow:
     0 0 0 2px var(--ink),
-    2px 2px 0 0 var(--ink);
+    2px 2px 0 0 var(--offset);
   rotate: -8deg;
   animation: pop 400ms cubic-bezier(0.2, 0.9, 0.3, 1.4) 2500ms both;
 }

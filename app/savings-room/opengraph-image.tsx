@@ -13,6 +13,10 @@ const detail = "RRSP · TFSA · FHSA · RESP · 401(k) · IRA · HSA · 529";
 
 export default async function OpenGraphImage() {
   const icon = readFileSync(path.join(process.cwd(), "public", app.icon.src));
+  const [display, sans] = await Promise.all([
+    font("Fraunces:opsz,wght@72,450", headline),
+    font("Figtree:wght@500", app.name.toUpperCase() + detail),
+  ]);
   return new ImageResponse(
     <div
       style={{
@@ -75,16 +79,8 @@ export default async function OpenGraphImage() {
     {
       ...size,
       fonts: [
-        {
-          name: "Fraunces",
-          data: await font("Fraunces:opsz,wght@72,450", headline),
-          weight: 400,
-        },
-        {
-          name: "Figtree",
-          data: await font("Figtree:wght@500", app.name.toUpperCase() + detail),
-          weight: 500,
-        },
+        { name: "Fraunces", data: display, weight: 400 },
+        { name: "Figtree", data: sans, weight: 500 },
       ],
     },
   );

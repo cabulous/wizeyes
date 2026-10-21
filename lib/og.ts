@@ -15,5 +15,12 @@ export async function googleFont(
     /src: url\((.+?)\) format\('(opentype|truetype)'\)/,
   )?.[1];
   if (!src) throw new Error(`Could not load ${family} for the social card.`);
-  return (await fetch(src)).arrayBuffer();
+  // An error page is not a font: fail here, not deep inside the image renderer.
+  const response = await fetch(src);
+  if (!response.ok) {
+    throw new Error(
+      `Could not download ${family} for the social card (HTTP ${response.status}).`,
+    );
+  }
+  return response.arrayBuffer();
 }

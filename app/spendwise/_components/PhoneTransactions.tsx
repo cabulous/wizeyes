@@ -38,7 +38,8 @@ const rows: Row[] = [
     merchant: "Payroll",
     detail: "Income",
     date: "Friday",
-    amount: "+ $2,600.00",
+    // TransactionItem formats amounts with "%.2f": no thousands separator.
+    amount: "+ $2600.00",
     income: true,
     card: "RBC Chequing",
   },

@@ -174,7 +174,7 @@
   font-weight: 700;
   box-shadow:
     0 0 0 2px var(--ink),
-    2px 2px 0 0 var(--ink);
+    2px 2px 0 0 var(--offset);
   rotate: -1.5deg;
 }
 
@@ -227,7 +227,7 @@
   text-transform: uppercase;
   box-shadow:
     0 0 0 2px var(--ink),
-    2px 2px 0 0 var(--ink);
+    2px 2px 0 0 var(--offset);
   rotate: -4deg;
 }
 

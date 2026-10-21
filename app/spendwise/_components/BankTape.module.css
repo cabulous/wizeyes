@@ -72,7 +72,7 @@
   padding: 2px 12px;
   border-radius: 999px;
   background: var(--panel-accent);
-  color: #002537;
+  color: var(--on-accent);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
