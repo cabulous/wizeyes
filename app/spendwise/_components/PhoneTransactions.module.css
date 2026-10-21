@@ -143,7 +143,7 @@
 
 .row + .row {
   box-shadow:
-    inset calc(16 * var(--pt)) 0.5px 0 0 var(--ios-cell),
+    inset calc(16 * var(--pt)) 0 0 0 var(--ios-cell),
     inset 0 0.5px 0 0 var(--ios-separator);
 }
 
@@ -204,7 +204,7 @@
     background: transparent;
   }
   20% {
-    background: #ffcbcb;
+    background: var(--accent-light);
   }
   100% {
     background: transparent;
@@ -219,7 +219,7 @@
 
 @keyframes arrive-dark {
   20% {
-    background: rgba(253, 154, 168, 0.32);
+    background: color-mix(in srgb, var(--accent) 32%, transparent);
   }
 }
 

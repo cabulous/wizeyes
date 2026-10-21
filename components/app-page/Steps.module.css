@@ -81,8 +81,13 @@
     opacity: 0.3;
   }
 
+  /* Text sits on the band colour, so the path doesn't run through it. */
+  .title,
+  .body {
+    background: var(--bg-alt);
+  }
+
   .body {
     padding: 4px 8px;
-    background: var(--bg-alt);
   }
 }

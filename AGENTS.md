@@ -85,8 +85,8 @@ Redesigned so far:
 
 ## Theme tokens
 
-Shared sections in `components/app-page/` read only these custom properties,
-so each app restyles them from its `app/<slug>/theme.module.css`:
+Shared sections in `components/app-page/` read these custom properties, so
+each app restyles them from its `app/<slug>/theme.module.css`:
 
 | Token                                                                                          | Role                                                                                             |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -101,7 +101,8 @@ so each app restyles them from its `app/<slug>/theme.module.css`:
 | `--shadow-button`, `--shadow-button-hover`, `--shadow-panel`, `--shadow-coin`, `--shadow-icon` | Download button, privacy panel, step coins, app icon drop shadow (`filter: drop-shadow()` value) |
 | `--coin-fill`, `--coin-font-style`, `--coin-axes`                                              | Step coins: background, and the number's `font-style` and `font-variation-settings`              |
 | `--font-display`, `--font-sans`                                                                | Set by the app's layout via `next/font`                                                          |
-| `--page`, `--gutter`, `--radius-xl`, `--radius-lg`, `--radius-md`                              | Layout                                                                                           |
+| `--page`, `--gutter`, `--radius-xl`, `--radius-lg`                                             | Layout                                                                                           |
+| `--phone-frame`, `--phone-shadow`                                                              | Optional, set on a wrapper around `PhoneFrame`: the phone body's colour and shadow               |
 
 Headings, emphasis and other element defaults are styled in each theme file,
 so apps can differ in type as well as colour.

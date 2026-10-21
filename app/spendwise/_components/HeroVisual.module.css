@@ -14,17 +14,11 @@
   width: 82%;
   aspect-ratio: 1;
   border-radius: 28%;
-  background: var(--accent-light);
+  background: var(--mark-amount);
   box-shadow:
     0 0 0 2.5px var(--ink),
     10px 10px 0 0 var(--offset);
   transform: translate(-50%, -46%) rotate(6deg);
-}
-
-@media (prefers-color-scheme: dark) {
-  .tile {
-    background: #7d3a46;
-  }
 }
 
 .phone {
@@ -41,11 +35,11 @@
   }
 }
 
-/* The incoming email alert, as a notification banner. */
+/* The incoming email alert, as a notification banner over the phone's status bar. */
 .alert {
   position: absolute;
   z-index: 1;
-  top: 3%;
+  top: -7%;
   left: -24%;
   width: min(282px, 58%);
   padding: 12px 14px 14px;
@@ -150,8 +144,8 @@
 
 .newTag {
   position: absolute;
-  top: 50%;
-  left: 13%;
+  top: 46%;
+  left: -9%;
   padding: 3px 10px;
   border-radius: 999px;
   background: var(--accent);
@@ -169,8 +163,8 @@
 
 .piggy {
   position: absolute;
-  right: -2%;
-  bottom: 4%;
+  right: -12%;
+  bottom: -12%;
   rotate: -8deg;
   filter: drop-shadow(var(--shadow-icon));
 }
@@ -225,18 +219,8 @@
   }
 }
 
+/* Narrower column: the alert sits above the phone instead of across it. */
 @media (max-width: 1080px) {
-  .alert {
-    left: -10%;
-  }
-
-  .arrow {
-    left: -2%;
-  }
-}
-
-/* One column: the alert sits above the phone instead of across it. */
-@media (max-width: 920px) {
   .stage {
     padding-top: 150px;
   }
@@ -280,13 +264,12 @@
   }
 
   .newTag {
-    top: 52%;
-    left: 4%;
+    left: -13%;
   }
 
   .piggy {
-    right: -1%;
-    bottom: 2%;
+    right: -10%;
+    bottom: -14%;
     scale: 0.7;
   }
 }

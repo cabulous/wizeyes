@@ -128,7 +128,7 @@ export const spendwise: AppContent = {
   privacy: {
     eyebrow: "Private by design",
     title: "Your spending stays *yours*.",
-    lead: "Spendwise never asks for your bank login. Alerts are read right on your iPhone, and your transactions live on your device and in your own iCloud. We never see them.",
+    lead: "Spendwise never asks for your bank login. Alerts are read right on your device, and your transactions live on your device and in your own iCloud. We never see them.",
     points: [
       "No bank login, no account linking, no sign-up.",
       "Alerts are read on your device, by Shortcuts and Spendwise.",

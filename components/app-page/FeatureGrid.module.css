@@ -1,6 +1,8 @@
 /*
- * Three columns. The first card is a wide tile (text left, visual right).
- * A last card that would sit alone in its row stretches into a full-width strip.
+ * Three columns of plain cards. From 681px the first card is a wide tile
+ * (text left, visual right); from 961px a last card that would sit alone in
+ * its row stretches into a full-width strip. Both layouts live in min-width
+ * queries, so narrower screens need nothing undone.
  */
 .grid {
   display: grid;
@@ -50,45 +52,6 @@
   font-size: 1rem;
 }
 
-.card:first-child,
-.card:last-child:nth-child(3n) {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  grid-template-rows: 1fr auto;
-  column-gap: clamp(24px, 3vw, 44px);
-}
-
-.card:first-child {
-  grid-column: span 2;
-}
-
-.card:last-child:nth-child(3n) {
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-}
-
-/* Plain selector lists, not :is(), so each card's own rules below can override these. */
-.card:first-child .visual,
-.card:last-child:nth-child(3n) .visual {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  min-height: 0;
-  margin: 0;
-}
-
-.card:first-child .title,
-.card:last-child:nth-child(3n) .title {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: end;
-}
-
-.card:first-child .body,
-.card:last-child:nth-child(3n) .body {
-  grid-column: 1;
-  grid-row: 2;
-}
-
 .card:first-child .title {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   line-height: 1.08;
@@ -98,24 +61,65 @@
   font-size: 1.0625rem;
 }
 
-@media (max-width: 960px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (min-width: 681px) {
+  .card:first-child {
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    grid-template-rows: 1fr auto;
+    column-gap: clamp(24px, 3vw, 44px);
   }
 
+  .card:first-child .visual {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .card:first-child .title {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .card:first-child .body {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+@media (min-width: 961px) {
   .card:last-child:nth-child(3n) {
-    display: flex;
-    grid-column: auto;
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+    column-gap: clamp(24px, 3vw, 44px);
   }
 
   .card:last-child:nth-child(3n) .visual {
-    min-height: 150px;
-    margin-bottom: 24px;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-height: 0;
+    margin: 0;
   }
 
-  /* Back in a flex column, `end` would push the title to the right edge. */
   .card:last-child:nth-child(3n) .title {
-    align-self: auto;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .card:last-child:nth-child(3n) .body {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .card:last-child:nth-child(even) {
@@ -126,18 +130,5 @@
 @media (max-width: 680px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .card:first-child {
-    display: flex;
-    grid-column: auto;
-  }
-
-  .card:first-child .visual {
-    margin-bottom: 24px;
-  }
-
-  .card:first-child .title {
-    align-self: auto;
   }
 }

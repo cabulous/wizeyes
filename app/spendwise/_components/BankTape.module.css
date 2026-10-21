@@ -102,9 +102,10 @@
   color: var(--on-accent);
 }
 
+/* One copy of three, so the loop is seamless. */
 @keyframes drift {
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% / 3));
   }
 }
 

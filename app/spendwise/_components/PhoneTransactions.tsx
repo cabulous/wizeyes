@@ -1,4 +1,5 @@
 import { PhoneFrame } from "@/components/app-page/PhoneFrame";
+import { daysAgo, monthHeader, weekday } from "./sampleDates";
 import styles from "./PhoneTransactions.module.css";
 
 /**
@@ -37,7 +38,7 @@ const rows: Row[] = [
   {
     merchant: "Payroll",
     detail: "Income",
-    date: "Friday",
+    date: weekday(daysAgo(4)),
     // TransactionItem formats amounts with "%.2f": no thousands separator.
     amount: "+ $2600.00",
     income: true,
@@ -46,7 +47,7 @@ const rows: Row[] = [
   {
     merchant: "TD VISA",
     detail: "All recorded",
-    date: "Tuesday",
+    date: weekday(daysAgo(6)),
     amount: "$482.10",
     card: "RBC Chequing",
     paid: "TD Cash Back",
@@ -104,7 +105,7 @@ export function PhoneTransactions() {
         </div>
       </div>
 
-      <p className={styles.sectionHeader}>October 2026</p>
+      <p className={styles.sectionHeader}>{monthHeader(daysAgo(0))}</p>
       <div className={styles.list}>
         {rows.map((row) => (
           <div

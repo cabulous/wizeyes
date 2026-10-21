@@ -50,7 +50,9 @@ export function AlertDemo({
   const [replay, setReplay] = useState(false);
   const alert = alerts[index];
 
+  // Picking the alert already shown does nothing, the first time as every time.
   const choose = (next: number) => {
+    if (next === index) return;
     setIndex(next);
     setReplay(true);
   };

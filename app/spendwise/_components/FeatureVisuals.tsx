@@ -1,3 +1,4 @@
+import { daysAgo, isoDate, weekday } from "./sampleDates";
 import styles from "./FeatureVisuals.module.css";
 
 /**
@@ -111,7 +112,7 @@ function CardPayment() {
             TD VISA
             <span className={styles.caption}>All recorded</span>
           </span>
-          <span className={styles.muted}>Tuesday</span>
+          <span className={styles.muted}>{weekday(daysAgo(6))}</span>
         </div>
         <div className={styles.itemRow}>
           <strong>$482.10</strong>
@@ -209,7 +210,7 @@ function Csv() {
   ];
   const rows = [
     [
-      "2026-10-20",
+      isoDate(daysAgo(0)),
       "37.32",
       "$",
       "Walmart",
@@ -220,7 +221,7 @@ function Csv() {
       "",
     ],
     [
-      "2026-10-19",
+      isoDate(daysAgo(1)),
       "25.0",
       "$",
       "Uber Eats",
@@ -246,7 +247,7 @@ function Csv() {
           <path d="M6 2.5h8l4.5 4.5v14.5H6Z" />
           <path d="M14 2.5V7h4.5" />
         </svg>
-        spendwise-transactions-2026-10-20-21-04-12.csv
+        spendwise-transactions-{isoDate(daysAgo(0))}-21-04-12.csv
       </p>
       <pre className={styles.code}>
         <span className={styles.codeHead}>{header.join(",")}</span>

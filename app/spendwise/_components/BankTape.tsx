@@ -4,8 +4,9 @@ import styles from "./BankTape.module.css";
 /**
  * Two crossed strips of tape drifting in opposite directions: the banks the
  * parser knows on the navy one, the hero's facts on the pink one behind it.
- * Each list is doubled for a seamless loop; the copies are hidden from
- * assistive tech, and so is the pink strip, which repeats the hero.
+ * Each list is drawn three times and drifts by one copy, so the strip stays
+ * full on screens up to twice a copy's width (about 6,900px). The copies are
+ * hidden from assistive tech, and so is the pink strip, which repeats the hero.
  */
 export function BankTape({
   label,
@@ -20,7 +21,7 @@ export function BankTape({
     <section className={styles.section} aria-labelledby="banks-label">
       <div className={`${styles.tape} ${styles.back}`} aria-hidden="true">
         <div className={styles.track}>
-          {[0, 1].map((copy) => (
+          {[0, 1, 2].map((copy) => (
             <p key={copy} className={styles.items}>
               {[...facts, ...facts, ...facts, ...facts].map((fact, i) => (
                 <Fragment key={i}>
@@ -35,7 +36,7 @@ export function BankTape({
 
       <div className={`${styles.tape} ${styles.front}`}>
         <div className={styles.track}>
-          {[0, 1].map((copy) => (
+          {[0, 1, 2].map((copy) => (
             <div
               key={copy}
               className={`${styles.items} ${copy ? styles.copy : ""}`}

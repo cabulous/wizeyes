@@ -60,7 +60,6 @@
   --page: min(1180px, 100% - 2 * var(--gutter));
   --radius-xl: clamp(28px, 4vw, 44px);
   --radius-lg: 28px;
-  --radius-md: 18px;
 
   min-height: 100vh;
   background: var(--bg);
