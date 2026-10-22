@@ -67,12 +67,16 @@
   color: var(--ios-tint);
 }
 
+/*
+ * CashflowChart's two BarMarks: thin bars, each centred in its half of the
+ * chart's plot area, with Swift Charts' default square ends.
+ */
 .bars {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: calc(8 * var(--pt)) calc(8 * var(--pt));
-  margin: calc(10 * var(--pt)) 0;
+  gap: calc(18 * var(--pt)) calc(8 * var(--pt));
+  margin: calc(14 * var(--pt)) 0;
 }
 
 .barLabel {
@@ -81,8 +85,7 @@
 }
 
 .bar {
-  height: calc(24 * var(--pt));
-  border-radius: calc(4 * var(--pt));
+  height: calc(13 * var(--pt));
 }
 
 .barIncome {
