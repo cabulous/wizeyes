@@ -112,7 +112,7 @@ export const ourLittleKitchen: AppContent = {
 
   privacy: {
     eyebrow: "Private by design",
-    title: "Your recipes stay *between you*.",
+    title: "Recipes stay *between you*.",
     lead: "There's no account to make and no WizEyes server in the middle. Your kitchen lives in your iCloud and is shared only with the people you invite, through Apple's own iCloud sharing.",
     points: [
       "No sign-up and no WizEyes account.",
@@ -198,5 +198,28 @@ export const extras = {
     lead: "In Start cooking, every step sits on one page, like song lyrics. Tap a step to tick it off; the next one lights up and the rest stay readable below.",
     hint: "Tap a step",
     done: "Done — let's eat!",
+    /*
+     * A sample dish for the demo, written the way someone would type it in
+     * (the app's own step placeholder is the first line). Interface words
+     * are the app's: Done, Ingredients, "Done — let's eat!".
+     */
+    recipe: {
+      title: "Pan-seared lemon butter salmon",
+      steps: [
+        "Pat the salmon dry, salt both sides, rest 5 minutes",
+        "Heat the pan until it shimmers, then add a little oil",
+        "Lay the salmon skin side down and press for 10 seconds",
+        "Leave it alone for 4 minutes, until the skin is crisp",
+        "Flip, add the butter, lemon and garlic, and spoon it over",
+        "Rest for a minute, then plate with the pan juices",
+      ],
+      ingredients: [
+        { name: "Salmon fillets", amount: "2" },
+        { name: "Butter", amount: "30g" },
+        { name: "Lemon", amount: "1" },
+        { name: "Garlic", amount: "2 cloves" },
+        { name: "Salt", amount: "to taste" },
+      ],
+    },
   },
 };

@@ -1,0 +1,220 @@
+.demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.copy > :first-child {
+  margin-bottom: 0;
+}
+
+.hint {
+  margin-top: 28px;
+  color: var(--accent-ink);
+  font-family: var(--font-hand), cursive;
+  font-size: 1.75rem;
+  font-weight: 600;
+  rotate: -2deg;
+}
+
+.stage {
+  display: grid;
+  justify-items: center;
+}
+
+/* CookingView: the app's ground, its ink, nothing decorated. */
+.screen {
+  --app-ink-soft: #8a807c;
+
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  .screen {
+    --app-ink-soft: #a99b94;
+  }
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(16 * var(--pt)) calc(28 * var(--pt));
+  color: var(--accent);
+  font-size: calc(20 * var(--pt));
+}
+
+.bar button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.count {
+  color: var(--app-ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Positioned, so each step's offsetTop is measured from here when scrolling. */
+.scroll {
+  position: relative;
+  flex: 1;
+  overflow-y: auto;
+  padding: calc(8 * var(--pt)) calc(28 * var(--pt)) calc(360 * var(--pt));
+  scrollbar-width: none;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.dish {
+  margin-bottom: calc(18 * var(--pt));
+  color: var(--app-ink-soft);
+  font-size: calc(20 * var(--pt));
+}
+
+.steps {
+  display: grid;
+  gap: calc(22 * var(--pt));
+  list-style: none;
+}
+
+/* One line of the lyrics: a marker and the step in large type. */
+.step {
+  display: flex;
+  align-items: baseline;
+  gap: calc(14 * var(--pt));
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: calc(28 * var(--pt));
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    opacity 350ms ease-in-out,
+    font-weight 350ms;
+}
+
+.marker {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 1.05em;
+  height: 1.05em;
+  border: calc(2 * var(--pt)) solid currentColor;
+  border-radius: 50%;
+  color: var(--app-ink-soft);
+  font-size: calc(22 * var(--pt));
+  font-weight: 500;
+  line-height: 1;
+  translate: 0 0.12em;
+}
+
+.isDone {
+  opacity: 0.28;
+}
+
+.isDone .marker {
+  border: 0;
+  color: var(--accent);
+  font-size: calc(26 * var(--pt));
+}
+
+.isCurrent {
+  font-weight: 600;
+}
+
+.isCurrent .marker {
+  color: var(--accent);
+}
+
+.isUpcoming {
+  opacity: 0.62;
+}
+
+.finish {
+  margin-top: calc(32 * var(--pt));
+  padding: calc(14 * var(--pt));
+  border-radius: calc(28 * var(--pt));
+  background: var(--accent);
+  color: #fff;
+  font-size: calc(20 * var(--pt));
+  font-weight: 600;
+  text-align: center;
+  animation: rise 400ms ease-out both;
+}
+
+/* The Ingredients sheet at its medium detent: name left, amount right. */
+.sheet {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 3;
+  padding: calc(18 * var(--pt)) calc(20 * var(--pt)) calc(40 * var(--pt));
+  border-radius: calc(32 * var(--pt)) calc(32 * var(--pt)) 0 0;
+  background: var(--bg);
+  box-shadow: 0 -10px 30px -12px rgba(0, 0, 0, 0.3);
+  font-size: calc(17 * var(--pt));
+  animation: rise 300ms ease-out both;
+}
+
+.sheetTitle {
+  margin-bottom: calc(10 * var(--pt));
+  font-weight: 600;
+  text-align: center;
+}
+
+.sheet ul {
+  overflow: hidden;
+  border-radius: calc(12 * var(--pt));
+  background: var(--surface);
+  list-style: none;
+}
+
+.sheet li {
+  display: flex;
+  justify-content: space-between;
+  padding: calc(11 * var(--pt)) calc(16 * var(--pt));
+}
+
+.sheet li + li {
+  border-top: 0.5px solid var(--line);
+}
+
+.amount {
+  color: var(--app-ink-soft);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step {
+    transition: none;
+  }
+
+  .finish,
+  .sheet {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .demo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

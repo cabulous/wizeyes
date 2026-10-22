@@ -57,7 +57,7 @@ export function PrivacyPanel({
             >
               <div className={`${styles.node} ${styles.device}`}>
                 <Icon name="device" size={26} />
-                <span>Your {app.platforms.join(" & ")}</span>
+                <span>{`Your ${app.platforms.join(" & ")}`}</span>
               </div>
               <div className={styles.link}>
                 <span className={styles.packet} />
