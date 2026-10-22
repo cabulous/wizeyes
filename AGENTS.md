@@ -62,12 +62,12 @@ Redesigned so far:
   also vary by region); the App Store listing is the source of truth.
   Describe how people pay (`pricing`) and link to the store instead, in
   visible copy, Markdown and structured data alike.
-- **The app and the site share one design.** Savings Room's `Theme.swift`
-  uses the same tokens as `app/savings-room/theme.module.css`, and the phone
-  mock-up and demos mirror the app's views. Spendwise keeps the stock iOS
-  look, so its mock-ups use system colours while the page around them takes
-  its palette from the icon. When an app's look changes, update `_components/`
-  to match, citing the Swift file each one mirrors.
+- **The app and the site share one design.** Each app's `Theme.swift`
+  uses the same tokens as its `app/<slug>/theme.module.css` (Savings Room's
+  clay, Spendwise's sticker look), and the phone mock-up and demos mirror the
+  app's views. Only stock iOS screens from other apps, like the Shortcuts
+  automation, use `--ios-*` system colours. When an app's look changes,
+  update `_components/` to match, citing the Swift file each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
   policy itself changes, and bump `lastUpdated` when you do.
 - **Never break a URL.** Moving a page means adding a redirect in

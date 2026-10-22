@@ -33,17 +33,12 @@
   --mark-date: #dcd5f7;
   --mark-bank: #c7ecd8;
 
-  /* iOS system colours, for mock-ups of the app's stock iOS screens. */
-  --ios-bg: #f2f2f7;
-  --ios-cell: #ffffff;
-  --ios-label: #000000;
-  --ios-secondary: rgba(60, 60, 67, 0.6);
-  --ios-gray: #8e8e93;
-  --ios-fill: rgba(118, 118, 128, 0.12);
-  --ios-separator: rgba(60, 60, 67, 0.29);
+  /* Money in, as the app shows it (Theme.swift's swIncome, swIncomeFill). */
+  --income: #1a7f52;
+  --income-fill: #3db881;
+
+  /* iOS tint, for the Shortcuts app's checkmark in the automation visual. */
   --ios-tint: #007aff;
-  /* systemGreen, the app's .green */
-  --ios-green: #34c759;
 
   /* Category colours for the summary chart: the mark colours, brighter in dark mode. */
   --chart-1: var(--accent);
@@ -115,14 +110,10 @@
     --mark-date: #463c73;
     --mark-bank: #1e5a44;
 
-    --ios-bg: #000000;
-    --ios-cell: #1c1c1e;
-    --ios-label: #ffffff;
-    --ios-secondary: rgba(235, 235, 245, 0.6);
-    --ios-fill: rgba(118, 118, 128, 0.24);
-    --ios-separator: rgba(84, 84, 88, 0.6);
+    --income: #5fd39a;
+    --income-fill: #4fc98f;
+
     --ios-tint: #0a84ff;
-    --ios-green: #30d158;
 
     --chart-2: #e8c35a;
     --chart-3: #6fb7d6;

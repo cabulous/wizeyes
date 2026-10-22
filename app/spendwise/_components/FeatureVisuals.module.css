@@ -188,7 +188,7 @@
   }
 }
 
-/* Cards: a payment from chequing to a card */
+/* Cards: a payment from chequing to a card, as the app's sticker row */
 .payment {
   padding-bottom: 26px;
 }
@@ -197,9 +197,15 @@
   display: grid;
   gap: 14px;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--surface);
-  box-shadow: inset 0 0 0 1.5px var(--line);
+  box-shadow:
+    0 0 0 2px var(--ink),
+    3px 3px 0 0 var(--offset);
+}
+
+.item strong {
+  font-weight: 800;
 }
 
 .flowCards {
@@ -229,20 +235,22 @@
   rotate: -4deg;
 }
 
-/* Budgets: a BudgetList row */
+/* Budgets: a BudgetList card with BudgetProgressView's outlined pink bar */
 .budget {
   display: grid;
   gap: 10px;
 }
 
 .budgetName {
-  font-weight: 700;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 760;
 }
 
 .progress {
-  height: 10px;
+  height: 12px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  background: var(--bg-alt);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
   overflow: hidden;
 }
 
@@ -250,12 +258,17 @@
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: var(--ios-tint);
+  background: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
 }
 
 .spent {
-  color: var(--ios-tint);
-  font-weight: 600;
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.budgeted {
+  color: var(--ink-soft);
 }
 
 .tip {
