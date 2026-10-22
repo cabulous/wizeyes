@@ -1,0 +1,268 @@
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 540px);
+  padding-block: 36px 40px;
+}
+
+/* A flat pink tile with a navy outline and a hard shadow, like the icon's sticker style. */
+.tile {
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  width: 82%;
+  aspect-ratio: 1;
+  border-radius: 28%;
+  background: var(--mark-amount);
+  box-shadow:
+    0 0 0 2.5px var(--ink),
+    10px 10px 0 0 var(--offset);
+  transform: translate(-50%, -46%) rotate(6deg);
+}
+
+/* The frame's finish comes from the theme's --phone-frame and --phone-shadow. */
+.phone {
+  position: relative;
+  transform: rotate(-2.5deg);
+}
+
+/* The incoming email alert, as a notification banner over the phone's status bar. */
+.alert {
+  position: absolute;
+  z-index: 1;
+  /* Covers the whole status-bar time and stays clear of the title. */
+  top: -8%;
+  left: calc(-24% + 14px);
+  width: min(282px, 58%);
+  padding: 12px 14px 14px;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  rotate: -4deg;
+  animation: drop 600ms cubic-bezier(0.2, 0.9, 0.3, 1.2) 400ms both;
+}
+
+.alertHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.mailIcon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--mark-card);
+  color: var(--ink);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.alertFrom {
+  display: grid;
+  line-height: 1.25;
+}
+
+.alertFrom strong {
+  font-weight: 700;
+}
+
+.alertFrom span {
+  color: var(--ink-soft);
+}
+
+.alertTime {
+  margin-left: auto;
+  align-self: flex-start;
+  color: var(--ink-faint);
+}
+
+.alertBody {
+  color: var(--ink-soft);
+}
+
+/* Highlighter marks sweep in, field by field, as the parser "reads". */
+.alertBody mark {
+  padding: 0 2px;
+  border-radius: 4px;
+  background: transparent no-repeat 0 0 / 100% 100%;
+  color: var(--ink);
+  font-weight: 600;
+  animation: sweep 450ms ease-out var(--delay) both;
+}
+
+.alertBody .markAmount {
+  --delay: 1000ms;
+  background-image: linear-gradient(var(--mark-amount), var(--mark-amount));
+}
+
+.alertBody .markCard {
+  --delay: 1250ms;
+  background-image: linear-gradient(var(--mark-card), var(--mark-card));
+}
+
+.alertBody .markDate {
+  --delay: 1500ms;
+  background-image: linear-gradient(var(--mark-date), var(--mark-date));
+}
+
+.alertBody .markMerchant {
+  --delay: 1750ms;
+  background-image: linear-gradient(var(--mark-merchant), var(--mark-merchant));
+}
+
+.arrow {
+  position: absolute;
+  top: 30%;
+  left: -6%;
+  width: 92px;
+  color: var(--ink);
+  rotate: 4deg;
+  animation: draw 700ms ease-out 2000ms both;
+}
+
+.arrowPath {
+  stroke-dasharray: 9 8;
+}
+
+.arrowHead {
+  animation: appear 200ms ease-out 2600ms both;
+}
+
+.newTag {
+  position: absolute;
+  top: 46%;
+  left: -9%;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 0 2px var(--ink),
+    2px 2px 0 0 var(--offset);
+  rotate: -8deg;
+  animation: pop 400ms cubic-bezier(0.2, 0.9, 0.3, 1.4) 2500ms both;
+}
+
+.piggy {
+  position: absolute;
+  right: -12%;
+  bottom: -12%;
+  rotate: -8deg;
+  filter: drop-shadow(var(--shadow-icon));
+}
+
+.piggy img {
+  box-shadow: 0 0 0 2.5px var(--icon-ring);
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    translate: 0 -24px;
+  }
+}
+
+@keyframes sweep {
+  from {
+    background-size: 0% 100%;
+  }
+}
+
+/* A wipe from the alert towards the phone: the dashes stay put while it draws. */
+@keyframes draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alert,
+  .alertBody mark,
+  .arrow,
+  .arrowHead,
+  .newTag {
+    animation: none;
+  }
+}
+
+/* Narrower column: the alert sits above the phone instead of across it. */
+@media (max-width: 1080px) {
+  .stage {
+    padding-top: 150px;
+  }
+
+  /* Centred with margins, not `translate`, which the drop-in animation drives. */
+  .alert {
+    top: 0;
+    right: 0;
+    left: 0;
+    width: min(340px, 88%);
+    margin-inline: auto;
+    rotate: -2deg;
+  }
+
+  .arrow {
+    top: 120px;
+    left: 4%;
+    width: 72px;
+  }
+}
+
+@media (max-width: 520px) {
+  .stage {
+    padding-top: 136px;
+  }
+
+  .alert {
+    padding: 10px 12px 12px;
+    font-size: 0.75rem;
+  }
+
+  .mailIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .arrow {
+    top: 112px;
+    left: 0;
+    width: 60px;
+  }
+
+  .newTag {
+    left: -13%;
+  }
+
+  .piggy {
+    right: -10%;
+    bottom: -14%;
+    scale: 0.7;
+  }
+}

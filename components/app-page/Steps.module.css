@@ -1,5 +1,5 @@
 .section {
-  background: var(--sand);
+  background: var(--bg-alt);
   border-block: 1px solid var(--line);
 }
 
@@ -21,7 +21,7 @@
   height: 2px;
   background: repeating-linear-gradient(
     90deg,
-    var(--coral) 0 8px,
+    var(--accent) 0 8px,
     transparent 8px 16px
   );
   opacity: 0.45;
@@ -41,24 +41,13 @@
   height: 72px;
   margin-bottom: 26px;
   border-radius: 50%;
-  background: radial-gradient(
-    120% 120% at 30% 20%,
-    var(--coral-light),
-    var(--coral) 55%,
-    #d9634f
-  );
-  color: #fff;
+  background: var(--coin-fill);
+  color: var(--on-accent);
   font-family: var(--font-display), Georgia, serif;
   font-size: 2rem;
-  font-style: italic;
-  font-variation-settings:
-    "SOFT" 100,
-    "WONK" 1;
-  box-shadow:
-    inset 0 0 0 5px rgba(255, 255, 255, 0.16),
-    inset 0 2px 0 rgba(255, 255, 255, 0.35),
-    0 0 0 8px var(--sand),
-    0 18px 30px -12px rgba(193, 83, 67, 0.6);
+  font-style: var(--coin-font-style);
+  font-variation-settings: var(--coin-axes);
+  box-shadow: var(--shadow-coin);
 }
 
 .title {
@@ -86,14 +75,19 @@
     height: auto;
     background: repeating-linear-gradient(
       180deg,
-      var(--coral) 0 8px,
+      var(--accent) 0 8px,
       transparent 8px 16px
     );
     opacity: 0.3;
   }
 
+  /* Text sits on the band colour, so the path doesn't run through it. */
+  .title,
+  .body {
+    background: var(--bg-alt);
+  }
+
   .body {
     padding: 4px 8px;
-    background: var(--sand);
   }
 }

@@ -18,7 +18,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--coral-ink);
+  color: var(--accent-ink);
 }
 
 .eyebrow::before {
@@ -26,8 +26,8 @@
   width: 0.5em;
   height: 0.5em;
   border-radius: 50%;
-  background: var(--coral);
-  box-shadow: 0 0 0 4px var(--coral-wash);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-wash);
 }
 
 .title {

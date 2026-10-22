@@ -5,12 +5,12 @@
   gap: clamp(36px, 5vw, 72px);
   padding: clamp(32px, 6vw, 80px);
   border-radius: var(--radius-xl);
-  background: var(--cocoa);
-  color: var(--on-cocoa);
+  background: var(--panel);
+  color: var(--on-panel);
   overflow: hidden;
   isolation: isolate;
   box-shadow:
-    0 40px 80px -40px rgba(42, 27, 21, 0.6),
+    var(--shadow-panel),
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
@@ -25,17 +25,17 @@
   aspect-ratio: 1;
   background: radial-gradient(
     closest-side,
-    rgba(235, 124, 108, 0.35),
+    color-mix(in srgb, var(--panel-glow) 35%, transparent),
     transparent
   );
 }
 
 .eyebrow {
-  color: var(--coral-light);
+  color: var(--panel-accent);
 }
 
 .eyebrow::before {
-  box-shadow: 0 0 0 4px rgba(235, 124, 108, 0.2);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--panel-glow) 20%, transparent);
 }
 
 .title {
@@ -44,14 +44,14 @@
 }
 
 .title em {
-  color: var(--coral-light);
+  color: var(--panel-em);
 }
 
 .lead {
   margin-top: 1.1rem;
   max-width: 32em;
   font-size: 1.125rem;
-  color: rgba(247, 237, 230, 0.75);
+  color: color-mix(in srgb, var(--on-panel) 75%, transparent);
 }
 
 .points {
@@ -65,7 +65,7 @@
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  color: rgba(247, 237, 230, 0.9);
+  color: color-mix(in srgb, var(--on-panel) 90%, transparent);
 }
 
 .check {
@@ -76,8 +76,8 @@
   height: 22px;
   margin-top: 2px;
   border-radius: 50%;
-  background: var(--coral);
-  color: #fff;
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .policyLink {
@@ -86,9 +86,10 @@
   gap: 0.45em;
   margin-top: 2.25rem;
   padding-bottom: 2px;
-  border-bottom: 1px solid rgba(243, 154, 139, 0.5);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--panel-accent) 50%, transparent);
   font-weight: 600;
-  color: var(--coral-light);
+  color: var(--panel-accent);
   text-decoration: none;
 }
 
@@ -135,7 +136,7 @@
 }
 
 .node svg {
-  color: var(--coral-light);
+  color: var(--panel-accent);
 }
 
 .device {
@@ -153,7 +154,7 @@
   margin-inline: -2px;
   background: repeating-linear-gradient(
     90deg,
-    rgba(243, 154, 139, 0.7) 0 6px,
+    color-mix(in srgb, var(--panel-accent) 70%, transparent) 0 6px,
     transparent 6px 11px
   );
 }
@@ -166,8 +167,8 @@
   height: 8px;
   margin-top: -4px;
   border-radius: 50%;
-  background: var(--coral-light);
-  box-shadow: 0 0 12px var(--coral);
+  background: var(--panel-accent);
+  box-shadow: 0 0 12px var(--panel-glow);
   opacity: 0;
 }
 
@@ -217,9 +218,10 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: var(--cocoa);
-  box-shadow: inset 0 0 0 1.5px rgba(243, 154, 139, 0.8);
-  color: var(--coral-light);
+  background: var(--panel);
+  box-shadow: inset 0 0 0 1.5px
+    color-mix(in srgb, var(--panel-accent) 80%, transparent);
+  color: var(--panel-accent);
 }
 
 .server {
@@ -234,7 +236,7 @@
 }
 
 .server svg {
-  color: rgba(247, 237, 230, 0.6);
+  color: color-mix(in srgb, var(--on-panel) 60%, transparent);
 }
 
 .serverText {
@@ -242,13 +244,17 @@
 }
 
 .serverText s {
-  text-decoration-color: rgba(243, 154, 139, 0.8);
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--panel-accent) 80%,
+    transparent
+  );
 }
 
 .serverText small {
   font-size: 0.75rem;
   font-weight: 500;
-  color: rgba(247, 237, 230, 0.75);
+  color: color-mix(in srgb, var(--on-panel) 75%, transparent);
 }
 
 .quote {
@@ -275,13 +281,13 @@
   font-family: var(--font-display), Georgia, serif;
   font-size: 3.5rem;
   line-height: 1;
-  color: var(--coral);
+  color: var(--panel-glow);
 }
 
 .quote figcaption {
   margin-top: 12px;
   font-size: 0.8125rem;
-  color: rgba(247, 237, 230, 0.6);
+  color: color-mix(in srgb, var(--on-panel) 60%, transparent);
 }
 
 @media (max-width: 900px) {

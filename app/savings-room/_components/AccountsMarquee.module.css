@@ -1,6 +1,6 @@
 .section {
   padding-block: clamp(56px, 8vw, 104px);
-  background: var(--sand);
+  background: var(--bg-alt);
   border-block: 1px solid var(--line);
   overflow: clip;
 }
@@ -58,13 +58,13 @@
 
 .region {
   background: var(--ink);
-  color: var(--cream);
+  color: var(--bg);
 }
 
 .account {
   background: var(--surface);
   box-shadow:
-    var(--shadow-clay),
+    var(--shadow-card),
     0 0 0 1px var(--line);
   font-family: var(--font-display), Georgia, serif;
   font-size: 1.1875rem;
@@ -78,7 +78,7 @@
 }
 
 .bank svg {
-  color: var(--coral-deep);
+  color: var(--accent-deep);
 }
 
 @keyframes drift {

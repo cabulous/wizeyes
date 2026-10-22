@@ -12,7 +12,6 @@ const legacyPages = [
   "/lablog",
   "/medicalrecord",
   "/solobooks",
-  "/spendwise",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

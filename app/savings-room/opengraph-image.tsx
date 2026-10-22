@@ -2,6 +2,7 @@ import { readFileSync } from "fs";
 import path from "path";
 import { ImageResponse } from "next/og";
 import { savingsRoom as app } from "@/content/apps/savings-room/app";
+import { googleFont as font } from "@/lib/og";
 
 export const alt = `${app.name}: ${app.tagline}`;
 export const size = { width: 1200, height: 630 };
@@ -10,22 +11,12 @@ export const contentType = "image/png";
 const headline = "Never guess your contribution room again.";
 const detail = "RRSP · TFSA · FHSA · RESP · 401(k) · IRA · HSA · 529";
 
-/** Fetches just the glyphs we need from Google Fonts, at build time. */
-async function font(family: string, text: string) {
-  const css = await (
-    await fetch(
-      `https://fonts.googleapis.com/css2?family=${family}&text=${encodeURIComponent(text)}`,
-    )
-  ).text();
-  const src = css.match(
-    /src: url\((.+?)\) format\('(opentype|truetype)'\)/,
-  )?.[1];
-  if (!src) throw new Error(`Could not load ${family} for the social card.`);
-  return (await fetch(src)).arrayBuffer();
-}
-
 export default async function OpenGraphImage() {
   const icon = readFileSync(path.join(process.cwd(), "public", app.icon.src));
+  const [display, sans] = await Promise.all([
+    font("Fraunces:opsz,wght@72,450", headline),
+    font("Figtree:wght@500", app.name.toUpperCase() + detail),
+  ]);
   return new ImageResponse(
     <div
       style={{
@@ -88,16 +79,8 @@ export default async function OpenGraphImage() {
     {
       ...size,
       fonts: [
-        {
-          name: "Fraunces",
-          data: await font("Fraunces:opsz,wght@72,450", headline),
-          weight: 400,
-        },
-        {
-          name: "Figtree",
-          data: await font("Figtree:wght@500", app.name.toUpperCase() + detail),
-          weight: 500,
-        },
+        { name: "Fraunces", data: display, weight: 400 },
+        { name: "Figtree", data: sans, weight: 500 },
       ],
     },
   );

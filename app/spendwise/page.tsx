@@ -1,68 +1,54 @@
-import styles from "./page.module.css";
+import type { Metadata } from "next";
+import {
+  alerts,
+  banks,
+  extras,
+  spendwise as app,
+} from "@/content/apps/spendwise/app";
+import { AppIcon } from "@/components/app-page/AppIcon";
+import { CtaBand } from "@/components/app-page/CtaBand";
+import { Faq } from "@/components/app-page/Faq";
+import { FeatureGrid } from "@/components/app-page/FeatureGrid";
+import { Hero } from "@/components/app-page/Hero";
+import { PrivacyPanel } from "@/components/app-page/PrivacyPanel";
+import { SectionHeader } from "@/components/app-page/SectionHeader";
+import { Steps } from "@/components/app-page/Steps";
+import ui from "@/components/app-page/ui.module.css";
+import { appJsonLd, JsonLd } from "@/lib/jsonld";
+import { appPageMetadata } from "@/lib/metadata";
+import { AlertDemo } from "./_components/AlertDemo";
+import { BankTape } from "./_components/BankTape";
+import { featureVisuals } from "./_components/FeatureVisuals";
+import { HeroVisual } from "./_components/HeroVisual";
+
+export const metadata: Metadata = appPageMetadata(app);
 
 export default function SpendwisePage() {
   return (
-    <div className={styles.main}>
-      <div className={styles.wrapper}>
-        <h1>Spendwise</h1>
-
-        <h2 className={styles.title}>About</h2>
-        <ul>
-          <li>
-            Private and Flexible Storage: Securely store your transaction data
-            on your device and personal iCloud. Enjoy privacy and easy access
-            across your Apple devices without sacrificing security.
-          </li>
-          <li>
-            Efficient Report Management: Effortlessly view, organize, and track
-            your transaction data over time with a few simple taps.
-          </li>
-        </ul>
-
-        <h2 className={styles.title}>Privacy Policy</h2>
-        <p>
-          <i>Last Updated: Mar. 17, 2024</i>
-        </p>
-        <h3 className={styles.title}>Introduction</h3>
-        <p>
-          Welcome to Spendwise. This Privacy Policy explains how we handle your
-          personal information and data. The policy is applicable to the
-          Spendwise app available on iOS devices.
-        </p>
-        <h3 className={styles.title}>Information Collection and Use</h3>
-        <p>
-          It is important to note that our app is designed to store all your
-          data locally on your device or on your iCloud account. We do not
-          collect, transmit, or store any personal information through
-          Spendwise.
-        </p>
-        <h3 className={styles.title}>Data Storage and Security</h3>
-        <p>
-          All data entered into Spendwise is stored locally on your device and
-          can be synced with your iCloud account. We do not have access to any
-          of the data you store in the app, and we do not store or transmit your
-          data to any external servers.
-        </p>
-        <h3 className={styles.title}>iCloud</h3>
-        <p>
-          If you enable iCloud syncing, your data will be stored in your iCloud
-          account and will be subject to Apple iCloud Terms and Conditions and
-          Privacy Policy.
-        </p>
-        <h3 className={styles.title}>Changes to This Privacy Policy</h3>
-        <p>
-          We may update our Privacy Policy from time to time. Thus, we advise
-          you to review this page periodically for any changes. We will notify
-          you of any changes by posting the new Privacy Policy on this page.
-          These changes are effective immediately after they are posted on this
-          page.
-        </p>
-        <h3 className={styles.title}>Contact Us</h3>
-        <p>
-          If you have any questions or suggestions about our Privacy Policy, do
-          not hesitate to contact us at support@wizeyes.com.
-        </p>
-      </div>
-    </div>
+    <main>
+      <JsonLd data={appJsonLd(app)} />
+      <Hero app={app} visual={<HeroVisual app={app} />} />
+      <BankTape
+        label={extras.banks.label}
+        banks={banks}
+        facts={app.hero.facts}
+      />
+      <section className={ui.section} aria-labelledby="alerts-title">
+        <div className={ui.container}>
+          <AlertDemo
+            alerts={alerts}
+            header={<SectionHeader id="alerts-title" section={extras.alerts} />}
+            icon={<AppIcon app={app} size={22} decorative />}
+            pick={extras.alerts.pick}
+            added={extras.alerts.added}
+          />
+        </div>
+      </section>
+      <FeatureGrid features={app.features} visuals={featureVisuals} />
+      <Steps steps={app.steps} />
+      <PrivacyPanel app={app} policyHref={`/${app.slug}/privacy`} />
+      <Faq faq={app.faq} />
+      <CtaBand app={app} />
+    </main>
   );
 }

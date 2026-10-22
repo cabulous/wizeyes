@@ -4,13 +4,17 @@
   overflow: clip;
 }
 
-/* A warm glow behind the visual, like light across a clay tile. */
+/* A soft glow of the accent wash behind the visual. */
 .hero::before {
   content: "";
   position: absolute;
   inset: -20% -10% auto 35%;
   height: 120%;
-  background: radial-gradient(closest-side, var(--coral-wash), transparent 75%);
+  background: radial-gradient(
+    closest-side,
+    var(--accent-wash),
+    transparent 75%
+  );
   opacity: 0.9;
   pointer-events: none;
 }
@@ -59,7 +63,7 @@
 }
 
 .secondary svg {
-  color: var(--coral-deep);
+  color: var(--accent-deep);
   transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -83,7 +87,7 @@
   border-radius: 999px;
   background: var(--surface);
   box-shadow:
-    var(--shadow-clay),
+    var(--shadow-card),
     0 0 0 1px var(--line);
   font-size: 0.875rem;
   font-weight: 500;
@@ -91,7 +95,7 @@
 }
 
 .facts svg {
-  color: var(--coral-deep);
+  color: var(--accent-deep);
 }
 
 .visual {
@@ -109,7 +113,9 @@
     max-width: 640px;
   }
 
+  /* Ends at the hero's bottom edge, so the glow fades out instead of being cut off. */
   .hero::before {
-    inset: 30% -30% auto -30%;
+    inset: 30% -30% 0 -30%;
+    height: auto;
   }
 }

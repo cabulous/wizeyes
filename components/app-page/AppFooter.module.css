@@ -1,7 +1,7 @@
 .footer {
   padding-block: 56px 40px;
   border-top: 1px solid var(--line);
-  background: var(--sand);
+  background: var(--bg-alt);
   font-size: 0.9375rem;
 }
 
@@ -49,7 +49,7 @@
 
 .links a:hover,
 .copyright a:hover {
-  color: var(--coral-ink);
+  color: var(--accent-ink);
 }
 
 .bottom {

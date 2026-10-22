@@ -13,6 +13,12 @@ const paths = {
       <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5M12 14.5v2" />
     </>
   ),
+  mail: (
+    <>
+      <rect x="3" y="5.5" width="18" height="13" rx="2.5" />
+      <path d="m4 7 8 6 8-6" />
+    </>
+  ),
   cloud: (
     <path d="M7 18.5h10a4 4 0 0 0 .6-7.96A5.5 5.5 0 0 0 7.1 9.6 4.5 4.5 0 0 0 7 18.5Z" />
   ),
@@ -55,13 +61,16 @@ const paths = {
 
 export type IconName = keyof typeof paths;
 
+/** `size` is in px, or any CSS length such as "0.8em" to follow the text. */
 export function Icon({
   name,
   size = 20,
+  strokeWidth = 1.75,
   className,
 }: {
   name: IconName;
-  size?: number;
+  size?: number | string;
+  strokeWidth?: number;
   className?: string;
 }) {
   return (
@@ -72,7 +81,7 @@ export function Icon({
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.75}
+      strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"

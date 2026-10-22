@@ -34,8 +34,8 @@ export default function KodaPage() {
         <p>
           Welcome to Koda. This Privacy Policy explains how we handle your
           personal information and health data. This policy applies to the Koda
-          app available on iOS devices. Your privacy is extremely important
-          to us, and we&apos;ve designed Koda to keep your health information
+          app available on iOS devices. Your privacy is extremely important to
+          us, and we&apos;ve designed Koda to keep your health information
           private and secure.
         </p>
 
@@ -122,8 +122,8 @@ export default function KodaPage() {
           If you enable iCloud syncing in Koda, your health data will be stored
           in your iCloud account using CloudKit and will be subject to
           Apple&apos;s iCloud Terms and Conditions and Apple&apos;s Privacy
-          Policy. Your iCloud data is encrypted and can only be accessed by
-          your Apple devices signed in with your Apple ID.
+          Policy. Your iCloud data is encrypted and can only be accessed by your
+          Apple devices signed in with your Apple ID.
         </p>
 
         <h3 className={styles.title}>Your Rights and Choices</h3>
@@ -139,8 +139,7 @@ export default function KodaPage() {
           </li>
           <li>
             <strong>Account Deletion:</strong> You can delete your account by
-            signing out. This will remove all local data and stop iCloud
-            syncing
+            signing out. This will remove all local data and stop iCloud syncing
           </li>
           <li>
             <strong>AI Opt-Out:</strong> You can choose not to use AI features

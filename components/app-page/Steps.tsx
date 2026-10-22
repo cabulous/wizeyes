@@ -3,7 +3,7 @@ import { SectionHeader } from "./SectionHeader";
 import ui from "./ui.module.css";
 import styles from "./Steps.module.css";
 
-/** Numbered "how it works" steps, each marked with a clay coin. */
+/** Numbered "how it works" steps, each on a coin styled by the theme's --coin-* tokens. */
 export function Steps({ steps }: { steps: AppContent["steps"] }) {
   return (
     <section

@@ -17,7 +17,7 @@
   backdrop-filter: blur(18px) saturate(1.5);
   -webkit-backdrop-filter: blur(18px) saturate(1.5);
   box-shadow:
-    var(--shadow-clay),
+    var(--shadow-card),
     0 0 0 1px var(--line);
 }
 
@@ -51,7 +51,7 @@
 }
 
 .links a:hover {
-  background: var(--coral-wash);
+  background: var(--accent-wash);
   color: var(--ink);
 }
 
