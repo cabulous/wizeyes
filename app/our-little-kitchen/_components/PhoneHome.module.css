@@ -1,0 +1,249 @@
+/*
+ * The app's palette, which the theme tokens already are: Ground (--bg), Card
+ * (--surface), Accent, AccentSoft (--accent-wash), Ink, Hairline (--line).
+ * InkSoft is the app's own value here, lighter than the page's text shade.
+ */
+.screen {
+  --app-ink-soft: #8a807c;
+
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* iOS fills each line before breaking; the page's balanced wrapping doesn't apply. */
+.screen :where(p, span, b) {
+  text-wrap: wrap;
+}
+
+@media (prefers-color-scheme: dark) {
+  .screen {
+    --app-ink-soft: #a99b94;
+  }
+}
+
+.scroll {
+  display: grid;
+  gap: calc(24 * var(--pt));
+  /* Below the inline navigation bar (44pt), then the page's 20pt padding. */
+  padding: calc(64 * var(--pt)) calc(20 * var(--pt)) 0;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(12 * var(--pt));
+}
+
+.kicker,
+.soft {
+  color: var(--app-ink-soft);
+}
+
+.kicker {
+  font-size: calc(15 * var(--pt));
+}
+
+.largeTitle {
+  margin-top: calc(2 * var(--pt));
+  font-size: calc(34 * var(--pt));
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+
+.members {
+  flex: none;
+  padding: calc(10 * var(--pt)) calc(14 * var(--pt));
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: calc(13 * var(--pt));
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* The Add a dish card: accent, a translucent emoji tile and a Start pill. */
+.heroCard {
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--pt));
+  padding: calc(14 * var(--pt));
+  border-radius: calc(24 * var(--pt));
+  background: var(--accent);
+  color: #fff;
+}
+
+.heroEmoji {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: calc(52 * var(--pt));
+  height: calc(52 * var(--pt));
+  border-radius: calc(16 * var(--pt));
+  background: rgba(255, 255, 255, 0.18);
+  font-size: calc(28 * var(--pt));
+}
+
+.heroText {
+  display: grid;
+  gap: calc(4 * var(--pt));
+  min-width: 0;
+  font-size: calc(15 * var(--pt));
+}
+
+.heroText b {
+  font-size: calc(20 * var(--pt));
+  white-space: nowrap;
+}
+
+.heroText span {
+  opacity: 0.9;
+}
+
+.heroCta {
+  flex: none;
+  margin-left: auto;
+  padding: calc(10 * var(--pt)) calc(12 * var(--pt));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: calc(15 * var(--pt));
+  font-weight: 600;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(8 * var(--pt));
+  margin-bottom: calc(-12 * var(--pt));
+  font-size: calc(20 * var(--pt));
+}
+
+.shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(5 * var(--pt));
+  color: var(--accent);
+  font-size: calc(17 * var(--pt));
+  font-weight: 500;
+}
+
+/* Chef's pick: art on the soft accent, two pills, then the dish. */
+.pick {
+  overflow: hidden;
+  border-radius: calc(22 * var(--pt));
+  background: var(--surface);
+}
+
+.pickArt {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+
+.pickArt {
+  height: calc(220 * var(--pt));
+}
+
+.art {
+  width: 72%;
+  height: 72%;
+}
+
+.pickPill,
+.timePill {
+  position: absolute;
+  top: calc(12 * var(--pt));
+  padding: calc(7 * var(--pt)) calc(12 * var(--pt));
+  border-radius: 999px;
+  color: #fff;
+  font-size: calc(12 * var(--pt));
+}
+
+.pickPill {
+  left: calc(12 * var(--pt));
+  background: var(--accent);
+  font-weight: 700;
+}
+
+.timePill {
+  right: calc(12 * var(--pt));
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.pickBody {
+  display: grid;
+  gap: calc(8 * var(--pt));
+  padding: calc(16 * var(--pt));
+  font-size: calc(15 * var(--pt));
+}
+
+.pickTitle {
+  font-size: calc(20 * var(--pt));
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+}
+
+.pickMeta {
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--pt));
+  color: var(--app-ink-soft);
+  font-size: calc(13 * var(--pt));
+}
+
+.pickMeta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--pt));
+}
+
+.pickStart {
+  margin-left: auto;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* iOS 26's floating tab bar, Home selected in the app's accent. */
+.tabBar {
+  position: absolute;
+  right: calc(16 * var(--pt));
+  bottom: calc(26 * var(--pt));
+  left: calc(16 * var(--pt));
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: calc(5 * var(--pt));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.08),
+    0 8px 24px -10px rgba(0, 0, 0, 0.3);
+  color: var(--ink);
+  font-size: calc(10 * var(--pt));
+  font-weight: 600;
+}
+
+.tab {
+  display: grid;
+  justify-items: center;
+  gap: calc(2 * var(--pt));
+  padding: calc(6 * var(--pt)) 0;
+  border-radius: 999px;
+}
+
+.tab svg {
+  width: calc(24 * var(--pt));
+  height: calc(24 * var(--pt));
+}
+
+.tabActive {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--accent);
+}

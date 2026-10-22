@@ -83,9 +83,9 @@ export function appMarkdown(app: AppContent): string {
     "",
     ...app.privacy.points.map((point) => `- ${point}`),
     "",
-    `> ${app.privacy.quote.text}`,
-    `> (${app.privacy.quote.source})`,
-    "",
+    ...(app.privacy.quote
+      ? [`> ${app.privacy.quote.text}`, `> (${app.privacy.quote.source})`, ""]
+      : []),
     "## Frequently asked questions",
     "",
     ...app.faq.items.flatMap((item) => [
