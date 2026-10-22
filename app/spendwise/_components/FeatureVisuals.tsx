@@ -3,7 +3,7 @@ import styles from "./FeatureVisuals.module.css";
 
 /**
  * Small illustrations for each feature card, keyed by feature id in
- * content/apps/spendwise/app.ts. Each mirrors the app (v1.21): the
+ * content/apps/spendwise/app.ts. Each mirrors the app's sticker look: the
  * automation from ShortcutAutomationGuide, the suggestions in
  * TransactionEditor, a card payment as TransactionItem shows it, a
  * BudgetList row with BudgetEditor's recommendation, SummaryGrouped's
@@ -130,7 +130,7 @@ function Budget() {
       </span>
       <p className={styles.itemRow}>
         <span className={styles.spent}>$612.40</span>
-        <span>$780.00</span>
+        <span className={styles.budgeted}>$780.00</span>
       </p>
       <p className={styles.tip}>
         Recommended: <strong>15%</strong> of your average monthly income

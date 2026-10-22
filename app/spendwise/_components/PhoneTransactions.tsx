@@ -3,10 +3,11 @@ import { PhoneFrame } from "@/components/app-page/PhoneFrame";
 import styles from "./PhoneTransactions.module.css";
 
 /**
- * The app's Transactions tab (v1.21: TranslationListByMonth, CashflowChart,
+ * The app's Transactions tab (TranslationListByMonth, CashflowChart,
  * TransactionListGrouped, TransactionItem, ContentView's tab bar), rebuilt
- * in HTML with sample data. It keeps the app's stock iOS look; bank logos
- * beside card names are left out. The first row is the alert just added.
+ * in HTML with sample data. It follows the app's sticker restyle (Theme.swift:
+ * StickerCard, Eyebrow, SpendWiseAppearance); bank logos beside card names
+ * are left out. The first row is the alert just added.
  *
  * Like the hero's alert, the sample is set on one fixed day, Tuesday 20
  * October 2026, so its relative labels (Today, Friday) always agree with
@@ -132,8 +133,8 @@ export function PhoneTransactions() {
           ))}
         </div>
         <div className={styles.totals}>
-          <span className={styles.income}>$5,200.00</span>
-          <span className={styles.expense}>$3,128.42</span>
+          <span className={styles.markIncome}>$5,200.00</span>
+          <span className={styles.markExpense}>$3,128.42</span>
         </div>
       </div>
 
