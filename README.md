@@ -24,12 +24,12 @@ the rules for writing copy, and how to add the next app.
 
 ## Hosting and DNS
 
-| What                            | Where                                           |
-| ------------------------------- | ----------------------------------------------- |
-| Domain registration and renewal | Bravenet (registrant: WizEyes Tech Inc.)        |
-| DNS records                     | Vercel: team **Domains** → wizeyes.com          |
-| Website                         | Vercel project **wizeyes**                      |
-| Email (support@wizeyes.com)     | Google Workspace (MX and SPF records in Vercel) |
+| What                            | Where                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| Domain registration and renewal | Bravenet (registrant: WizEyes Tech Inc.)                     |
+| DNS records                     | Vercel: team **Domains** → wizeyes.com                       |
+| Website                         | Vercel project **wizeyes**                                   |
+| Email (support@wizeyes.com)     | Google Workspace (MX, SPF, DKIM and DMARC records in Vercel) |
 
 `wizeyes.com` serves the site; `www.wizeyes.com` redirects to it (308). The
 canonical origin in `content/site.ts` must match. Add any new DNS record, such
