@@ -9,28 +9,14 @@ import { SectionHeader } from "@/components/app-page/SectionHeader";
 import { Steps } from "@/components/app-page/Steps";
 import ui from "@/components/app-page/ui.module.css";
 import { appJsonLd, JsonLd } from "@/lib/jsonld";
-import { openGraphBase } from "@/lib/metadata";
+import { appPageMetadata } from "@/lib/metadata";
 import { AccountsMarquee } from "./_components/AccountsMarquee";
 import { featureVisuals } from "./_components/FeatureVisuals";
 import { HeroVisual } from "./_components/HeroVisual";
 import { RoomDemo } from "./_components/RoomDemo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: { absolute: app.seoTitle },
-  description: app.description,
-  keywords: app.keywords,
-  alternates: {
-    canonical: `/${app.slug}`,
-    types: { "text/markdown": `/${app.slug}.md` },
-  },
-  openGraph: {
-    ...openGraphBase,
-    title: app.seoTitle,
-    description: app.description,
-    url: `/${app.slug}`,
-  },
-};
+export const metadata: Metadata = appPageMetadata(app);
 
 export default function SavingsRoomPage() {
   return (

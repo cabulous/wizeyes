@@ -200,7 +200,7 @@ export const spendwise: AppContent = {
 
   cta: {
     title: "Let the alerts *roll in*.",
-    body: "Spendwise for iPhone and iPad. One purchase, no subscription, and no bank login, ever.",
+    body: "Spendwise for iPhone and iPad. One purchase, no subscription and no bank login, ever.",
   },
 
   disclaimer:
@@ -298,7 +298,7 @@ export const alerts: {
       amount: "$15.99",
       card: "Tangerine",
       date: "Today",
-      note: "No date in this alert either, so it's dated the day it arrives.",
+      note: "This alert has no date, so it's dated the day it arrives.",
     },
   },
 ];

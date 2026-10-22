@@ -51,10 +51,14 @@ function Automation() {
           <span className={styles.muted}> · Spendwise</span>
         </p>
       </div>
-      <p className={styles.toggle}>
-        Run After Confirmation
-        <span className={styles.switch} />
-      </p>
+      {/* Shortcuts offers these as choices; the app's guide says to pick the second. */}
+      <ul className={styles.choices}>
+        <li>Run Immediately</li>
+        <li className={styles.chosen}>
+          Run After Confirmation
+          <Icon name="check" size={18} strokeWidth={2.4} />
+        </li>
+      </ul>
     </div>
   );
 }

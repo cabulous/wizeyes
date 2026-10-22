@@ -103,7 +103,7 @@ each app restyles them from its `app/<slug>/theme.module.css`:
 | `--coin-fill`, `--coin-font-style`, `--coin-axes`                                              | Step coins: background, and the number's `font-style` and `font-variation-settings`              |
 | `--font-display`, `--font-sans`                                                                | Set by the app's layout via `next/font`                                                          |
 | `--page`, `--gutter`, `--radius-xl`, `--radius-lg`                                             | Layout                                                                                           |
-| `--phone-frame`, `--phone-shadow`                                                              | Optional, set on a wrapper around `PhoneFrame`: the phone body's colour and shadow               |
+| `--phone-frame`, `--phone-shadow`                                                              | Optional: `PhoneFrame`'s body colour and shadow (it has defaults)                                |
 
 Headings, emphasis and other element defaults are styled in each theme file,
 so apps can differ in type as well as colour.

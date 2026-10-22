@@ -44,7 +44,11 @@
   --ios-tint: #007aff;
   /* Apple's increased-contrast green: same hue as the app's, legible on white. */
   --ios-green: #248a3d;
-  --ios-switch: #34c759;
+
+  /* Category colours for the summary chart: the mark colours, brighter in dark mode. */
+  --chart-1: var(--accent);
+  --chart-2: var(--mark-merchant);
+  --chart-3: var(--mark-card);
 
   /*
    * Hard offset shadows: navy in light mode, black in dark. Components use
@@ -58,8 +62,12 @@
   --shadow-button-hover: var(--outline), 5px 5px 0 0 var(--accent);
   --shadow-panel: 8px 8px 0 0 var(--accent);
   --shadow-coin:
-    0 0 0 2px var(--ink), 0 0 0 9px var(--bg-alt), 3px 3px 0 9px var(--offset);
+    0 0 0 2px var(--ink), 3px 3px 0 2px var(--offset), 0 0 0 9px var(--bg-alt);
   --shadow-icon: 4px 5px 0 var(--offset);
+
+  /* PhoneFrame's body and shadow: a navy sticker like the icon. */
+  --phone-frame: var(--ink);
+  --phone-shadow: 0 0 0 2.5px var(--ink), 8px 8px 0 0 var(--offset);
 
   /* Step coins: flat pink stickers, numbered in the heading weight. */
   --coin-fill: var(--accent);
@@ -115,7 +123,12 @@
     --ios-separator: rgba(84, 84, 88, 0.6);
     --ios-tint: #0a84ff;
     --ios-green: #30d158;
-    --ios-switch: #30d158;
+
+    --chart-2: #e8c35a;
+    --chart-3: #6fb7d6;
+
+    /* Not --ink, which turns light: the phone stays dark, outlined in --ink. */
+    --phone-frame: #021521;
 
     /* The shadow tokens above pick this up, and --ink for their outlines. */
     --offset: #000;

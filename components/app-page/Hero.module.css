@@ -4,7 +4,7 @@
   overflow: clip;
 }
 
-/* A warm glow behind the visual, like light across a clay tile. */
+/* A soft glow of the accent wash behind the visual. */
 .hero::before {
   content: "";
   position: absolute;

@@ -87,19 +87,27 @@
   list-style: none;
 }
 
-.banks li {
+/* A four-point star after each item, drawn here once instead of in the HTML. */
+.starred {
   display: inline-flex;
   align-items: center;
   gap: 22px;
 }
 
-.star {
+.starred::after {
+  content: "";
   flex: none;
-  color: var(--panel-accent);
+  width: 0.8em;
+  height: 0.8em;
+  background: var(--panel-accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5c.9 5.3 4.2 8.6 9.5 9.5-5.3.9-8.6 4.2-9.5 9.5-.9-5.3-4.2-8.6-9.5-9.5 5.3-.9 8.6-4.2 9.5-9.5Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5c.9 5.3 4.2 8.6 9.5 9.5-5.3.9-8.6 4.2-9.5 9.5-.9-5.3-4.2-8.6-9.5-9.5 5.3-.9 8.6-4.2 9.5-9.5Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
 }
 
-.back .star {
-  color: var(--on-accent);
+.back .starred::after {
+  background: var(--on-accent);
 }
 
 /* One copy of three, so the loop is seamless. */
@@ -149,9 +157,14 @@
     white-space: normal;
   }
 
+  /* Wrapped lines would end on a stray star, so the names stand alone. */
   .banks {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 6px 22px;
+    gap: 6px 28px;
+  }
+
+  .starred::after {
+    display: none;
   }
 }

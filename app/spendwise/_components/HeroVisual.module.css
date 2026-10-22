@@ -21,26 +21,19 @@
   transform: translate(-50%, -46%) rotate(6deg);
 }
 
+/* The frame's finish comes from the theme's --phone-frame and --phone-shadow. */
 .phone {
-  --phone-frame: var(--ink);
-  --phone-shadow: 0 0 0 2.5px var(--ink), 8px 8px 0 0 var(--offset);
-
   position: relative;
   transform: rotate(-2.5deg);
-}
-
-@media (prefers-color-scheme: dark) {
-  .phone {
-    --phone-frame: #021521;
-  }
 }
 
 /* The incoming email alert, as a notification banner over the phone's status bar. */
 .alert {
   position: absolute;
   z-index: 1;
-  top: -7%;
-  left: -24%;
+  /* Covers the whole status-bar time and stays clear of the title. */
+  top: -8%;
+  left: calc(-24% + 14px);
   width: min(282px, 58%);
   padding: 12px 14px 14px;
   border-radius: 20px;
@@ -131,11 +124,11 @@
   width: 92px;
   color: var(--ink);
   rotate: 4deg;
+  animation: draw 700ms ease-out 2000ms both;
 }
 
 .arrowPath {
   stroke-dasharray: 9 8;
-  animation: draw 700ms ease-out 2000ms both;
 }
 
 .arrowHead {
@@ -186,13 +179,13 @@
   }
 }
 
+/* A wipe from the alert towards the phone: the dashes stay put while it draws. */
 @keyframes draw {
   from {
-    stroke-dashoffset: 160;
-    opacity: 0;
+    clip-path: inset(0 100% 0 0);
   }
-  10% {
-    opacity: 1;
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -212,7 +205,7 @@
 @media (prefers-reduced-motion: reduce) {
   .alert,
   .alertBody mark,
-  .arrowPath,
+  .arrow,
   .arrowHead,
   .newTag {
     animation: none;

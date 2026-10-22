@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import styles from "./BankTape.module.css";
 
 /**
@@ -24,10 +23,9 @@ export function BankTape({
           {[0, 1, 2].map((copy) => (
             <p key={copy} className={styles.items}>
               {[...facts, ...facts, ...facts, ...facts].map((fact, i) => (
-                <Fragment key={i}>
-                  <span>{fact}</span>
-                  <Star />
-                </Fragment>
+                <span key={i} className={styles.starred}>
+                  {fact}
+                </span>
               ))}
             </p>
           ))}
@@ -47,9 +45,8 @@ export function BankTape({
               </p>
               <ul className={styles.banks}>
                 {banks.map((bank) => (
-                  <li key={bank}>
+                  <li key={bank} className={styles.starred}>
                     {bank}
-                    <Star />
                   </li>
                 ))}
               </ul>
@@ -58,22 +55,5 @@ export function BankTape({
         </div>
       </div>
     </section>
-  );
-}
-
-function Star() {
-  return (
-    <svg
-      className={styles.star}
-      viewBox="0 0 24 24"
-      width="0.8em"
-      height="0.8em"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 2.5c.9 5.3 4.2 8.6 9.5 9.5-5.3.9-8.6 4.2-9.5 9.5-.9-5.3-4.2-8.6-9.5-9.5 5.3-.9 8.6-4.2 9.5-9.5Z"
-        fill="currentColor"
-      />
-    </svg>
   );
 }

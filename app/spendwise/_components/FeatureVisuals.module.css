@@ -108,41 +108,37 @@
   color: var(--ink);
 }
 
-.toggle {
+/* The run choices, the chosen one ticked in the iOS tint */
+.choices {
+  width: 100%;
+  margin-top: 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 0 0 2px var(--ink);
+  color: var(--ink-faint);
+  list-style: none;
+}
+
+.choices li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  width: 100%;
-  margin-top: 14px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: var(--surface);
-  box-shadow: 0 0 0 2px var(--ink);
+  padding: 9px 14px;
+}
+
+.choices li + li {
+  border-top: 1.5px solid var(--line);
+}
+
+.chosen {
+  color: var(--ink);
   font-weight: 600;
 }
 
-/* iOS's green switch, on */
-.switch {
-  position: relative;
+.chosen svg {
   flex: none;
-  width: 46px;
-  height: 28px;
-  border-radius: 999px;
-  background: var(--ios-switch);
-  box-shadow: 0 0 0 2px var(--ink);
-}
-
-.switch::after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 1.5px #002537;
+  color: var(--ios-tint);
 }
 
 /* Learns: TransactionEditor's suggestion buttons */
@@ -291,25 +287,15 @@
 }
 
 .c1 {
-  background: var(--accent);
+  background: var(--chart-1);
 }
 
 .c2 {
-  background: var(--mark-merchant);
+  background: var(--chart-2);
 }
 
 .c3 {
-  background: var(--mark-card);
-}
-
-@media (prefers-color-scheme: dark) {
-  .c2 {
-    background: #e8c35a;
-  }
-
-  .c3 {
-    background: #6fb7d6;
-  }
+  background: var(--chart-3);
 }
 
 .totals {

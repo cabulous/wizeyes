@@ -15,27 +15,13 @@ import { SectionHeader } from "@/components/app-page/SectionHeader";
 import { Steps } from "@/components/app-page/Steps";
 import ui from "@/components/app-page/ui.module.css";
 import { appJsonLd, JsonLd } from "@/lib/jsonld";
-import { openGraphBase } from "@/lib/metadata";
+import { appPageMetadata } from "@/lib/metadata";
 import { AlertDemo } from "./_components/AlertDemo";
 import { BankTape } from "./_components/BankTape";
 import { featureVisuals } from "./_components/FeatureVisuals";
 import { HeroVisual } from "./_components/HeroVisual";
 
-export const metadata: Metadata = {
-  title: { absolute: app.seoTitle },
-  description: app.description,
-  keywords: app.keywords,
-  alternates: {
-    canonical: `/${app.slug}`,
-    types: { "text/markdown": `/${app.slug}.md` },
-  },
-  openGraph: {
-    ...openGraphBase,
-    title: app.seoTitle,
-    description: app.description,
-    url: `/${app.slug}`,
-  },
-};
+export const metadata: Metadata = appPageMetadata(app);
 
 export default function SpendwisePage() {
   return (

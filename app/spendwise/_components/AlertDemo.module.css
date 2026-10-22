@@ -229,7 +229,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -290,7 +290,7 @@
 
 .note {
   margin-top: 10px;
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
   font-size: 0.8125rem;
   line-height: 1.45;
 }

@@ -29,8 +29,8 @@ export default function BenefitTrackerPage() {
         <p>
           It is important to note that our app is designed to store all your
           data locally on your device or on your iCloud account. We do not
-          collect, transmit, or store any personal information through
-          Benefits Tracker.
+          collect, transmit, or store any personal information through Benefits
+          Tracker.
         </p>
         <h3 className={styles.title}>Data Storage and Security</h3>
         <p>

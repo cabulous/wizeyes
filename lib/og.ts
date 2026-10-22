@@ -6,11 +6,15 @@ export async function googleFont(
   family: string,
   text: string,
 ): Promise<ArrayBuffer> {
-  const css = await (
-    await fetch(
-      `https://fonts.googleapis.com/css2?family=${family}&text=${encodeURIComponent(text)}`,
-    )
-  ).text();
+  const cssResponse = await fetch(
+    `https://fonts.googleapis.com/css2?family=${family}&text=${encodeURIComponent(text)}`,
+  );
+  if (!cssResponse.ok) {
+    throw new Error(
+      `Could not load ${family} for the social card (HTTP ${cssResponse.status}).`,
+    );
+  }
+  const css = await cssResponse.text();
   const src = css.match(
     /src: url\((.+?)\) format\('(opentype|truetype)'\)/,
   )?.[1];
