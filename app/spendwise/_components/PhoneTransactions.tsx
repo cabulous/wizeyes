@@ -58,6 +58,15 @@ const rows: Row[] = [
   },
 ];
 
+// The cashflow chart's sample: this month's totals on the 0–6,000 axis
+// Swift Charts picks for them, with a gridline every 2,000.
+const chartMax = 6000;
+const chartTicks = [0, 2000, 4000, 6000];
+const chartBars = [
+  { label: "Income", amount: 5200, className: styles.barIncome },
+  { label: "Expense", amount: 3128.42, className: styles.barExpense },
+];
+
 const tabs = [
   { label: "Transactions", icon: <CardIcon />, active: true },
   { label: "Budgets", icon: <DollarIcon /> },
@@ -97,11 +106,30 @@ export function PhoneTransactions() {
           For every <b>$10</b> earned, <b className={styles.expense}>$6</b>{" "}
           spent and <b className={styles.income}>$4</b> saved
         </p>
-        <div className={styles.bars}>
-          <span className={styles.barLabel}>Income</span>
-          <span className={`${styles.bar} ${styles.barIncome}`} />
-          <span className={styles.barLabel}>Expense</span>
-          <span className={`${styles.bar} ${styles.barExpense}`} />
+        <div className={styles.chart}>
+          {chartTicks.map((tick, i) => (
+            <span
+              key={tick}
+              className={styles.gridline}
+              style={{ left: `${(tick / chartMax) * 100}%` }}
+            >
+              {/* Like the app, the last gridline, at the chart's edge, has no label. */}
+              {i < chartTicks.length - 1 && (
+                <span className={styles.tick}>
+                  {tick.toLocaleString("en-US")}
+                </span>
+              )}
+            </span>
+          ))}
+          {chartBars.map((bar) => (
+            <div key={bar.label} className={styles.band}>
+              <span className={styles.bandLabel}>{bar.label}</span>
+              <span
+                className={`${styles.bar} ${bar.className}`}
+                style={{ width: `${(bar.amount / chartMax) * 100}%` }}
+              />
+            </div>
+          ))}
         </div>
         <div className={styles.totals}>
           <span className={styles.income}>$5,200.00</span>

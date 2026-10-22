@@ -52,7 +52,9 @@
 }
 
 .sentence {
+  padding-block: calc(3 * var(--pt));
   font-size: calc(13 * var(--pt));
+  text-align: center;
 }
 
 .sentence b {
@@ -68,33 +70,64 @@
 }
 
 /*
- * CashflowChart's two BarMarks: thin bars, each centred in its half of the
- * chart's plot area, with Swift Charts' default square ends.
+ * CashflowChart's Swift Chart, 80pt tall: a band per type with its label
+ * above a thin bar, dashed gridlines at the axis ticks, values along the
+ * bottom.
  */
-.bars {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: calc(18 * var(--pt)) calc(8 * var(--pt));
-  margin: calc(14 * var(--pt)) 0;
+.chart {
+  position: relative;
+  height: calc(80 * var(--pt));
+  margin-block: calc(4 * var(--pt));
+  line-height: 1;
 }
 
-.barLabel {
+.gridline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 0.5px dashed var(--ios-separator);
+}
+
+.tick {
+  position: absolute;
+  bottom: 0;
+  left: calc(4 * var(--pt));
+  font-size: calc(11 * var(--pt));
+  color: var(--ios-secondary);
+  white-space: nowrap;
+}
+
+.band {
+  position: relative;
+  height: calc(28 * var(--pt));
+  border-top: 0.5px solid var(--ios-separator);
+}
+
+.band:last-child {
+  border-bottom: 0.5px solid var(--ios-separator);
+}
+
+.bandLabel {
+  position: absolute;
+  top: calc(3 * var(--pt));
+  left: calc(4 * var(--pt));
   font-size: calc(11 * var(--pt));
   color: var(--ios-secondary);
 }
 
 .bar {
-  height: calc(13 * var(--pt));
+  position: absolute;
+  bottom: calc(2 * var(--pt));
+  left: 0;
+  height: calc(8 * var(--pt));
+  border-radius: calc(2 * var(--pt));
 }
 
 .barIncome {
-  width: 100%;
   background: var(--ios-green);
 }
 
 .barExpense {
-  width: 60%;
   background: var(--ios-tint);
 }
 
