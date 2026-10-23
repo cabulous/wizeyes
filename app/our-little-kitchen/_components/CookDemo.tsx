@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ReactNode } from "react";
 import { PhoneFrame } from "@/components/app-page/PhoneFrame";
+import { Heart, Sparkle } from "./Doodles";
 import styles from "./CookDemo.module.css";
 
 type Recipe = {
@@ -14,7 +15,8 @@ type Recipe = {
  * The app's cooking screen (CookingView.swift), working: every step on one
  * page, a tap ticks one off, the first unticked step is the bright current
  * line and scrolls up, finished steps fade back, and the dish ends with
- * "Done — let's eat!". Renders step one as current without JavaScript.
+ * "Done — let's eat!", handwritten with a heart and a sparkle. Renders step
+ * one as current without JavaScript.
  * `decoration` is drawn around the phone.
  */
 export function CookDemo({
@@ -114,7 +116,29 @@ export function CookDemo({
                 );
               })}
             </ol>
-            {finished && <p className={styles.finish}>{doneLabel}</p>}
+            {finished && (
+              <p className={styles.finish}>
+                {doneLabel}
+                <svg
+                  className={styles.finishHeart}
+                  viewBox="-4 -2 52 42"
+                  aria-hidden="true"
+                >
+                  <g filter="url(#olk-crayon)">
+                    <Heart />
+                  </g>
+                </svg>
+                <svg
+                  className={styles.finishSparkle}
+                  viewBox="0 0 46 60"
+                  aria-hidden="true"
+                >
+                  <g filter="url(#olk-crayon)">
+                    <Sparkle />
+                  </g>
+                </svg>
+              </p>
+            )}
           </div>
 
           {ingredientsOpen && (

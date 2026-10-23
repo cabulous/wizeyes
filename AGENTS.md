@@ -118,7 +118,8 @@ so apps can differ in type as well as colour. A theme may also define tokens
 only its own `_components/` use, such as Our Little Kitchen's `--font-hand`
 (Caveat, for handwritten notes) and its doodle colours; shared sections never
 read those. Our Little Kitchen's crayon doodles (leaves, sparkles, hearts and
-handwritten notes) live in `_components/Doodles.tsx`; `DoodleCluster` groups
+handwritten notes) live in `_components/Doodles.tsx`, and the app draws
+the same marks from the same paths in `Design/Doodles.swift`; `DoodleCluster` groups
 them around a main visual, passed in through `CookDemo`'s `decoration` and
 `CtaBand`'s `iconDecoration`.
 

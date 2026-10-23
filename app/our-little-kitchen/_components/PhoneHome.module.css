@@ -8,6 +8,8 @@
 
   background: var(--bg);
   color: var(--ink);
+  /* The app reads in SF Rounded (RootView.swift); Nunito where it's missing. */
+  font-family: ui-rounded, "SF Pro Rounded", var(--font-sans), sans-serif;
 }
 
 /* iOS fills each line before breaking; the page's balanced wrapping doesn't apply. */
@@ -28,9 +30,15 @@
   padding: calc(64 * var(--pt)) calc(20 * var(--pt)) 0;
 }
 
+/* The members pill shares the kitchen-name line; the title gets the whole width. */
 .header {
+  display: grid;
+  gap: calc(6 * var(--pt));
+}
+
+.headerRow {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: calc(12 * var(--pt));
 }
@@ -44,12 +52,39 @@
   font-size: calc(15 * var(--pt));
 }
 
+/* Young Serif, the question underlined in crayon, a sparkle beside it. */
+/* The plate sits beside the underlined question, as in the app's HStack. */
 .largeTitle {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: calc(6 * var(--pt));
   margin-top: calc(2 * var(--pt));
-  font-size: calc(34 * var(--pt));
-  font-weight: 700;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: calc(28 * var(--pt));
+  font-weight: 400;
   line-height: 1.12;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
+}
+
+/* One box, as in the app: the underline runs under the whole question. */
+.underline {
+  position: relative;
+  display: block;
+  padding-bottom: 0.12em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10c30-5 62-6 96-4 34 2 66 1 98-3M12 13c40-4 90-4 170-2' fill='none' stroke='%23c0501f' stroke-width='3' stroke-linecap='round' opacity='.75'/%3E%3C/svg%3E")
+    0 96% / 100% 0.3em no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.titleSparkle {
+  position: absolute;
+  top: calc(-18 * var(--pt));
+  right: calc(2 * var(--pt));
+  width: calc(20 * var(--pt));
+  overflow: visible;
+  rotate: 8deg;
 }
 
 .members {
@@ -57,6 +92,7 @@
   padding: calc(10 * var(--pt)) calc(14 * var(--pt));
   border-radius: 999px;
   background: var(--surface);
+  box-shadow: var(--shadow-card);
   font-size: calc(13 * var(--pt));
   font-weight: 700;
   white-space: nowrap;
@@ -70,6 +106,8 @@
   padding: calc(14 * var(--pt));
   border-radius: calc(24 * var(--pt));
   background: var(--accent);
+  box-shadow: 0 calc(8 * var(--pt)) calc(24 * var(--pt)) calc(-10 * var(--pt))
+    color-mix(in srgb, var(--accent) 70%, transparent);
   color: #fff;
 }
 
@@ -89,6 +127,13 @@
   gap: calc(4 * var(--pt));
   min-width: 0;
   font-size: calc(15 * var(--pt));
+}
+
+.heroText b,
+.sectionHead b,
+.pickTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
 }
 
 .heroText b {
@@ -128,11 +173,26 @@
   font-weight: 500;
 }
 
-/* Chef's pick: art on the soft accent, two pills, then the dish. */
+/* Chef's pick: art on the soft accent, two pills, then the dish, with a sprig peeking out from behind. */
+.pickWrap {
+  position: relative;
+}
+
+.pickSprig {
+  position: absolute;
+  top: 52%;
+  right: calc(-30 * var(--pt));
+  width: calc(64 * var(--pt));
+  overflow: visible;
+  rotate: -25deg;
+}
+
 .pick {
+  position: relative;
   overflow: hidden;
   border-radius: calc(22 * var(--pt));
   background: var(--surface);
+  box-shadow: var(--shadow-card);
 }
 
 .pickArt {
@@ -162,10 +222,13 @@
   font-size: calc(12 * var(--pt));
 }
 
+/* Stuck on at a slant, like a sticker. */
 .pickPill {
   left: calc(12 * var(--pt));
   background: var(--accent);
+  box-shadow: 0 calc(2 * var(--pt)) calc(6 * var(--pt)) rgba(0, 0, 0, 0.25);
   font-weight: 700;
+  rotate: -3deg;
 }
 
 .timePill {
