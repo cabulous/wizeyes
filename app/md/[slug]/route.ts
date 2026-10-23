@@ -9,11 +9,11 @@ export function generateStaticParams() {
   return apps.map((app) => ({ slug: app.slug }));
 }
 
-export function GET(
+export async function GET(
   _request: Request,
-  { params }: { params: { slug: string } },
+  { params }: { params: Promise<{ slug: string }> },
 ) {
-  const app = getApp(params.slug);
+  const app = getApp((await params).slug);
   if (!app) return new Response("Not found", { status: 404 });
   return new Response(appMarkdown(app), {
     headers: { "Content-Type": "text/markdown; charset=utf-8" },
