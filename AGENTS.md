@@ -52,6 +52,10 @@ Redesigned so far:
   didn't change, so the old policy URL now opens the marketing page, which
   links to the policy at `/spendwise/privacy` from its privacy section and
   footer.
+- **Our Little Kitchen** at `/our-little-kitchen` (source app:
+  `cabulous/our-little-kitchen`). A new page with no old URL. It has no
+  `appStoreId` yet, so its download buttons fall back to the closing
+  `#download` section; add the ID once the listing is live.
 
 ## Rules
 
@@ -62,22 +66,26 @@ Redesigned so far:
   also vary by region); the App Store listing is the source of truth.
   Describe how people pay (`pricing`) and link to the store instead, in
   visible copy, Markdown and structured data alike.
-- **The app and the site share one design.** Each app's `Theme.swift`
-  uses the same tokens as its `app/<slug>/theme.module.css` (Savings Room's
-  clay, Spendwise's sticker look), and the phone mock-up and demos mirror the
-  app's views. Only stock iOS screens from other apps, like the Shortcuts
-  automation, use `--ios-*` system colours. When an app's look changes,
-  update `_components/` to match, citing the Swift file each one mirrors.
+- **The app and the site share one design.** Each app's Swift theme
+  (`Theme.swift`, or `Palette.swift` in Our Little Kitchen) uses the same
+  tokens as its `app/<slug>/theme.module.css` (Savings Room's clay,
+  Spendwise's sticker look, Our Little Kitchen's pink paper), and the phone
+  mock-up and demos mirror the app's views. Only stock iOS screens from other
+  apps, like the Shortcuts automation, use `--ios-*` system colours. When an
+  app's look changes, update `_components/` to match, citing the Swift file
+  each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
   policy itself changes, and bump `lastUpdated` when you do.
 - **Never break a URL.** Moving a page means adding a redirect in
   `next.config.js`.
 - **Content renders without JavaScript.** Crawlers and AI assistants read the
   HTML. Use server components; reach for `"use client"` only for real
-  interaction (see `RoomDemo.tsx`), and render meaningful initial state.
+  interaction (see `RoomDemo.tsx`, `CookDemo.tsx`), and render meaningful
+  initial state.
 - **Copy formatting** is limited to `*emphasis*`, `**strong**` and
   `[links](/path)`. In headings, `*emphasis*` renders in the app's accent
-  style: Savings Room's coral italic, Spendwise's pink highlighter.
+  style: Savings Room's coral italic, Spendwise's pink highlighter, Our
+  Little Kitchen's crayon underline.
 - **Styling** uses CSS Modules and the tokens in `app/<slug>/theme.module.css`.
   Base element styles are wrapped in `:where()` so any component class wins.
 - **Every visual** supports dark mode (`prefers-color-scheme`) and
@@ -106,7 +114,10 @@ each app restyles them from its `app/<slug>/theme.module.css`:
 | `--phone-frame`, `--phone-shadow`                                                              | Optional: `PhoneFrame`'s body colour and shadow (it has defaults)                                |
 
 Headings, emphasis and other element defaults are styled in each theme file,
-so apps can differ in type as well as colour.
+so apps can differ in type as well as colour. A theme may also define tokens
+only its own `_components/` use, such as Our Little Kitchen's `--font-hand`
+(Caveat, for handwritten notes) and its doodle colours; shared sections never
+read those.
 
 ## Adding the next app page
 

@@ -57,7 +57,7 @@ export function PrivacyPanel({
             >
               <div className={`${styles.node} ${styles.device}`}>
                 <Icon name="device" size={26} />
-                <span>Your iPhone &amp; iPad</span>
+                <span>{`Your ${app.platforms.join(" & ")}`}</span>
               </div>
               <div className={styles.link}>
                 <span className={styles.packet} />
@@ -81,10 +81,12 @@ export function PrivacyPanel({
               </div>
             </div>
 
-            <figure className={styles.quote}>
-              <blockquote>{privacy.quote.text}</blockquote>
-              <figcaption>{privacy.quote.source}</figcaption>
-            </figure>
+            {privacy.quote && (
+              <figure className={styles.quote}>
+                <blockquote>{privacy.quote.text}</blockquote>
+                <figcaption>{privacy.quote.source}</figcaption>
+              </figure>
+            )}
           </div>
         </div>
       </div>

@@ -27,7 +27,12 @@ export function AppNav({ app }: { app: AppContent }) {
             </a>
           ))}
         </nav>
-        <AppStoreButton app={app} size="small" label="Get the app" />
+        <AppStoreButton
+          app={app}
+          size="small"
+          label="Get the app"
+          shortLabel="Get"
+        />
       </div>
     </header>
   );

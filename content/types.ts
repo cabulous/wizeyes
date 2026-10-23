@@ -23,9 +23,13 @@ export type AppContent = {
   /** Meta description: plain text, at most 160 characters. */
   description: string;
   keywords: string[];
-  category: "Finance" | "Health & Fitness";
+  /** The App Store category. */
+  category: "Finance" | "Health & Fitness" | "Food & Drink";
   /** schema.org applicationCategory value. */
-  schemaCategory: "FinanceApplication" | "HealthApplication";
+  schemaCategory:
+    | "FinanceApplication"
+    | "HealthApplication"
+    | "LifestyleApplication";
   platforms: string[];
   minimumOS: string;
   /**
@@ -53,8 +57,8 @@ export type AppContent = {
   steps: Section & { items: { title: string; body: string }[] };
   privacy: Section & {
     points: string[];
-    /** A line quoted word-for-word from inside the app. */
-    quote: { text: string; source: string };
+    /** A line quoted word-for-word from inside the app, if it has one. */
+    quote?: { text: string; source: string };
   };
   faq: Section & { items: { question: string; answer: string }[] };
   cta: { title: string; body: string };

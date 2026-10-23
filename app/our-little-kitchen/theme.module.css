@@ -1,0 +1,175 @@
+/*
+ * Our Little Kitchen palette: the app's own colour assets (Palette.swift),
+ * Ground #F8E6DF, Card #FDF6F3, Accent #C0501F, AccentSoft #F6DCD0, Ink
+ * #1A1614, Hairline #E8D5CD, with their dark variants. The look follows the
+ * icon: warm, hand-drawn, a family recipe book. Two text shades are darker
+ * than the app's InkSoft so small text keeps AA contrast on the web.
+ * Token names are shared by every app theme (see AGENTS.md).
+ */
+.theme {
+  --bg: #f8e6df;
+  --bg-alt: #f2dacf;
+  --surface: #fdf6f3;
+  --ink: #1a1614;
+  --ink-soft: #5a4c46;
+  --ink-faint: #6e5f58;
+  --line: #e8d5cd;
+  --accent: #c0501f;
+  --accent-light: #e88a5c;
+  --accent-deep: #a3431a;
+  --accent-ink: #a3431a;
+  --accent-wash: #f6dcd0;
+  --accent-shade: #9a3b14;
+  --on-accent: #ffffff;
+  --panel: #2b201b;
+  --on-panel: #f5ede9;
+  /* Fixed across light and dark: the panel is dark in both. */
+  --panel-accent: #f0956a;
+  --panel-glow: #e4703c;
+  --panel-em: var(--panel-accent);
+  --icon-ring: rgba(26, 22, 20, 0.12);
+
+  /* The icon's crayon colours, for the doodles around the illustrations. */
+  --leaf: #8fa878;
+  --sparkle: #f0b84a;
+  --blush: #ef8e8a;
+
+  --shadow-card:
+    0 1px 2px rgba(110, 50, 25, 0.06), 0 14px 30px -18px rgba(110, 50, 25, 0.3);
+  --shadow-float:
+    0 2px 4px rgba(110, 50, 25, 0.06), 0 24px 44px -20px rgba(110, 50, 25, 0.34);
+  --shadow-button:
+    0 1px 2px rgba(26, 22, 20, 0.2), 0 12px 26px -12px rgba(26, 22, 20, 0.55);
+  --shadow-button-hover:
+    0 2px 4px rgba(26, 22, 20, 0.2), 0 18px 32px -12px rgba(26, 22, 20, 0.55);
+  --shadow-panel: 0 40px 80px -40px rgba(43, 32, 27, 0.6);
+  --shadow-coin:
+    0 0 0 8px var(--bg-alt), 0 14px 26px -10px rgba(160, 64, 24, 0.55);
+  --shadow-icon: 0 18px 26px rgba(150, 70, 40, 0.28);
+
+  /* Step coins: the app's accent, numbered in the cookbook serif. */
+  --coin-fill: var(--accent);
+  --coin-font-style: normal;
+  --coin-axes: normal;
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --page: min(1180px, 100% - 2 * var(--gutter));
+  --radius-xl: clamp(28px, 4vw, 44px);
+  --radius-lg: 24px;
+
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme {
+    --bg: #1c1614;
+    --bg-alt: #231b18;
+    --surface: #261e1a;
+    --ink: #f5ede9;
+    --ink-soft: #d6c8c1;
+    --ink-faint: #a99b94;
+    --line: #3a2e28;
+    --accent: #e4703c;
+    --accent-light: #f0956a;
+    --accent-deep: #f0956a;
+    --accent-ink: #f0956a;
+    --accent-wash: #3a2a22;
+    --accent-shade: #c75a28;
+    --on-accent: #1c1614;
+    --panel: #2b201b;
+    --icon-ring: rgba(245, 237, 233, 0.14);
+
+    --leaf: #7f9a6a;
+    --sparkle: #e0a83c;
+    --blush: #d9797a;
+
+    --shadow-card:
+      0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 30px -18px rgba(0, 0, 0, 0.7);
+    --shadow-float:
+      0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 44px -20px rgba(0, 0, 0, 0.75);
+    --shadow-button:
+      0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 26px -12px rgba(0, 0, 0, 0.7);
+    --shadow-button-hover:
+      0 2px 4px rgba(0, 0, 0, 0.3), 0 18px 32px -12px rgba(0, 0, 0, 0.7);
+    --shadow-coin:
+      0 0 0 8px var(--bg-alt), 0 14px 26px -10px rgba(0, 0, 0, 0.6);
+    --shadow-icon: 0 18px 26px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Paint the overscroll area to match, and keep anchored headings clear of the sticky nav. */
+:global(html):has(.theme) {
+  background: #f8e6df;
+  scroll-padding-top: 104px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(html):has(.theme) {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :global(html):has(.theme) {
+    background: #1c1614;
+  }
+}
+
+/* Base element styles use :where() so any component class overrides them. */
+:where(.theme) :where(h1, h2, h3) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+:where(.theme) :where(h3) {
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+}
+
+/*
+ * Emphasis is a crayon scribble under the words, in the accent, like a note
+ * underlined twice in a family recipe book. Drawn per line, so it follows a
+ * wrapped phrase.
+ */
+:where(.theme) :where(h1, h2, h3) em {
+  font-style: normal;
+  color: var(--accent-ink);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10c30-5 62-6 96-4 34 2 66 1 98-3M12 13c40-4 90-4 170-2' fill='none' stroke='%23c0501f' stroke-width='3' stroke-linecap='round' opacity='.75'/%3E%3C/svg%3E")
+    0 92% / 100% 0.32em no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-bottom: 0.06em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.theme) :where(h1, h2, h3) em {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10c30-5 62-6 96-4 34 2 66 1 98-3M12 13c40-4 90-4 170-2' fill='none' stroke='%23e4703c' stroke-width='3' stroke-linecap='round' opacity='.85'/%3E%3C/svg%3E");
+  }
+}
+
+:where(.theme) :where(p, li) {
+  text-wrap: pretty;
+}
+
+:where(.theme) :where(a) {
+  color: inherit;
+}
+
+:where(.theme) :where(a, button, input, summary):focus-visible {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+:where(.theme) ::selection {
+  background: var(--accent-wash);
+  color: var(--ink);
+}

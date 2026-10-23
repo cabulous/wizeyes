@@ -1,0 +1,375 @@
+/* Shared bits: the app's cards on its pink ground. */
+.soft {
+  color: var(--ink-faint);
+}
+
+.art {
+  width: 100%;
+  height: 100%;
+}
+
+.share,
+.list,
+.shuffleWrap,
+.form,
+.lyrics,
+.find {
+  position: relative;
+  padding: 16px;
+  border-radius: 22px;
+  background: var(--bg);
+  font-size: 0.9375rem;
+  line-height: 1.35;
+}
+
+/* Share: one dish on two phones, via iCloud */
+.share {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  gap: 0 14px;
+  height: 100%;
+  padding: clamp(16px, 2.4vw, 26px);
+}
+
+.device {
+  display: grid;
+  gap: 8px;
+}
+
+.deviceLabel {
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* HomeView's favourite tile: art on top, name and caption below. The
+   caption may wrap here, so "Added by Jo" stays readable on Sam's phone. */
+.miniDish {
+  display: grid;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.miniDish > span:last-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px 10px 10px;
+}
+
+.miniDish b {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.miniDish small {
+  color: var(--ink-faint);
+  font-size: 0.6875rem;
+}
+
+.miniArt {
+  height: 96px;
+  padding: 10px;
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+
+/* An arc from one phone to the other, with iCloud at its top. */
+.cloud {
+  position: relative;
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: center;
+  margin-block: 14px 6px;
+  color: var(--accent);
+}
+
+.cloud > svg {
+  width: 100%;
+  height: 52px;
+  padding-inline: 12%;
+}
+
+/* Sits on the arc's peak, 27 of the SVG's 52px down. */
+.cloudBadge {
+  position: absolute;
+  top: 27px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 5px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  font-size: 0.75rem;
+  font-weight: 700;
+  translate: 0 -50%;
+}
+
+.cloudBadge svg {
+  width: 22px;
+}
+
+/* Roles: SettingsView's Members section */
+.listHead {
+  margin: 0 0 6px 14px;
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rows {
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--surface);
+  list-style: none;
+}
+
+.rows li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+}
+
+.rows li + li {
+  border-top: 1px solid var(--line);
+}
+
+.rows .action {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Shuffle: the Chef's pick, with the dishes it passed over behind it */
+.shuffleWrap {
+  display: grid;
+  place-items: center;
+  min-height: 170px;
+  padding-block: 22px;
+}
+
+.deck {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.deckCard {
+  grid-area: 1 / 1;
+  width: 54%;
+  aspect-ratio: 4 / 3;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--accent-wash);
+  color: color-mix(in srgb, var(--accent) 55%, transparent);
+  rotate: -9deg;
+  translate: -18% 0;
+}
+
+.deckCard + .deckCard {
+  rotate: 8deg;
+  translate: 18% 0;
+}
+
+.pick {
+  position: relative;
+  display: grid;
+  width: 74%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow-float);
+}
+
+.pickArt {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 84px;
+  padding: 10px;
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+
+.pill {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.pickRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+}
+
+.shuffle {
+  flex: none;
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+/* Recipe: RecipeEditorView's fields with the app's own placeholders */
+.form {
+  display: grid;
+  gap: 8px;
+}
+
+.field {
+  display: grid;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.field small {
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.8125rem;
+}
+
+.ingredient {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+/* Cook: three of CookingView's lines, done, current and next */
+.lyrics {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  font-size: 1.125rem;
+}
+
+.lyrics p {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.lineMarker {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 1.4em;
+  height: 1.4em;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  translate: 0 -0.1em;
+}
+
+.lineDone {
+  opacity: 0.32;
+}
+
+.lineDone .lineMarker {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.lineCurrent {
+  font-weight: 700;
+}
+
+.lineCurrent .lineMarker {
+  color: var(--accent);
+}
+
+.lineNext {
+  opacity: 0.62;
+}
+
+/* Find: AllRecipesView's search, category chips and count */
+.find {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: clamp(16px, 2.4vw, 24px);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink-faint);
+}
+
+.search svg {
+  flex: none;
+}
+
+.search span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, #000 80%, transparent);
+  mask-image: linear-gradient(90deg, #000 80%, transparent);
+}
+
+.chip,
+.chipSelected {
+  flex: none;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.chipSelected {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.count {
+  color: var(--ink-faint);
+  font-size: 0.875rem;
+}
