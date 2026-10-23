@@ -58,22 +58,6 @@
   overflow: visible;
 }
 
-.stem {
-  stroke: var(--leaf);
-}
-
-.leafFill {
-  fill: var(--leaf);
-}
-
-.sparkle {
-  stroke: var(--sparkle);
-}
-
-.heart {
-  fill: var(--blush);
-}
-
 .phone {
   position: relative;
   rotate: 3deg;
@@ -92,6 +76,7 @@
   font-weight: 600;
   line-height: 1.05;
   text-align: center;
+  white-space: pre-line;
   rotate: 6deg;
 }
 

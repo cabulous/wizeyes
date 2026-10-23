@@ -1,0 +1,90 @@
+.defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.stem {
+  stroke: var(--leaf);
+}
+
+.leaf {
+  fill: var(--leaf);
+}
+
+.sparkle {
+  stroke: var(--sparkle);
+}
+
+.heart {
+  fill: var(--blush);
+}
+
+/* For a section whose doodles may hang past the page edge: they never widen it. */
+.clip {
+  overflow-x: clip;
+}
+
+.mark {
+  position: absolute;
+  z-index: 1;
+  width: var(--w);
+  overflow: visible;
+  translate: -50% -50%;
+  rotate: var(--turn);
+  pointer-events: none;
+}
+
+/* Drawn on as the cluster scrolls in, like a crayon put down on the page. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .mark {
+      animation: drawn linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 70%;
+    }
+  }
+}
+
+@keyframes drawn {
+  from {
+    opacity: 0;
+    scale: 0.6;
+    rotate: calc(var(--turn) - 14deg);
+  }
+}
+
+.note {
+  width: max-content;
+  max-width: 11em;
+  color: var(--accent-ink);
+  font-family: var(--font-hand), cursive;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.05;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.arrow {
+  display: block;
+  width: 56px;
+  margin: 2px 0 0 -12px;
+}
+
+.arrow.flip {
+  margin: 2px -12px 0 auto;
+  scale: -1 1;
+}
+
+/* Smaller on a phone, and the notes go: there's no margin to write in. */
+@media (max-width: 520px) {
+  .mark {
+    width: calc(var(--w) * 0.75);
+  }
+
+  .wide {
+    display: none;
+  }
+}

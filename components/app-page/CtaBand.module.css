@@ -24,8 +24,11 @@
   position: relative;
 }
 
-.icon {
+.iconStage {
   margin-bottom: 32px;
+}
+
+.icon {
   filter: drop-shadow(var(--shadow-icon));
   rotate: -4deg;
 }
