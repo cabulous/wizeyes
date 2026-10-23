@@ -1,11 +1,13 @@
 import { PhoneFrame } from "@/components/app-page/PhoneFrame";
 import { DishArt } from "./DishArt";
+import { Sparkle, Sprig } from "./Doodles";
 import styles from "./PhoneHome.module.css";
 
 /**
  * The app's Home tab in English (HomeView.swift: header with the members
  * pill, the Add a dish card, the Chef's pick with Shuffle, and RootTabView's
- * tabs), rebuilt in HTML with a sample dish. Favourites come next in the
+ * tabs), rebuilt in HTML with a sample dish. The crayon underline, sparkle
+ * and sprig are the app's own (Design/Doodles.swift). Favourites come next in the
  * app, below the fold. A dish without a photo shows the app's placeholder
  * art for its category, as in the app.
  */
@@ -14,11 +16,27 @@ export function PhoneHome() {
     <PhoneFrame screenClassName={styles.screen}>
       <div className={styles.scroll}>
         <div className={styles.header}>
-          <div>
+          <div className={styles.headerRow}>
             <p className={styles.kicker}>Our Little Kitchen</p>
-            <p className={styles.largeTitle}>What shall we eat? 🍽</p>
+            <span className={styles.members}>
+              👫 Jo &amp; Sam&apos;s recipes
+            </span>
           </div>
-          <span className={styles.members}>👫 Jo &amp; Sam&apos;s recipes</span>
+          <p className={styles.largeTitle}>
+            <span className={styles.underline}>
+              What shall we eat?
+              <svg
+                className={styles.titleSparkle}
+                viewBox="0 0 46 60"
+                aria-hidden="true"
+              >
+                <g filter="url(#olk-crayon)">
+                  <Sparkle />
+                </g>
+              </svg>
+            </span>{" "}
+            🍽
+          </p>
         </div>
 
         <div className={styles.heroCard}>
@@ -38,29 +56,40 @@ export function PhoneHome() {
           </span>
         </div>
 
-        <div className={styles.pick}>
-          <div className={styles.pickArt}>
-            <DishArt emoji="🥘" className={styles.art} />
-            <span className={styles.pickPill}>
-              Chef&apos;s pick · One-Pot Wonders
-            </span>
-            <span className={styles.timePill}>⏱ 50 min</span>
-          </div>
-          <div className={styles.pickBody}>
-            <b className={styles.pickTitle}>Coconut chicken curry</b>
-            <span className={styles.soft}>
-              Creamy, gently spiced, even better the next day
-            </span>
-            <span className={styles.divider} />
-            <span className={styles.pickMeta}>
-              <span>
-                <PeopleIcon /> 2 servings
+        <div className={styles.pickWrap}>
+          <svg
+            className={styles.pickSprig}
+            viewBox="-6 -28 98 54"
+            aria-hidden="true"
+          >
+            <g filter="url(#olk-crayon)">
+              <Sprig />
+            </g>
+          </svg>
+          <div className={styles.pick}>
+            <div className={styles.pickArt}>
+              <DishArt emoji="🥘" className={styles.art} />
+              <span className={styles.pickPill}>
+                Chef&apos;s pick · One-Pot Wonders
               </span>
-              <span>
-                <ClockIcon /> Cook 35 min
+              <span className={styles.timePill}>⏱ 50 min</span>
+            </div>
+            <div className={styles.pickBody}>
+              <b className={styles.pickTitle}>Coconut chicken curry</b>
+              <span className={styles.soft}>
+                Creamy, gently spiced, even better the next day
               </span>
-              <b className={styles.pickStart}>Start cooking →</b>
-            </span>
+              <span className={styles.divider} />
+              <span className={styles.pickMeta}>
+                <span>
+                  <PeopleIcon /> 2 servings
+                </span>
+                <span>
+                  <ClockIcon /> Cook 35 min
+                </span>
+                <b className={styles.pickStart}>Start cooking →</b>
+              </span>
+            </div>
           </div>
         </div>
       </div>

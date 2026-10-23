@@ -24,12 +24,13 @@
   justify-items: center;
 }
 
-/* CookingView: the app's ground, its ink, nothing decorated. */
+/* CookingView: the app's ground and ink, in SF Rounded (Nunito where it's missing). */
 .screen {
   --app-ink-soft: #8a807c;
 
   background: var(--bg);
   color: var(--ink);
+  font-family: ui-rounded, "SF Pro Rounded", var(--font-sans), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,6 +78,7 @@
 .dish {
   margin-bottom: calc(18 * var(--pt));
   color: var(--app-ink-soft);
+  font-family: var(--font-display), Georgia, serif;
   font-size: calc(20 * var(--pt));
 }
 
@@ -107,17 +109,19 @@
     font-weight 350ms;
 }
 
+/* A coin numbered in the cookbook serif (StepLine.marker in CookingView.swift). */
 .marker {
   display: inline-grid;
   flex: none;
   place-items: center;
-  width: 1.05em;
-  height: 1.05em;
+  width: calc(30 * var(--pt));
+  height: calc(30 * var(--pt));
   border: calc(2 * var(--pt)) solid currentColor;
   border-radius: 50%;
   color: var(--app-ink-soft);
-  font-size: calc(22 * var(--pt));
-  font-weight: 500;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: calc(17 * var(--pt));
+  font-weight: 400;
   line-height: 1;
   translate: 0 0.12em;
 }
@@ -136,24 +140,51 @@
   font-weight: 600;
 }
 
+/* The step being cooked gets a filled coin. */
 .isCurrent .marker {
-  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--surface);
 }
 
 .isUpcoming {
   opacity: 0.62;
 }
 
+/* Handwritten, with a heart and a sparkle: the dish is done. */
 .finish {
+  position: relative;
   margin-top: calc(32 * var(--pt));
-  padding: calc(14 * var(--pt));
+  padding: calc(8 * var(--pt));
   border-radius: calc(28 * var(--pt));
   background: var(--accent);
   color: #fff;
-  font-size: calc(20 * var(--pt));
+  font-family: var(--font-hand), cursive;
+  font-size: calc(29 * var(--pt));
   font-weight: 600;
+  line-height: 1.2;
   text-align: center;
   animation: rise 400ms ease-out both;
+}
+
+.finishHeart,
+.finishSparkle {
+  position: absolute;
+  overflow: visible;
+}
+
+.finishHeart {
+  top: calc(-14 * var(--pt));
+  right: calc(-6 * var(--pt));
+  width: calc(30 * var(--pt));
+  rotate: 14deg;
+}
+
+.finishSparkle {
+  top: calc(-20 * var(--pt));
+  left: calc(-4 * var(--pt));
+  width: calc(22 * var(--pt));
+  rotate: -10deg;
 }
 
 /* The Ingredients sheet at its medium detent: name left, amount right. */
