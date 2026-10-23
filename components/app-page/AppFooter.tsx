@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 import type { AppContent } from "@/content/types";
 import { AppIcon } from "./AppIcon";
@@ -37,7 +38,7 @@ export function AppFooter({ app }: { app: AppContent }) {
           <p className={styles.disclaimer}>{app.disclaimer}</p>
           <p className={styles.copyright}>
             © {new Date().getFullYear()} {site.company} ·{" "}
-            <a href="/">{site.name}</a>
+            <Link href="/">{site.name}</Link>
           </p>
         </div>
       </div>
