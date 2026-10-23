@@ -1,10 +1,12 @@
+import type { ReactElement } from "react";
+
 /**
  * The app's placeholder art (Assets.xcassets/PlaceholderArt), drawn for a
  * dish without a photo: one line drawing per category emoji, tinted with
  * the accent (PlaceholderArt in Components.swift). Paths copied from the
  * app's SVGs; the fallback is art-pot.
  */
-const art: Record<string, JSX.Element> = {
+const art: Record<string, ReactElement> = {
   "🍳": (
     <>
       <ellipse cx="86" cy="112" rx="56" ry="34" />
