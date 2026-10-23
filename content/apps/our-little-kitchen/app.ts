@@ -192,6 +192,12 @@ export const seedCategories = [
 
 /** Copy for the sections only Our Little Kitchen has. */
 export const extras = {
+  /** Handwritten notes beside the page's illustrations, in the app's crayon voice. */
+  notes: {
+    shuffle: "can't decide?\ntap Shuffle!",
+    cook: "one step\nat a time",
+    cta: "happy\ncooking!",
+  },
   cook: {
     eyebrow: "Try it",
     title: "Cook it like you'd *sing it*.",

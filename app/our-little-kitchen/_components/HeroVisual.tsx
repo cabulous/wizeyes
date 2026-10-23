@@ -1,5 +1,7 @@
 import type { AppContent } from "@/content/types";
 import { AppIcon } from "@/components/app-page/AppIcon";
+import { extras } from "@/content/apps/our-little-kitchen/app";
+import { Heart, NoteArrow, Sparkle, Sprig } from "./Doodles";
 import { PhoneHome } from "./PhoneHome";
 import styles from "./HeroVisual.module.css";
 
@@ -28,21 +30,8 @@ export function HeroVisual({ app }: { app: AppContent }) {
       </div>
 
       <p className={styles.note}>
-        can&apos;t decide?
-        <br />
-        tap Shuffle!
-        <svg
-          className={styles.noteArrow}
-          viewBox="0 0 80 60"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M72 6c-6 22-24 38-58 42" />
-          <path d="m22 38-9 10 12 4" />
-        </svg>
+        {extras.notes.shuffle}
+        <NoteArrow className={styles.noteArrow} />
       </p>
 
       <div className={styles.icon}>
@@ -56,60 +45,12 @@ export function HeroVisual({ app }: { app: AppContent }) {
 function Doodles() {
   return (
     <svg className={styles.doodles} viewBox="0 0 540 640" aria-hidden="true">
-      <defs>
-        {/* A little roughness so the strokes read as crayon, not vector. */}
-        <filter id="olk-crayon">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.9"
-            numOctaves="2"
-            seed="4"
-          />
-          <feDisplacementMap in="SourceGraphic" scale="2.2" />
-        </filter>
-      </defs>
-      <g filter="url(#olk-crayon)" strokeLinecap="round">
+      <g filter="url(#olk-crayon)">
         <Sprig x={58} y={430} turn={-70} />
         <Sprig x={478} y={590} turn={-120} />
-        <g className={styles.sparkle} strokeWidth="8" fill="none">
-          <path d="M466 118l20-16" />
-          <path d="M474 150h26" />
-        </g>
-        <path
-          className={styles.heart}
-          d="M500 470c-6-10-22-8-22 6 0 12 22 22 22 22s22-10 22-22c0-14-16-16-22-6Z"
-        />
+        <Sparkle x={462} y={98} />
+        <Heart x={478} y={462} />
       </g>
     </svg>
-  );
-}
-
-/** A stem with three almond leaves, like the sprigs beside the icon's pig. */
-function Sprig({ x, y, turn }: { x: number; y: number; turn: number }) {
-  const leaf = "M0 0c7-9 20-11 30-4-7 9-20 11-30 4Z";
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${turn})`}>
-      <path
-        className={styles.stem}
-        d="M0 0c20 4 40 2 62-6"
-        fill="none"
-        strokeWidth="4"
-      />
-      <path
-        className={styles.leafFill}
-        d={leaf}
-        transform="translate(18 2) rotate(-50)"
-      />
-      <path
-        className={styles.leafFill}
-        d={leaf}
-        transform="translate(32 2) rotate(40)"
-      />
-      <path
-        className={styles.leafFill}
-        d={leaf}
-        transform="translate(58 -5) rotate(-15)"
-      />
-    </g>
   );
 }

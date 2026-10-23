@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { AppContent } from "@/content/types";
 import { renderInline } from "@/lib/markdown";
 import { AppIcon } from "./AppIcon";
@@ -5,8 +6,17 @@ import { AppStoreButton } from "./AppStoreButton";
 import ui from "./ui.module.css";
 import styles from "./CtaBand.module.css";
 
-/** Closing call to action. Its id is the fallback target of every download button. */
-export function CtaBand({ app }: { app: AppContent }) {
+/**
+ * Closing call to action. Its id is the fallback target of every download
+ * button. `iconDecoration` is drawn around the app icon.
+ */
+export function CtaBand({
+  app,
+  iconDecoration,
+}: {
+  app: AppContent;
+  iconDecoration?: ReactNode;
+}) {
   return (
     <section
       id="download"
@@ -14,8 +24,11 @@ export function CtaBand({ app }: { app: AppContent }) {
       aria-labelledby="download-title"
     >
       <div className={`${ui.container} ${styles.inner} ${ui.reveal}`}>
-        <div className={styles.icon}>
-          <AppIcon app={app} size={136} />
+        <div className={styles.iconStage}>
+          {iconDecoration}
+          <div className={styles.icon}>
+            <AppIcon app={app} size={136} />
+          </div>
         </div>
         <h2 id="download-title" className={styles.title}>
           {renderInline(app.cta.title)}

@@ -15,17 +15,20 @@ type Recipe = {
  * page, a tap ticks one off, the first unticked step is the bright current
  * line and scrolls up, finished steps fade back, and the dish ends with
  * "Done — let's eat!". Renders step one as current without JavaScript.
+ * `decoration` is drawn around the phone.
  */
 export function CookDemo({
   recipe,
   header,
   hint,
   done: doneLabel,
+  decoration,
 }: {
   recipe: Recipe;
   header: ReactNode;
   hint: string;
   done: string;
+  decoration?: ReactNode;
 }) {
   const [done, setDone] = useState<Set<number>>(new Set());
   const [ingredientsOpen, setIngredientsOpen] = useState(false);
@@ -66,6 +69,7 @@ export function CookDemo({
       </div>
 
       <div className={styles.stage}>
+        {decoration}
         <PhoneFrame screenClassName={styles.screen}>
           <div className={styles.bar}>
             <span>Done</span>
