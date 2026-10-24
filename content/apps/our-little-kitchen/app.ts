@@ -11,12 +11,13 @@ import type { AppContent } from "@/content/types";
  * Not claimed: cooking timers (written, but never built or run: OLK-11 in
  * the app's ISSUES.md), iPad (iPhone only by design), serving scaling,
  * meal planning, shopping lists and recipe import (out of scope for v1).
- * The App Store ID is unknown until the listing exists.
  */
 export const ourLittleKitchen: AppContent = {
   slug: "our-little-kitchen",
   name: "Our Little Kitchen",
   storeName: "Our Little Kitchen",
+  // https://apps.apple.com/app/id6822127143
+  appStoreId: "6822127143",
   tagline:
     "A private recipe book you share with the person you cook with, on iPhone.",
   seoTitle: "Our Little Kitchen: A Shared Recipe Book for Two, on iPhone",
