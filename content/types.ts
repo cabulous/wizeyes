@@ -35,9 +35,10 @@ export type AppContent = {
   /**
    * How people pay, e.g. "One-time purchase" or "Free with subscription".
    * Never an amount: prices change and vary by region, so the App Store
-   * listing is the only place a price should appear.
+   * listing is the only place a price should appear. Leave it out to say
+   * nothing about payment at all.
    */
-  pricing: string;
+  pricing?: string;
   /** 512px PNG under /public. */
   icon: { src: string; alt: string };
   /** Browser UI and social-card colour, sampled from the app icon. */

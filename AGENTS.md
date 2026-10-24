@@ -66,7 +66,8 @@ Redesigned so far:
 - **No prices or version numbers.** Both change with every release (prices
   also vary by region); the App Store listing is the source of truth.
   Describe how people pay (`pricing`) and link to the store instead, in
-  visible copy, Markdown and structured data alike.
+  visible copy, Markdown and structured data alike. Lablog leaves `pricing`
+  out and says nothing about payment.
 - **The app and the site share one design.** Each app's Swift theme
   (`Theme.swift`, or `Palette.swift` in Our Little Kitchen) uses the same
   tokens as its `app/<slug>/theme.module.css` (Savings Room's clay,

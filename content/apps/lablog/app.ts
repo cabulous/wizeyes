@@ -16,6 +16,8 @@ export const lablog: AppContent = {
   slug: "lablog",
   name: "Lablog",
   storeName: "Lablog - Blood Test Tracker",
+  // https://apps.apple.com/app/id6475244296
+  appStoreId: "6475244296",
   tagline:
     "A private log of your blood test results, each one charted against its normal range, on iPhone and iPad.",
   seoTitle: "Lablog: Blood Test Tracker for iPhone and iPad",
@@ -37,8 +39,6 @@ export const lablog: AppContent = {
   schemaCategory: "HealthApplication",
   platforms: ["iPhone", "iPad"],
   minimumOS: "iOS 17.0",
-  // No StoreKit in the app, and Help links to Apple's refund page: it's paid up front.
-  pricing: "One-time purchase",
   icon: {
     src: "/apps/lablog/icon-512.png",
     alt: "Lablog app icon: an orange-capped test tube, half filled with orange, on white",
