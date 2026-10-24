@@ -3,9 +3,11 @@ import { dayNumber, status } from "./lab";
 import styles from "./Chart.module.css";
 
 /**
- * Mirrors ChartView.swift: results joined by a light grey line, each one a
- * ringed point, green inside the test's range and yellow outside it. With
- * `axes`, Swift Charts' automatic grid and labels: values on the trailing
+ * Mirrors ChartView.swift: results joined by a line in the tube's glass,
+ * each one a ringed point, green inside the test's range and yellow outside
+ * it. With `axes`, the detail screen's chart: the normal range shaded in
+ * the orange wash and ruled with dashed orange lines, and Swift Charts'
+ * automatic grid and labels, set in the monospace: values on the trailing
  * edge, dates along the bottom. Without, it's the list row's small chart
  * (ListCharView.swift). Sized in points; the SVG scales to its box.
  */
@@ -28,6 +30,8 @@ export function Chart({
 }) {
   const sorted = [...readings].sort((a, b) => a.date.localeCompare(b.date));
   const values = sorted.map((r) => r.value);
+  // Swift Charts fits the axis to every mark, so the range's rules count too.
+  if (axes) values.push(low, ...(high === undefined ? [] : [high]));
   const [min, max] = [Math.min(...values), Math.max(...values)];
   const step = niceStep((max - min || Math.abs(max) || 1) / (axes ? 4 : 2));
   const yMin = Math.floor(min / step) * step;
@@ -101,12 +105,36 @@ export function Chart({
           ))}
         </g>
       )}
+      {axes && (
+        <g className={styles.range}>
+          {high !== undefined && (
+            <rect
+              x={plot.left - pad}
+              width={plot.right - plot.left + pad}
+              y={y(high)}
+              height={y(low) - y(high)}
+            />
+          )}
+          {[low, high].map(
+            (v) =>
+              v !== undefined && (
+                <line
+                  key={v}
+                  x1={plot.left - pad}
+                  x2={plot.right}
+                  y1={y(v)}
+                  y2={y(v)}
+                />
+              ),
+          )}
+        </g>
+      )}
       <path className={styles.line} d={line} />
       {points.map((p) => (
         <circle
           key={p.key}
           className={`${styles.point} ${styles[p.status]}`}
-          r={axes ? 5 : 4}
+          r={4}
           style={{ transform: `translate(${p.x}px, ${p.y}px)` }}
         />
       ))}
