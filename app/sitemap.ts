@@ -9,7 +9,6 @@ const legacyPages = [
   "/familyassets",
   "/koda",
   "/koda/terms",
-  "/lablog",
   "/medicalrecord",
   "/solobooks",
 ];

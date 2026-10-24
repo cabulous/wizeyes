@@ -1,0 +1,225 @@
+/*
+ * Lablog palette. The app itself draws with stock SwiftUI (system List,
+ * Charts and colours, no theme file), so the page's character comes from
+ * the icon: a white field, the tube's grey glass (#D2DADD) and its orange,
+ * from the cap's light #F5A04D to the base's #C34208. The look is a lab
+ * notebook: warm paper ruled in a fine grid, a sharp editorial serif, and
+ * readings set in a monospace.
+ *
+ * The phone mock-ups mirror the app's stock iOS screens, so they use the
+ * system colours the app uses (SharedUtill/Utils.swift): green for a value
+ * in range, yellow outside it, and red for an out-of-range value being
+ * typed (BatchEntryView.swift). Token names are shared by every app theme
+ * (see AGENTS.md).
+ */
+.theme {
+  --bg: #f7f6f2;
+  --bg-alt: #efeee8;
+  --surface: #ffffff;
+  --ink: #15191c;
+  --ink-soft: #4a5257;
+  --ink-faint: #5b646a;
+  --line: #e3e3dc;
+  --accent: #e2611a;
+  --accent-light: #f5a04d;
+  --accent-deep: #c34208;
+  --accent-ink: #b4440c;
+  --accent-wash: #fbe7d8;
+  --accent-shade: #a83a06;
+  --on-accent: #ffffff;
+  --panel: #14191c;
+  --on-panel: #eef1f2;
+  /* Fixed across light and dark: the panel is dark in both. */
+  --panel-accent: #f5a04d;
+  --panel-glow: #e2611a;
+  --panel-em: var(--panel-accent);
+  --icon-ring: rgba(21, 25, 28, 0.1);
+
+  /* The icon's glass, for chart lines, rules and the notebook grid. */
+  --glass: #d2dadd;
+  --grid: rgba(21, 25, 28, 0.055);
+
+  /* iOS system colours, as the app's charts and widget use them. */
+  --ios-green: #34c759;
+  --ios-yellow: #ffcc00;
+  --ios-red: #ff3b30;
+  --ios-blue: #007aff;
+  --ios-bg: #f2f2f7;
+  --ios-cell: #ffffff;
+  --ios-label: #000000;
+  --ios-secondary: rgba(60, 60, 67, 0.6);
+  --ios-tertiary: rgba(60, 60, 67, 0.3);
+  --ios-separator: rgba(60, 60, 67, 0.18);
+  --ios-fill: rgba(118, 118, 128, 0.12);
+  --ios-chart-line: #e6e6e6;
+
+  --shadow-card:
+    0 1px 2px rgba(21, 25, 28, 0.05), 0 14px 30px -20px rgba(21, 25, 28, 0.28);
+  --shadow-float:
+    0 2px 4px rgba(21, 25, 28, 0.05), 0 26px 46px -22px rgba(21, 25, 28, 0.34);
+  --shadow-button:
+    0 1px 2px rgba(21, 25, 28, 0.2), 0 12px 26px -12px rgba(21, 25, 28, 0.55);
+  --shadow-button-hover:
+    0 2px 4px rgba(21, 25, 28, 0.2), 0 18px 32px -12px rgba(21, 25, 28, 0.55);
+  --shadow-panel: 0 40px 80px -40px rgba(20, 25, 28, 0.6);
+  --shadow-coin:
+    0 0 0 8px var(--bg-alt), 0 0 0 9px var(--line),
+    0 14px 26px -10px rgba(195, 66, 8, 0.5);
+  --shadow-icon: 0 18px 26px rgba(120, 60, 20, 0.22);
+
+  /* Step coins: the tube's orange, numbered in the serif's italic. */
+  --coin-fill: linear-gradient(
+    160deg,
+    var(--accent-light),
+    var(--accent) 55%,
+    var(--accent-deep)
+  );
+  --coin-font-style: italic;
+  --coin-axes: normal;
+
+  /* Eyebrows read like the labels on a sample tube. */
+  --eyebrow-font: var(--font-mono), ui-monospace, monospace;
+  --eyebrow-tracking: 0.14em;
+
+  --phone-frame: linear-gradient(
+    150deg,
+    #3c4043 0%,
+    #17191b 42%,
+    #2c3033 74%,
+    #101214 100%
+  );
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --page: min(1180px, 100% - 2 * var(--gutter));
+  --radius-xl: clamp(26px, 3.6vw, 40px);
+  --radius-lg: 22px;
+
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme {
+    --bg: #0f1214;
+    --bg-alt: #14181b;
+    --surface: #181c1f;
+    --ink: #eef1f2;
+    --ink-soft: #c3cacd;
+    --ink-faint: #9aa3a8;
+    --line: #262c30;
+    --accent: #f07a32;
+    --accent-light: #f5a04d;
+    --accent-deep: #ff9a52;
+    --accent-ink: #ff9a52;
+    --accent-wash: #2b1c12;
+    --accent-shade: #d5601c;
+    --on-accent: #0f1214;
+    --panel: #181d20;
+    --icon-ring: rgba(238, 241, 242, 0.14);
+
+    --glass: #3a4246;
+    --grid: rgba(238, 241, 242, 0.045);
+
+    --ios-green: #30d158;
+    --ios-yellow: #ffd60a;
+    --ios-red: #ff453a;
+    --ios-blue: #0a84ff;
+    --ios-bg: #000000;
+    --ios-cell: #1c1c1e;
+    --ios-label: #ffffff;
+    --ios-secondary: rgba(235, 235, 245, 0.6);
+    --ios-tertiary: rgba(235, 235, 245, 0.3);
+    --ios-separator: rgba(84, 84, 88, 0.6);
+    --ios-fill: rgba(118, 118, 128, 0.24);
+    --ios-chart-line: #3a3a3c;
+
+    --shadow-card:
+      0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 30px -18px rgba(0, 0, 0, 0.7);
+    --shadow-float:
+      0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 44px -20px rgba(0, 0, 0, 0.75);
+    --shadow-button:
+      0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 26px -12px rgba(0, 0, 0, 0.7);
+    --shadow-button-hover:
+      0 2px 4px rgba(0, 0, 0, 0.3), 0 18px 32px -12px rgba(0, 0, 0, 0.7);
+    --shadow-coin:
+      0 0 0 8px var(--bg-alt), 0 0 0 9px var(--line),
+      0 14px 26px -10px rgba(0, 0, 0, 0.6);
+    --shadow-icon: 0 18px 26px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Paint the overscroll area to match, and keep anchored headings clear of the sticky nav. */
+:global(html):has(.theme) {
+  background: #f7f6f2;
+  scroll-padding-top: 104px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(html):has(.theme) {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :global(html):has(.theme) {
+    background: #0f1214;
+  }
+}
+
+/* Base element styles use :where() so any component class overrides them. */
+:where(.theme) :where(h1, h2, h3) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+:where(.theme) :where(h3) {
+  letter-spacing: -0.005em;
+  line-height: 1.12;
+}
+
+/*
+ * Emphasis is the serif's italic in the tube's orange, set on a range
+ * bracket: a hairline with a tick at each end, the way a report marks a
+ * normal range. Drawn per line, so it follows a wrapped phrase.
+ */
+:where(.theme) :where(h1, h2, h3) em {
+  font-style: italic;
+  color: var(--accent-ink);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M1 1v10M1 6h198M199 1v10' fill='none' stroke='%23e2611a' stroke-width='1.5' vector-effect='non-scaling-stroke' opacity='.7'/%3E%3C/svg%3E")
+    0 88% / 100% 0.14em no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.04em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.theme) :where(h1, h2, h3) em {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M1 1v10M1 6h198M199 1v10' fill='none' stroke='%23f5a04d' stroke-width='1.5' vector-effect='non-scaling-stroke' opacity='.75'/%3E%3C/svg%3E");
+  }
+}
+
+:where(.theme) :where(p, li) {
+  text-wrap: pretty;
+}
+
+:where(.theme) :where(a) {
+  color: inherit;
+}
+
+:where(.theme) :where(a, button, input, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+:where(.theme) ::selection {
+  background: var(--accent-wash);
+  color: var(--ink);
+}
