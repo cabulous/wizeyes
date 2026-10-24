@@ -6,9 +6,11 @@ import styles from "./PhoneList.module.css";
 
 /**
  * Mirrors ListView.swift: Filter, Sort and + in the toolbar, a search field,
- * and one row per test (IndicatorLabelView): a star if it's marked as
- * important, the name, the latest result's date and value, and its last
- * three results as a small chart. The List and Help tabs below.
+ * and one row per test (IndicatorLabelView): an orange star if it's marked
+ * as important, the name, the latest result's date and its value in the
+ * monospace, and its last three results as a small chart. The List and Help
+ * tabs below (ContentView.swift). Cells sit on graph paper and the tint is
+ * the tube's orange, both from SharedUtill/Theme.swift.
  */
 export function PhoneList({
   tests,

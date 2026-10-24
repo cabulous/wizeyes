@@ -1,16 +1,16 @@
 /*
- * Lablog palette. The app itself draws with stock SwiftUI (system List,
- * Charts and colours, no theme file), so the page's character comes from
- * the icon: a white field, the tube's grey glass (#D2DADD) and its orange,
- * from the cap's light #F5A04D to the base's #C34208. The look is a lab
- * notebook: warm paper ruled in a fine grid, a sharp editorial serif, and
- * readings set in a monospace.
+ * Lablog palette, shared with the app: SharedUtill/Theme.swift uses the
+ * same token names and values. The character comes from the icon: a white
+ * field, the tube's grey glass (#D2DADD) and its orange, from the cap's
+ * light #F5A04D to the base's #C34208. The look is a lab notebook: warm
+ * paper ruled in a fine grid, a sharp editorial serif, and readings set in
+ * a monospace.
  *
- * The phone mock-ups mirror the app's stock iOS screens, so they use the
- * system colours the app uses (SharedUtill/Utils.swift): green for a value
- * in range, yellow outside it, and red for an out-of-range value being
- * typed (BatchEntryView.swift). Token names are shared by every app theme
- * (see AGENTS.md).
+ * The phone mock-ups mirror the app's screens, which use these tokens for
+ * paper, ink and the orange, and keep the iOS system colours for status
+ * (SharedUtill/Utils.swift): green for a value in range, yellow outside it,
+ * and red for an out-of-range value being typed (BatchEntryView.swift).
+ * Token names are shared by every app theme (see AGENTS.md).
  */
 .theme {
   --bg: #f7f6f2;
@@ -38,20 +38,25 @@
   /* The icon's glass, for chart lines, rules and the notebook grid. */
   --glass: #d2dadd;
   --grid: rgba(21, 25, 28, 0.055);
+  /* Theme.grid: about half --grid, as the app rules a whole screen with it. */
+  --paper-grid: rgba(21, 25, 28, 0.03);
 
-  /* iOS system colours, as the app's charts and widget use them. */
+  /*
+   * The app's type on iOS: the system serif (New York) for navigation
+   * titles, and SF Mono for readings (Theme.swift's .reading()).
+   */
+  --ios-serif: ui-serif, "New York", Georgia, serif;
+  --ios-mono: ui-monospace, "SF Mono", var(--font-mono), monospace;
+
+  /* iOS system colours, for status and the stock controls the app keeps. */
   --ios-green: #34c759;
   --ios-yellow: #ffcc00;
   --ios-red: #ff3b30;
-  --ios-blue: #007aff;
-  --ios-bg: #f2f2f7;
   --ios-cell: #ffffff;
-  --ios-label: #000000;
   --ios-secondary: rgba(60, 60, 67, 0.6);
   --ios-tertiary: rgba(60, 60, 67, 0.3);
   --ios-separator: rgba(60, 60, 67, 0.18);
   --ios-fill: rgba(118, 118, 128, 0.12);
-  --ios-chart-line: #e6e6e6;
 
   --shadow-card:
     0 1px 2px rgba(21, 25, 28, 0.05), 0 14px 30px -20px rgba(21, 25, 28, 0.28);
@@ -125,19 +130,16 @@
 
     --glass: #3a4246;
     --grid: rgba(238, 241, 242, 0.045);
+    --paper-grid: rgba(238, 241, 242, 0.025);
 
     --ios-green: #30d158;
     --ios-yellow: #ffd60a;
     --ios-red: #ff453a;
-    --ios-blue: #0a84ff;
-    --ios-bg: #000000;
     --ios-cell: #1c1c1e;
-    --ios-label: #ffffff;
     --ios-secondary: rgba(235, 235, 245, 0.6);
     --ios-tertiary: rgba(235, 235, 245, 0.3);
     --ios-separator: rgba(84, 84, 88, 0.6);
     --ios-fill: rgba(118, 118, 128, 0.24);
-    --ios-chart-line: #3a3a3c;
 
     --shadow-card:
       0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 30px -18px rgba(0, 0, 0, 0.7);

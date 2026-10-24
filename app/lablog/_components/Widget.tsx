@@ -4,8 +4,9 @@ import styles from "./Widget.module.css";
 
 /**
  * Mirrors IndicatorWidgets.swift: up to four tests in the small and medium
- * sizes, sorted by name, each with a dot for its latest result (green in
- * range, yellow out) and the value in bold.
+ * sizes, sorted by name, on the notebook's paper (Theme.paper). Each has a
+ * dot for its latest result (green in range, yellow out, glass with none)
+ * and the value, semibold, in the monospace.
  */
 export function Widget({
   tests,
@@ -25,7 +26,7 @@ export function Widget({
           return (
             <li key={test.name}>
               <span
-                className={`${styles.dot} ${last ? styles[status(last.value, test.low, test.high)] : ""}`}
+                className={`${styles.dot} ${styles[last ? status(last.value, test.low, test.high) : "none"]}`}
               />
               <span className={styles.name}>{test.name}</span>
               {last && <b>{formatValue(last.value)}</b>}

@@ -1,4 +1,4 @@
-/* A Home Screen widget: 170 × 170 pt small, 364 × 170 pt medium, on .background. */
+/* A Home Screen widget: 170 × 170 pt small, 364 × 170 pt medium, on Theme.paper. */
 .widget {
   --wpt: var(--widget-pt, 0.8px);
 
@@ -7,8 +7,8 @@
   height: calc(170 * var(--wpt));
   padding: calc(16 * var(--wpt));
   border-radius: calc(22 * var(--wpt));
-  background: var(--ios-cell);
-  color: var(--ios-label);
+  background: var(--bg);
+  color: var(--ink);
   box-shadow:
     0 0 0 0.5px var(--ios-separator),
     0 18px 36px -16px rgba(21, 25, 28, 0.35);
@@ -55,6 +55,11 @@
   background: var(--ios-yellow);
 }
 
+/* No result yet. */
+.none {
+  background: var(--glass);
+}
+
 .name {
   flex: 1;
   min-width: 0;
@@ -63,6 +68,9 @@
   text-overflow: ellipsis;
 }
 
+/* .footnote, semibold, .reading() */
 .widget b {
+  font-family: var(--ios-mono);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }

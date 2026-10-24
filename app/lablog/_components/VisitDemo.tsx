@@ -34,13 +34,15 @@ function withValue(test: SampleTest, text: string): SampleTest {
 }
 
 /**
- * Add Results with a thyroid panel (BatchEntryView.swift): one date, a row
- * per test with its unit, range and last value, and a field that turns red
- * when the value is out of range. Beside it, the focused test's detail
- * screen (DetailView.swift), whose chart takes the typed value as its
- * newest point. The decimal pad and its toolbar (chevrons to move between
- * rows) type into the focused field. Save shows the list with the new
- * results. Renders the filled-in visit without JavaScript.
+ * Add Results with a thyroid panel (BatchEntryView.swift): a serif title,
+ * one date, then a tube-label "Results" header over a row per test with its
+ * unit, range and last value, and a monospaced field that turns red when
+ * the value is out of range. The form sits on graph paper with orange
+ * buttons (SharedUtill/Theme.swift). Beside it, the focused test's detail
+ * screen (DetailView.swift), whose bracket and chart take the typed value
+ * as the latest result. The decimal pad and its toolbar (chevrons to move
+ * between rows) type into the focused field. Save shows the list with the
+ * new results. Renders the filled-in visit without JavaScript.
  */
 export function VisitDemo({
   header,
@@ -321,24 +323,40 @@ function Chevron({ turn }: { turn: number }) {
   );
 }
 
-/** DetailView.swift: latest value, the normal range, the chart and every result. */
+/**
+ * DetailView.swift, on graph paper under a serif title: the latest value in
+ * the monospace over the normal range's bracket, the range itself in orange,
+ * the chart, and every result.
+ */
 function Detail({ test }: { test: SampleTest }) {
   const last = latest(test)!;
-  const raw = (n: number) => (Number.isInteger(n) ? n.toFixed(1) : `${n}`);
-  const range =
-    test.high === undefined
-      ? `> ${raw(test.low)}`
-      : `${raw(test.low)} - ${raw(test.high)}`;
 
   return (
     <div className={styles.detail} aria-live="polite">
       <p className={styles.detailTitle}>{test.name}</p>
-      <p className={styles.detailValue}>
-        <strong>{formatValue(last.value)}</strong> {test.unit}
-      </p>
       <p className={styles.detailLabel}>Latest</p>
+      <p className={styles.detailValue}>
+        <strong>{formatValue(last.value)}</strong> <span>{test.unit}</span>
+      </p>
+      <RangeBracket low={test.low} high={test.high} value={last.value} />
       <p className={styles.detailRange}>
-        Normal Range: {range} {test.unit}
+        <span>
+          Normal Range: <b>{rangeText(test.low, test.high)}</b>
+        </span>{" "}
+        {test.unit}
+        <svg
+          className={styles.pencil}
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="10" cy="10" r="8.5" />
+          <path d="m7 13 .5-2 4.5-4.5 1.5 1.5-4.5 4.5Z" />
+        </svg>
       </p>
       <Chart
         className={styles.detailChart}
@@ -362,6 +380,46 @@ function Detail({ test }: { test: SampleTest }) {
             </li>
           ))}
       </ul>
+    </div>
+  );
+}
+
+/**
+ * RangeBracket in SharedUtill/Theme.swift: the normal range as a report
+ * marks it, an orange hairline with a tick at each end (one, when there's
+ * no upper bound), on a glass scale with the latest value as a ringed dot.
+ * The scale leaves half the range's span either side, and widens to keep an
+ * out-of-range value in view.
+ */
+function RangeBracket({
+  low,
+  high,
+  value,
+}: {
+  low: number;
+  high?: number;
+  value: number;
+}) {
+  const top = high ?? Math.max(low * 2, low + 1);
+  const span = Math.max(top - low, 0.0001);
+  const min = Math.min(low - span * 0.5, value - span * 0.1);
+  const max = Math.max(top + span * 0.5, value + span * 0.1);
+  const x = (v: number) =>
+    `${Math.min(Math.max((v - min) / (max - min), 0), 1) * 100}%`;
+
+  return (
+    <div className={styles.bracket} aria-hidden="true">
+      <span
+        className={`${styles.bracketRange} ${high === undefined ? styles.bracketOpen : ""}`}
+        style={{
+          left: x(low),
+          right: high === undefined ? 0 : `calc(100% - ${x(high)})`,
+        }}
+      />
+      <span
+        className={`${styles.bracketDot} ${styles[status(value, low, high)]}`}
+        style={{ left: x(value) }}
+      />
     </div>
   );
 }
