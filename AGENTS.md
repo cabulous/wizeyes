@@ -53,9 +53,7 @@ Redesigned so far:
   links to the policy at `/spendwise/privacy` from its privacy section and
   footer.
 - **Our Little Kitchen** at `/our-little-kitchen` (source app:
-  `cabulous/our-little-kitchen`). A new page with no old URL. It has no
-  `appStoreId` yet, so its download buttons fall back to the closing
-  `#download` section; add the ID once the listing is live.
+  `cabulous/our-little-kitchen`). A new page with no old URL.
 
 ## Rules
 
