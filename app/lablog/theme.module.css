@@ -52,15 +52,11 @@
   --ios-green: #34c759;
   --ios-yellow: #ffcc00;
   --ios-red: #ff3b30;
-  --ios-blue: #007aff;
-  --ios-bg: #f2f2f7;
   --ios-cell: #ffffff;
-  --ios-label: #000000;
   --ios-secondary: rgba(60, 60, 67, 0.6);
   --ios-tertiary: rgba(60, 60, 67, 0.3);
   --ios-separator: rgba(60, 60, 67, 0.18);
   --ios-fill: rgba(118, 118, 128, 0.12);
-  --ios-chart-line: #e6e6e6;
 
   --shadow-card:
     0 1px 2px rgba(21, 25, 28, 0.05), 0 14px 30px -20px rgba(21, 25, 28, 0.28);
@@ -139,15 +135,11 @@
     --ios-green: #30d158;
     --ios-yellow: #ffd60a;
     --ios-red: #ff453a;
-    --ios-blue: #0a84ff;
-    --ios-bg: #000000;
     --ios-cell: #1c1c1e;
-    --ios-label: #ffffff;
     --ios-secondary: rgba(235, 235, 245, 0.6);
     --ios-tertiary: rgba(235, 235, 245, 0.3);
     --ios-separator: rgba(84, 84, 88, 0.6);
     --ios-fill: rgba(118, 118, 128, 0.24);
-    --ios-chart-line: #3a3a3c;
 
     --shadow-card:
       0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 30px -18px rgba(0, 0, 0, 0.7);

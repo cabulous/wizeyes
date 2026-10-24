@@ -27,7 +27,10 @@ const visits = [commonTests, thyroidPanel].map((tests) => ({
   summary: `${tests.length} tests · Last: ${mediumDate(latest(tests[0])!.date)} · done ${tests[0].history.length}×`,
 }));
 
-/** BatchStartView.swift: past visits to repeat, or choose the tests yourself. */
+/**
+ * BatchStartView.swift: past visits to repeat, or choose the tests
+ * yourself, under tube-label headers on graph paper (SharedUtill/Theme.swift).
+ */
 function Batch() {
   return (
     <div className={styles.sheet}>
@@ -103,7 +106,10 @@ function Range() {
   );
 }
 
-/** DetailView.swift's chart, for Total Cholesterol. */
+/**
+ * DetailView.swift's chart, for Total Cholesterol: the serif title, the
+ * latest value in the monospace, and the normal range shaded in orange.
+ */
 function Trend() {
   const test = commonTests[0];
   const last = latest(test)!;
@@ -125,7 +131,10 @@ function Trend() {
   );
 }
 
-/** PresetupIndicatorListView.swift, searched for the keyword "thyroid". */
+/**
+ * PresetupIndicatorListView.swift, searched for the keyword "thyroid": stock
+ * cells on graph paper, with selected tests and "Create" in the orange tint.
+ */
 function Presets() {
   const rows: { name: string; state: "selected" | "added" | "open" }[] = [
     { name: "Free T4", state: "added" },
@@ -140,7 +149,7 @@ function Presets() {
         <Glyph name="search" />
         <span>thyroid</span>
       </div>
-      <ul className={styles.group}>
+      <ul className={`${styles.group} ${styles.stock}`}>
         {rows.map((row) => (
           <li key={row.name} className={styles[row.state]}>
             <span className={styles.ellipsis}>{row.name}</span>
@@ -150,7 +159,7 @@ function Presets() {
           </li>
         ))}
       </ul>
-      <ul className={styles.group}>
+      <ul className={`${styles.group} ${styles.stock}`}>
         <li className={styles.create}>Create thyroid</li>
       </ul>
     </div>
