@@ -1,0 +1,53 @@
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Color(red: 0.9, green: 0.9, blue: 0.9), 2 pt, round caps and joins. */
+.line {
+  fill: none;
+  stroke: var(--ios-chart-line);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Circle().strokeBorder(lineWidth: 2): a ring, open in the middle. */
+.point {
+  fill: var(--ios-cell);
+  stroke-width: 2;
+  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.in {
+  stroke: var(--ios-green);
+}
+
+.out {
+  stroke: var(--ios-yellow);
+}
+
+.axes line {
+  stroke: var(--ios-separator);
+  stroke-width: 0.6;
+}
+
+.axes .dashed {
+  stroke-dasharray: 2 2;
+}
+
+.axes text {
+  fill: var(--ios-secondary);
+  font-size: 11px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans),
+    system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .point {
+    transition: none;
+  }
+}

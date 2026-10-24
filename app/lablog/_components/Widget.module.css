@@ -1,0 +1,68 @@
+/* A Home Screen widget: 170 × 170 pt small, 364 × 170 pt medium, on .background. */
+.widget {
+  --wpt: var(--widget-pt, 0.8px);
+
+  display: flex;
+  flex-direction: column;
+  height: calc(170 * var(--wpt));
+  padding: calc(16 * var(--wpt));
+  border-radius: calc(22 * var(--wpt));
+  background: var(--ios-cell);
+  color: var(--ios-label);
+  box-shadow:
+    0 0 0 0.5px var(--ios-separator),
+    0 18px 36px -16px rgba(21, 25, 28, 0.35);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans),
+    system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.small {
+  width: calc(170 * var(--wpt));
+}
+
+.medium {
+  width: calc(364 * var(--wpt));
+}
+
+.widget ul {
+  list-style: none;
+}
+
+.widget li {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--wpt));
+  padding-block: calc(5 * var(--wpt));
+  font-size: calc(13 * var(--wpt));
+  line-height: 1.25;
+}
+
+/* Circle().frame(width: 7, height: 7) */
+.dot {
+  flex: none;
+  width: calc(7 * var(--wpt));
+  height: calc(7 * var(--wpt));
+  border-radius: 50%;
+}
+
+.in {
+  background: var(--ios-green);
+}
+
+.out {
+  background: var(--ios-yellow);
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.widget b {
+  font-variant-numeric: tabular-nums;
+}

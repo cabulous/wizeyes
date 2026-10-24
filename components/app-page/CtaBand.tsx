@@ -36,8 +36,13 @@ export function CtaBand({
         <p className={styles.body}>{app.cta.body}</p>
         <AppStoreButton app={app} />
         <p className={styles.meta}>
-          {app.pricing} · {app.platforms.join(" & ")} · Requires {app.minimumOS}{" "}
-          or later
+          {[
+            app.pricing,
+            app.platforms.join(" & "),
+            `Requires ${app.minimumOS} or later`,
+          ]
+            .filter(Boolean)
+            .join(" · ")}
         </p>
       </div>
     </section>

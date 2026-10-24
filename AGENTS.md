@@ -40,7 +40,7 @@ app/md/[slug]/route.ts          Markdown twin of each app page, served at /<slug
 app/robots.ts, app/sitemap.ts
 ```
 
-Legacy pages: `app/{benefittracker,familyassets,koda,lablog,medicalrecord,solobooks}/`
+Legacy pages: `app/{benefittracker,familyassets,koda,medicalrecord,solobooks}/`
 are the old privacy-only pages. They are linked from App Store listings, so
 their URLs must keep working until each app is moved to the new model.
 
@@ -54,6 +54,9 @@ Redesigned so far:
   footer.
 - **Our Little Kitchen** at `/our-little-kitchen` (source app:
   `cabulous/our-little-kitchen`). A new page with no old URL.
+- **Lablog** at `/lablog` (source app: `cabulous/Lablog`). Like Spendwise,
+  the slug didn't change: the old policy URL now opens the marketing page,
+  and the policy lives at `/lablog/privacy`.
 
 ## Rules
 
@@ -63,27 +66,30 @@ Redesigned so far:
 - **No prices or version numbers.** Both change with every release (prices
   also vary by region); the App Store listing is the source of truth.
   Describe how people pay (`pricing`) and link to the store instead, in
-  visible copy, Markdown and structured data alike.
+  visible copy, Markdown and structured data alike. Lablog leaves `pricing`
+  out and says nothing about payment.
 - **The app and the site share one design.** Each app's Swift theme
   (`Theme.swift`, or `Palette.swift` in Our Little Kitchen) uses the same
   tokens as its `app/<slug>/theme.module.css` (Savings Room's clay,
   Spendwise's sticker look, Our Little Kitchen's pink paper), and the phone
-  mock-up and demos mirror the app's views. Only stock iOS screens from other
-  apps, like the Shortcuts automation, use `--ios-*` system colours. When an
-  app's look changes, update `_components/` to match, citing the Swift file
-  each one mirrors.
+  mock-up and demos mirror the app's views. Only stock iOS screens use
+  `--ios-*` system colours: other apps' screens, like the Shortcuts
+  automation, and Lablog's own, since it draws with stock SwiftUI and has no
+  theme file. Its page takes its lab-notebook look (graph paper, the tube's
+  orange) from the icon instead. When an app's look changes, update
+  `_components/` to match, citing the Swift file each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
   policy itself changes, and bump `lastUpdated` when you do.
 - **Never break a URL.** Moving a page means adding a redirect in
   `next.config.js`.
 - **Content renders without JavaScript.** Crawlers and AI assistants read the
   HTML. Use server components; reach for `"use client"` only for real
-  interaction (see `RoomDemo.tsx`, `CookDemo.tsx`), and render meaningful
+  interaction (see `RoomDemo.tsx`, `CookDemo.tsx`, `VisitDemo.tsx`), and render meaningful
   initial state.
 - **Copy formatting** is limited to `*emphasis*`, `**strong**` and
   `[links](/path)`. In headings, `*emphasis*` renders in the app's accent
   style: Savings Room's coral italic, Spendwise's pink highlighter, Our
-  Little Kitchen's crayon underline.
+  Little Kitchen's crayon underline, Lablog's range bracket.
 - **Styling** uses CSS Modules and the tokens in `app/<slug>/theme.module.css`.
   Base element styles are wrapped in `:where()` so any component class wins.
 - **Every visual** supports dark mode (`prefers-color-scheme`) and
@@ -110,12 +116,14 @@ each app restyles them from its `app/<slug>/theme.module.css`:
 | `--font-display`, `--font-sans`                                                                | Set by the app's layout via `next/font`                                                          |
 | `--page`, `--gutter`, `--radius-xl`, `--radius-lg`                                             | Layout                                                                                           |
 | `--phone-frame`, `--phone-shadow`                                                              | Optional: `PhoneFrame`'s body colour and shadow (it has defaults)                                |
+| `--eyebrow-font`, `--eyebrow-tracking`                                                         | Optional: section eyebrows' font and letter spacing (default: the body font, 0.12em)             |
 
 Headings, emphasis and other element defaults are styled in each theme file,
 so apps can differ in type as well as colour. A theme may also define tokens
 only its own `_components/` use, such as Our Little Kitchen's `--font-hand`
-(Caveat, for handwritten notes) and its doodle colours; shared sections never
-read those. Our Little Kitchen's crayon doodles (leaves, sparkles, hearts and
+(Caveat, for handwritten notes) and its doodle colours, or Lablog's
+`--font-mono` (Geist Mono, for readings) and its `--ios-*` colours; shared
+sections never read those. Our Little Kitchen's crayon doodles (leaves, sparkles, hearts and
 handwritten notes) live in `_components/Doodles.tsx`, and the app draws
 the same marks from the same paths in `Design/Doodles.swift`; `DoodleCluster` groups
 them around a main visual, passed in through `CookDemo`'s `decoration` and
