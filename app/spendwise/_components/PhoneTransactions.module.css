@@ -1,6 +1,6 @@
 /*
- * The app's sticker look (Theme.swift): mint page, cream cards with ink
- * outlines and hard offset shadows, pink tint, green income. It shares its
+ * The app's sticker look (Theme.swift): mint page, cream cards with soft ink
+ * outlines and faint hard offset shadows, pink tint, green income. It shares its
  * colours with this page, so the tokens are the Spendwise theme's own.
  */
 .screen {
@@ -53,17 +53,18 @@
 }
 
 /*
- * StickerCard: a 2pt ink outline and a 4pt hard shadow, which the card
- * reserves room for on its trailing and bottom edges.
+ * StickerCard: a 1.5pt soft ink outline and a 3pt faint hard shadow, which
+ * the card reserves room for on its trailing and bottom edges. The chart
+ * sits 16pt below the controls (SearchableTransactionList).
  */
 .cashflow {
-  margin: calc(8 * var(--pt)) calc(20 * var(--pt)) 0 calc(16 * var(--pt));
+  margin: calc(16 * var(--pt)) calc(19 * var(--pt)) 0 calc(16 * var(--pt));
   padding: calc(12 * var(--pt)) calc(16 * var(--pt));
   border-radius: calc(20 * var(--pt));
   background: var(--surface);
   box-shadow:
-    0 0 0 calc(2 * var(--pt)) var(--ink),
-    calc(4 * var(--pt)) calc(4 * var(--pt)) 0 0 var(--offset);
+    0 0 0 calc(1.5 * var(--pt)) var(--outline-color),
+    calc(3 * var(--pt)) calc(3 * var(--pt)) 0 0 var(--offset);
 }
 
 .sentence {
@@ -168,12 +169,22 @@
   --mark: var(--mark-amount);
 }
 
-/* Month headers are eyebrows: a pink dot and tracked caps. */
+/*
+ * The list fades out over its top 24pt, so rows scrolling up under the
+ * chart dissolve instead of being cut off.
+ */
+.scroll {
+  margin-top: calc(8 * var(--pt));
+  -webkit-mask-image: linear-gradient(transparent, #000 calc(24 * var(--pt)));
+  mask-image: linear-gradient(transparent, #000 calc(24 * var(--pt)));
+}
+
+/* Month headers are eyebrows: a pink dot and tracked caps (stickerSliceHeader). */
 .sectionHeader {
   display: flex;
   align-items: center;
   gap: calc(7 * var(--pt));
-  padding: calc(16 * var(--pt)) calc(20 * var(--pt)) calc(8 * var(--pt));
+  padding: calc(18 * var(--pt)) calc(16 * var(--pt)) calc(10 * var(--pt));
   font-size: calc(12 * var(--pt));
   font-weight: 700;
   letter-spacing: calc(1.3 * var(--pt));
@@ -189,29 +200,42 @@
   background: var(--accent);
 }
 
-/* Each transaction is its own sticker card: 2pt outline, 3pt shadow. */
+/*
+ * A month's transactions share one sticker card, a slice per row, with a
+ * hairline between rows inset 16pt like their text (StickerCardSlice).
+ */
 .list {
-  display: grid;
-  gap: calc(10 * var(--pt));
   margin: 0 calc(19 * var(--pt)) 0 calc(16 * var(--pt));
-}
-
-.row {
-  display: grid;
-  gap: calc(10 * var(--pt));
-  padding: calc(12 * var(--pt)) calc(14 * var(--pt));
-  border-radius: calc(18 * var(--pt));
+  border-radius: calc(20 * var(--pt));
   background: var(--surface);
   box-shadow:
-    0 0 0 calc(2 * var(--pt)) var(--ink),
+    0 0 0 calc(1.5 * var(--pt)) var(--outline-color),
     calc(3 * var(--pt)) calc(3 * var(--pt)) 0 0 var(--offset);
+  overflow: hidden;
+}
+
+/* TransactionItem: details 4pt apart under the merchant, the amount 12pt below. */
+.row {
+  position: relative;
+  display: grid;
+  gap: calc(12 * var(--pt));
+  padding: calc(16 * var(--pt));
+}
+
+.row + .row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: calc(16 * var(--pt));
+  border-top: calc(1 * var(--pt)) solid var(--line);
 }
 
 .rowTop,
 .rowBottom {
   display: flex;
   justify-content: space-between;
-  gap: calc(8 * var(--pt));
+  gap: calc(12 * var(--pt));
 }
 
 .rowTop {
@@ -224,7 +248,7 @@
 
 .rowText {
   display: grid;
-  gap: calc(2 * var(--pt));
+  gap: calc(4 * var(--pt));
 }
 
 .merchant {
