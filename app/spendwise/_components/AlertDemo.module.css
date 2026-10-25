@@ -47,14 +47,14 @@
     transform: translate(-1px, -1px);
     box-shadow:
       var(--outline),
-      5px 5px 0 0 var(--offset);
+      4px 4px 0 0 var(--offset);
   }
 }
 
 .tabs button[aria-pressed="true"] {
   background: var(--accent);
   color: var(--on-accent);
-  transform: translate(3px, 3px);
+  transform: translate(2px, 2px);
   box-shadow:
     var(--outline),
     1px 1px 0 0 var(--offset);
@@ -80,7 +80,7 @@
   width: 14px;
   height: 14px;
   border-radius: 4px;
-  box-shadow: 0 0 0 1.5px var(--ink);
+  box-shadow: var(--outline-thin);
 }
 
 .markAmount {
@@ -154,7 +154,7 @@
   background: var(--mark-card);
   color: var(--ink);
   font-weight: 700;
-  box-shadow: 0 0 0 2px var(--ink);
+  box-shadow: var(--outline-thin);
 }
 
 .emailFrom {
@@ -211,12 +211,12 @@
   font-weight: 700;
   white-space: nowrap;
   box-shadow:
-    0 0 0 2px var(--ink),
-    2px 2px 0 0 var(--offset);
+    var(--outline-thin),
+    1.5px 1.5px 0 0 var(--offset);
   rotate: -3deg;
 }
 
-/* The shortcut's result, in the system look the app uses. */
+/* The shortcut's result: the system's dialog over the app's sticker card. */
 .result {
   padding: 14px 16px 16px;
   font-family:
@@ -249,14 +249,20 @@
   font-weight: 600;
 }
 
-/* TransactionItem: merchant and date on top, amount and card below. */
+/*
+ * AddTransactionIntent's AddedTransactionSnippet: TransactionItem on a
+ * sticker card, merchant and date on top, amount and card 12pt below.
+ */
 .item {
   display: grid;
-  gap: 14px;
-  margin-top: 12px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  gap: 12px;
+  margin: 12px 2px 0 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow:
+    var(--outline),
+    2px 2px 0 0 var(--offset);
   font-size: 0.9375rem;
 }
 
@@ -275,6 +281,7 @@
 
 .itemMerchant {
   min-width: 0;
+  font-weight: 600;
   overflow-wrap: anywhere;
 }
 
@@ -284,7 +291,7 @@
 }
 
 .itemAmount {
-  font-weight: 700;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
 

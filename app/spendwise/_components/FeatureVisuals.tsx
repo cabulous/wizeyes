@@ -124,7 +124,10 @@ function CardPayment() {
 function Budget() {
   return (
     <div className={styles.budget}>
-      <p className={styles.budgetName}>Food &amp; Drinks</p>
+      <p className={styles.itemRow}>
+        <span className={styles.budgetName}>Food &amp; Drinks</span>
+        <Icon name="chevronRight" size={14} strokeWidth={3} />
+      </p>
       <span className={styles.progress}>
         <span style={{ width: "78.5%" }} />
       </span>
@@ -166,11 +169,11 @@ function Summary() {
         {rows.map((row) => (
           <li key={row.name}>
             <span className={`${styles.dot} ${row.className}`} />
-            <span>
+            <span className={styles.totalName}>
               {row.name}
               <span className={styles.caption}>{row.share.toFixed(1)}%</span>
             </span>
-            <span>{row.total}</span>
+            <span className={styles.totalAmount}>{row.total}</span>
           </li>
         ))}
       </ul>
@@ -182,36 +185,42 @@ function Csv() {
   const header = [
     "Date",
     "Amount",
-    "Currency Symbol",
+    "Currency",
     "Merchant",
     "Card",
     "Issuer",
     "Type",
     "Category",
     "Tags",
+    "Rate",
+    "Rate Currency",
   ];
   const rows = [
     [
       "2026-10-20",
       "37.32",
-      "$",
+      "CAD",
       "Walmart",
       "Joint Visa",
       "RBC",
       "debit",
       "Shopping",
       "",
+      "",
+      "",
     ],
     [
       "2026-10-19",
       "25.0",
-      "$",
+      "CAD",
       "Uber Eats",
       "TD Cash Back",
       "TD",
       "debit",
       "Food & Drinks",
       "Restaurant",
+      "",
+      "",
     ],
   ];
   return (

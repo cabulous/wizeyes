@@ -6,8 +6,9 @@ import styles from "./PhoneTransactions.module.css";
  * The app's Transactions tab (TranslationListByMonth, CashflowChart,
  * TransactionListGrouped, TransactionItem, ContentView's tab bar), rebuilt
  * in HTML with sample data. It follows the app's sticker restyle (Theme.swift:
- * StickerCard, Eyebrow, SpendWiseAppearance); bank logos beside card names
- * are left out. The first row is the alert just added.
+ * StickerCard, StickerCardSlice, Eyebrow, SpendWiseAppearance): the month's
+ * rows share one card. Bank logos beside card names are left out. The first
+ * row is the alert just added.
  *
  * Like the hero's alert, the sample is set on one fixed day, Tuesday 20
  * October 2026, so its relative labels (Today, Friday) always agree with
@@ -44,8 +45,8 @@ const rows: Row[] = [
     merchant: "Payroll",
     detail: "Income",
     date: "Friday",
-    // TransactionItem formats amounts with "%.2f": no thousands separator.
-    amount: "+ $2600.00",
+    // TransactionItem formats amounts as currency, with thousands separators.
+    amount: "+ $2,600.00",
     income: true,
     card: "RBC Chequing",
   },
@@ -138,38 +139,40 @@ export function PhoneTransactions() {
         </div>
       </div>
 
-      <p className={styles.sectionHeader}>October 2026</p>
-      <div className={styles.list}>
-        {rows.map((row) => (
-          <div
-            key={row.merchant}
-            className={`${styles.row} ${row.isNew ? styles.newRow : ""}`}
-          >
-            <div className={styles.rowTop}>
-              <span className={styles.rowText}>
-                <span className={styles.merchant}>{row.merchant}</span>
-                <span className={styles.detail}>{row.detail}</span>
-              </span>
-              <span className={styles.date}>{row.date}</span>
+      <div className={styles.scroll}>
+        <p className={styles.sectionHeader}>October 2026</p>
+        <div className={styles.list}>
+          {rows.map((row) => (
+            <div
+              key={row.merchant}
+              className={`${styles.row} ${row.isNew ? styles.newRow : ""}`}
+            >
+              <div className={styles.rowTop}>
+                <span className={styles.rowText}>
+                  <span className={styles.merchant}>{row.merchant}</span>
+                  <span className={styles.detail}>{row.detail}</span>
+                </span>
+                <span className={styles.date}>{row.date}</span>
+              </div>
+              <div className={styles.rowBottom}>
+                <span
+                  className={row.income ? styles.amountIncome : styles.amount}
+                >
+                  {row.amount}
+                </span>
+                <span className={styles.card}>
+                  {row.card}
+                  {row.paid && (
+                    <>
+                      <Icon name="arrowRight" size="0.8em" strokeWidth={2.6} />
+                      {row.paid}
+                    </>
+                  )}
+                </span>
+              </div>
             </div>
-            <div className={styles.rowBottom}>
-              <span
-                className={row.income ? styles.amountIncome : styles.amount}
-              >
-                {row.amount}
-              </span>
-              <span className={styles.card}>
-                {row.card}
-                {row.paid && (
-                  <>
-                    <Icon name="arrowRight" size="0.8em" strokeWidth={2.6} />
-                    {row.paid}
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <div className={styles.tabBar}>

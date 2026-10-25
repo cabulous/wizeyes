@@ -1,7 +1,8 @@
 /*
  * Spendwise palette, sampled from the app icon: a pink piggy bank drawn in
  * thick navy outlines on pale mint. The look follows the icon too: flat
- * colour, crisp 2px outlines and hard offset shadows, like a sticker.
+ * colour, outlines and hard offset shadows, like a sticker, kept soft so the
+ * words and amounts they frame stay the boldest thing (Theme.swift).
  * Token names are shared by every app theme (see AGENTS.md).
  */
 .theme {
@@ -46,23 +47,30 @@
   --chart-3: var(--mark-card);
 
   /*
-   * Hard offset shadows: navy in light mode, black in dark. Components use
-   * --offset for every sticker shadow, so dark mode only swaps this one value.
+   * Sticker outlines and hard offset shadows, as Theme.swift's swOutline,
+   * swOffset and swAccentOffset: the ink softened, a faint navy shadow in
+   * light mode and a black one in dark. Components use these for every
+   * sticker, so dark mode only swaps the colours. --outline is a card's
+   * 1.5px ring (StickerStroke.regular), --outline-thin a chip's, tile's or
+   * bar's 1px one (StickerStroke.thin).
    */
-  --offset: var(--ink);
-  --outline: 0 0 0 2px var(--ink);
-  --shadow-card: var(--outline), 4px 4px 0 0 var(--offset);
-  --shadow-float: var(--outline), 7px 7px 0 0 var(--offset);
-  --shadow-button: var(--outline), 3px 3px 0 0 var(--accent);
-  --shadow-button-hover: var(--outline), 5px 5px 0 0 var(--accent);
-  --shadow-panel: 8px 8px 0 0 var(--accent);
+  --outline-color: rgba(0, 37, 55, 0.42);
+  --offset: rgba(0, 37, 55, 0.14);
+  --offset-accent: color-mix(in srgb, var(--accent) 50%, transparent);
+  --outline: 0 0 0 1.5px var(--outline-color);
+  --outline-thin: 0 0 0 1px var(--outline-color);
+  --shadow-card: var(--outline), 3px 3px 0 0 var(--offset);
+  --shadow-float: var(--outline), 5px 5px 0 0 var(--offset);
+  --shadow-button: var(--outline), 2px 2px 0 0 var(--offset-accent);
+  --shadow-button-hover: var(--outline), 4px 4px 0 0 var(--offset-accent);
+  --shadow-panel: 5px 5px 0 0 var(--offset-accent);
   --shadow-coin:
-    0 0 0 2px var(--ink), 3px 3px 0 2px var(--offset), 0 0 0 9px var(--bg-alt);
-  --shadow-icon: 4px 5px 0 var(--offset);
+    var(--outline), 2px 2px 0 1.5px var(--offset), 0 0 0 9px var(--bg-alt);
+  --shadow-icon: 3px 4px 0 var(--offset);
 
   /* PhoneFrame's body and shadow: a navy sticker like the icon. */
   --phone-frame: var(--ink);
-  --phone-shadow: 0 0 0 2.5px var(--ink), 8px 8px 0 0 var(--offset);
+  --phone-shadow: 0 0 0 2.5px var(--ink), 6px 6px 0 0 var(--offset);
 
   /* Step coins: flat pink stickers, numbered in the heading weight. */
   --coin-fill: var(--accent);
@@ -121,8 +129,9 @@
     /* Not --ink, which turns light: the phone stays dark, outlined in --ink. */
     --phone-frame: #021521;
 
-    /* The shadow tokens above pick this up, and --ink for their outlines. */
-    --offset: #000;
+    /* The shadow tokens above pick these up. */
+    --outline-color: rgba(232, 246, 243, 0.3);
+    --offset: rgba(0, 0, 0, 0.45);
   }
 }
 

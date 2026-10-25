@@ -59,7 +59,7 @@
   padding: 12px 14px;
   border-radius: 14px;
   background: var(--surface);
-  box-shadow: 0 0 0 2px var(--ink);
+  box-shadow: var(--outline);
   font-weight: 600;
 }
 
@@ -79,7 +79,7 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  box-shadow: 0 0 0 2px var(--ink);
+  box-shadow: var(--outline-thin);
 }
 
 .mailIcon {
@@ -114,7 +114,7 @@
   margin-top: 14px;
   border-radius: 14px;
   background: var(--surface);
-  box-shadow: 0 0 0 2px var(--ink);
+  box-shadow: var(--outline);
   color: var(--ink-faint);
   list-style: none;
 }
@@ -171,8 +171,8 @@
   font-size: 0.875rem;
   font-weight: 700;
   box-shadow:
-    0 0 0 2px var(--ink),
-    2px 2px 0 0 var(--offset);
+    var(--outline-thin),
+    1.5px 1.5px 0 0 var(--offset);
   rotate: -1.5deg;
 }
 
@@ -200,7 +200,7 @@
   border-radius: 14px;
   background: var(--surface);
   box-shadow:
-    0 0 0 2px var(--ink),
+    var(--outline),
     3px 3px 0 0 var(--offset);
 }
 
@@ -230,8 +230,8 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   box-shadow:
-    0 0 0 2px var(--ink),
-    2px 2px 0 0 var(--offset);
+    var(--outline-thin),
+    1.5px 1.5px 0 0 var(--offset);
   rotate: -4deg;
 }
 
@@ -241,16 +241,25 @@
   gap: 10px;
 }
 
+/* BudgetList's row: the category name leads, a chevron trails. */
+.budget .itemRow {
+  align-items: center;
+}
+
+.budget svg {
+  flex: none;
+  color: var(--ink-faint);
+}
+
 .budgetName {
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-weight: 760;
+  font-weight: 600;
 }
 
 .progress {
   height: 12px;
   border-radius: 999px;
   background: var(--bg-alt);
-  box-shadow: inset 0 0 0 1.5px var(--ink);
+  box-shadow: inset var(--outline-thin);
   overflow: hidden;
 }
 
@@ -259,7 +268,6 @@
   height: 100%;
   border-radius: inherit;
   background: var(--accent);
-  box-shadow: inset 0 0 0 1.5px var(--ink);
 }
 
 .spent {
@@ -291,12 +299,12 @@
   height: 14px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--ink) 12%, transparent);
-  box-shadow: 0 0 0 2px var(--ink);
+  box-shadow: var(--outline);
   overflow: hidden;
 }
 
 .stack span + span {
-  box-shadow: -2px 0 0 0 var(--ink);
+  box-shadow: -1.5px 0 0 0 var(--outline-color);
 }
 
 .c1 {
@@ -324,7 +332,14 @@
   gap: 10px;
 }
 
-.totals li > :last-child {
+/* TotalRow: the name leads on the left, the amount, heavy, on the right. */
+.totalName {
+  min-width: 0;
+  font-weight: 600;
+}
+
+.totalAmount {
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
 
@@ -332,7 +347,7 @@
   width: 12px;
   height: 12px;
   border-radius: 4px;
-  box-shadow: 0 0 0 1.5px var(--ink);
+  box-shadow: var(--outline-thin);
 }
 
 /* Export: the CSV file */

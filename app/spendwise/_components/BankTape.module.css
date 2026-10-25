@@ -14,8 +14,8 @@
   margin-left: -6%;
   padding-block: 14px;
   box-shadow:
-    0 2px 0 0 var(--ink),
-    0 -2px 0 0 var(--ink);
+    0 1.5px 0 0 var(--outline-color),
+    0 -1.5px 0 0 var(--outline-color);
   overflow: clip;
 }
 
