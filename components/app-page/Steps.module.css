@@ -42,7 +42,7 @@
   margin-bottom: 26px;
   border-radius: 50%;
   background: var(--coin-fill);
-  color: var(--on-accent);
+  color: var(--on-coin, var(--on-accent));
   font-family: var(--font-display), Georgia, serif;
   font-size: 2rem;
   font-style: var(--coin-font-style);

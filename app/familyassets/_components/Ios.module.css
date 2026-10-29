@@ -1,0 +1,172 @@
+/*
+ * Stock iOS, as Family Assets uses it: an inset-grouped List on the system
+ * grouped background, large navigation titles, the system tint and a tab
+ * bar. Sized in iOS points via the frame's --pt.
+ */
+.screen {
+  background: var(--ios-bg);
+  color: var(--ios-label);
+}
+
+.nav {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(16 * var(--pt));
+  height: calc(44 * var(--pt));
+  padding-inline: calc(16 * var(--pt)) calc(20 * var(--pt));
+  color: var(--ios-blue);
+  font-size: calc(17 * var(--pt));
+}
+
+.navEnd {
+  display: flex;
+  gap: calc(20 * var(--pt));
+  margin-left: auto;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(3 * var(--pt));
+  margin-left: calc(-6 * var(--pt));
+}
+
+.largeTitle {
+  flex: none;
+  padding: 0 calc(16 * var(--pt)) calc(8 * var(--pt));
+  font-size: calc(34 * var(--pt));
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: calc(12 * var(--pt));
+}
+
+.header {
+  margin: calc(18 * var(--pt)) calc(32 * var(--pt)) calc(6 * var(--pt));
+  color: var(--ios-secondary);
+  font-size: calc(13 * var(--pt));
+  text-transform: uppercase;
+}
+
+.footer {
+  margin: calc(6 * var(--pt)) calc(32 * var(--pt)) 0;
+  color: var(--ios-secondary);
+  font-size: calc(13 * var(--pt));
+}
+
+.group {
+  margin-inline: calc(16 * var(--pt));
+  border-radius: calc(10 * var(--pt));
+  background: var(--ios-cell);
+  list-style: none;
+  overflow: hidden;
+}
+
+.group + .group {
+  margin-top: calc(20 * var(--pt));
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(10 * var(--pt));
+  min-height: calc(44 * var(--pt));
+  padding: calc(11 * var(--pt)) calc(16 * var(--pt));
+  font-size: calc(17 * var(--pt));
+}
+
+/* The hairline between rows, inset from the leading edge like a List's. */
+.cell + .cell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: calc(16 * var(--pt));
+  border-top: 0.5px solid var(--ios-separator);
+}
+
+.caption {
+  color: var(--ios-secondary);
+  font-size: calc(12 * var(--pt));
+  font-weight: 600;
+}
+
+.secondary {
+  color: var(--ios-secondary);
+}
+
+.chevron {
+  margin-left: auto;
+  color: var(--ios-tertiary);
+}
+
+/* A Section's VStack of stats: caption over value, 30 pt apart. */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(4 * var(--pt)) calc(30 * var(--pt));
+}
+
+.stat {
+  display: grid;
+}
+
+.stat strong {
+  font-size: calc(20 * var(--pt));
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.tabs {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(4, 1fr);
+  height: calc(83 * var(--pt));
+  padding-top: calc(7 * var(--pt));
+  border-top: 0.5px solid var(--ios-separator);
+  background: var(--ios-bar);
+  color: var(--ios-gray-tab);
+  font-size: calc(10 * var(--pt));
+  font-weight: 500;
+}
+
+.tabs span {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: calc(3 * var(--pt));
+}
+
+.tabs svg {
+  width: calc(26 * var(--pt));
+  height: calc(26 * var(--pt));
+}
+
+.tabActive {
+  color: var(--ios-blue);
+}
+
+.green {
+  color: var(--ios-green);
+}
+
+.orange {
+  color: var(--ios-orange);
+}
+
+.blue {
+  color: var(--ios-blue);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}

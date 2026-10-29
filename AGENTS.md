@@ -40,7 +40,7 @@ app/md/[slug]/route.ts          Markdown twin of each app page, served at /<slug
 app/robots.ts, app/sitemap.ts
 ```
 
-Legacy pages: `app/{benefittracker,familyassets,koda,medicalrecord,solobooks}/`
+Legacy pages: `app/{benefittracker,koda,medicalrecord,solobooks}/`
 are the old privacy-only pages. They are linked from App Store listings, so
 their URLs must keep working until each app is moved to the new model.
 
@@ -57,6 +57,9 @@ Redesigned so far:
 - **Lablog** at `/lablog` (source app: `cabulous/Lablog`). Like Spendwise,
   the slug didn't change: the old policy URL now opens the marketing page,
   and the policy lives at `/lablog/privacy`.
+- **Family Assets** at `/familyassets` (source app: `cabulous/FamilyAssets`).
+  The slug didn't change either: the old policy URL now opens the marketing
+  page, and the policy lives at `/familyassets/privacy`.
 
 ## Rules
 
@@ -77,6 +80,9 @@ Redesigned so far:
   are only for what is still stock iOS: other apps' screens, like the
   Shortcuts automation, and the system controls and status colours an app
   keeps (Lablog's green and yellow results, its search field and keyboard).
+  Family Assets has no theme of its own: the app is stock iOS, so its
+  mock-ups use `--ios-*` throughout and the site's palette comes from the
+  icon alone (cream paper, the pig's pink, the gold coin).
   When an app's look changes, update `_components/` to match, citing the
   Swift file each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
@@ -85,12 +91,13 @@ Redesigned so far:
   `next.config.js`.
 - **Content renders without JavaScript.** Crawlers and AI assistants read the
   HTML. Use server components; reach for `"use client"` only for real
-  interaction (see `RoomDemo.tsx`, `CookDemo.tsx`, `VisitDemo.tsx`), and render meaningful
+  interaction (see `RoomDemo.tsx`, `CookDemo.tsx`, `VisitDemo.tsx`, `RebalanceDemo.tsx`), and render meaningful
   initial state.
 - **Copy formatting** is limited to `*emphasis*`, `**strong**` and
   `[links](/path)`. In headings, `*emphasis*` renders in the app's accent
   style: Savings Room's coral italic, Spendwise's pink highlighter, Our
-  Little Kitchen's crayon underline, Lablog's range bracket.
+  Little Kitchen's crayon underline, Lablog's range bracket, Family Assets'
+  double rule (the line under a total).
 - **Styling** uses CSS Modules and the tokens in `app/<slug>/theme.module.css`.
   Base element styles are wrapped in `:where()` so any component class wins.
 - **Every visual** supports dark mode (`prefers-color-scheme`) and
@@ -114,6 +121,7 @@ each app restyles them from its `app/<slug>/theme.module.css`:
 | `--shadow-card`, `--shadow-float`                                                              | Card at rest and lifted (include any outline here)                                               |
 | `--shadow-button`, `--shadow-button-hover`, `--shadow-panel`, `--shadow-coin`, `--shadow-icon` | Download button, privacy panel, step coins, app icon drop shadow (`filter: drop-shadow()` value) |
 | `--coin-fill`, `--coin-font-style`, `--coin-axes`                                              | Step coins: background, and the number's `font-style` and `font-variation-settings`              |
+| `--on-coin`                                                                                    | Optional: the step number's colour, for a coin too light for `--on-accent` (Family Assets' gold) |
 | `--font-display`, `--font-sans`                                                                | Set by the app's layout via `next/font`                                                          |
 | `--page`, `--gutter`, `--radius-xl`, `--radius-lg`                                             | Layout                                                                                           |
 | `--phone-frame`, `--phone-shadow`                                                              | Optional: `PhoneFrame`'s body colour and shadow (it has defaults)                                |
@@ -124,7 +132,9 @@ so apps can differ in type as well as colour. A theme may also define tokens
 only its own `_components/` use, such as Our Little Kitchen's `--font-hand`
 (Caveat, for handwritten notes) and its doodle colours, or Lablog's
 `--font-mono` (Geist Mono, for readings), its `--paper-grid`, `--ios-serif`
-and `--ios-mono` (the app's graph paper and type) and its `--ios-*` colours; shared
+and `--ios-mono` (the app's graph paper and type) and its `--ios-*` colours,
+or Family Assets' `--coin` shades, its ledger `--rule` and `--rule-red`
+and its `--ios-*` colours; shared
 sections never read those. Our Little Kitchen's crayon doodles (leaves, sparkles, hearts and
 handwritten notes) live in `_components/Doodles.tsx`, and the app draws
 the same marks from the same paths in `Design/Doodles.swift`; `DoodleCluster` groups

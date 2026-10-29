@@ -1,4 +1,5 @@
 import type { AppContent } from "@/content/types";
+import { familyAssets } from "./familyassets/app";
 import { lablog } from "./lablog/app";
 import { ourLittleKitchen } from "./our-little-kitchen/app";
 import { savingsRoom } from "./savings-room/app";
@@ -13,6 +14,7 @@ export const apps: AppContent[] = [
   spendwise,
   ourLittleKitchen,
   lablog,
+  familyAssets,
 ];
 
 export function getApp(slug: string): AppContent | undefined {
