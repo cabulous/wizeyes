@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { SFSymbol } from "@/content/apps/familyassets/app";
+import type { SFSymbol } from "@/content/apps/family-assets/app";
 
 type Name =
   | SFSymbol

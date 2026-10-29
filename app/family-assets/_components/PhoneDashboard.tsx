@@ -3,7 +3,7 @@ import {
   debts,
   netWorthHistory,
   portfolioReturn,
-} from "@/content/apps/familyassets/app";
+} from "@/content/apps/family-assets/app";
 import { PhoneFrame } from "@/components/app-page/PhoneFrame";
 import {
   changeLabel,

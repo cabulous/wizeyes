@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type ReactNode } from "react";
-import { rebalancePortfolio } from "@/content/apps/familyassets/app";
+import { rebalancePortfolio } from "@/content/apps/family-assets/app";
 import { PhoneFrame } from "@/components/app-page/PhoneFrame";
 import { Glyph } from "./Glyph";
 import { moneyISO, percent, rebalance } from "./money";

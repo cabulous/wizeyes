@@ -1,4 +1,4 @@
-import { assets, debts } from "@/content/apps/familyassets/app";
+import { assets, debts } from "@/content/apps/family-assets/app";
 import { Coin } from "./Coin";
 import { mediumDate, money, netWorth, totalAssets, totalDebts } from "./money";
 import { PhoneDashboard } from "./PhoneDashboard";

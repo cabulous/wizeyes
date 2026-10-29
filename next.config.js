@@ -2,10 +2,26 @@
 const nextConfig = {
   async redirects() {
     return [
-      // The privacy policy's previous address; App Store listings may still link here.
+      // Privacy policies' previous addresses; App Store listings may still link here.
       {
         source: "/taxsavingtracker",
         destination: "/savings-room/privacy",
+        permanent: true,
+      },
+      {
+        source: "/familyassets",
+        destination: "/family-assets/privacy",
+        permanent: true,
+      },
+      // Family Assets' policy and Markdown twin were briefly published under the old slug.
+      {
+        source: "/familyassets/privacy",
+        destination: "/family-assets/privacy",
+        permanent: true,
+      },
+      {
+        source: "/familyassets.md",
+        destination: "/family-assets.md",
         permanent: true,
       },
     ];

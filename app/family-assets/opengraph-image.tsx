@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import path from "path";
 import { ImageResponse } from "next/og";
-import { familyAssets as app } from "@/content/apps/familyassets/app";
+import { familyAssets as app } from "@/content/apps/family-assets/app";
 import { googleFont as font } from "@/lib/og";
 import { plainText } from "@/lib/markdown";
 

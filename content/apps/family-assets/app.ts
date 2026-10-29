@@ -16,7 +16,7 @@ import type { AppContent } from "@/content/types";
  * to the Frankfurter API and can be turned off.
  */
 export const familyAssets: AppContent = {
-  slug: "familyassets",
+  slug: "family-assets",
   name: "Family Assets",
   storeName: "Family Assets",
   tagline:
@@ -42,7 +42,7 @@ export const familyAssets: AppContent = {
   platforms: ["iPhone", "iPad"],
   minimumOS: "iOS 17.0",
   icon: {
-    src: "/apps/familyassets/icon-512.png",
+    src: "/apps/family-assets/icon-512.png",
     alt: "Family Assets app icon: a smiling pink pig hugging a little house and holding up a gold coin with a rising arrow",
   },
   themeColor: "#F6F1E5",
