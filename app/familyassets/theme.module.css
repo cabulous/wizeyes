@@ -1,0 +1,229 @@
+/*
+ * Family Assets palette, sampled from the icon: its cream paper #F6F1E5,
+ * the pig's pink #FFCBBC and pencil outline #D06E5D, and the gold coin
+ * #FECE6F. The look is the family books: a ledger on warm paper, a bookish
+ * serif, and headings whose emphasis is ruled off twice, like the total at
+ * the foot of a balance sheet.
+ *
+ * The app itself is stock iOS: no theme of its own, the system tint and
+ * system colours (FamilyAssets/View). So the phone mock-ups use the --ios-*
+ * tokens below throughout, and the site's colours stay around them.
+ * Token names are shared by every app theme (see AGENTS.md).
+ */
+.theme {
+  --bg: #f6f1e5;
+  --bg-alt: #efe7d6;
+  --surface: #fffcf6;
+  --ink: #2b1f1b;
+  --ink-soft: #5c4b44;
+  --ink-faint: #6e5c54;
+  --line: #e5dac6;
+  --accent: #d06e5d;
+  --accent-light: #ffcbbc;
+  --accent-deep: #b4523f;
+  --accent-ink: #a5473a;
+  --accent-wash: #fbe1d7;
+  --accent-shade: #943d30;
+  --on-accent: #ffffff;
+  --panel: #2f221d;
+  --on-panel: #f8efe6;
+  /* Fixed across light and dark: the panel is dark in both. */
+  --panel-accent: #ffb8a6;
+  --panel-glow: #d06e5d;
+  --panel-em: var(--coin);
+  --icon-ring: rgba(43, 31, 27, 0.1);
+
+  /* The icon's gold coin, for the step coins, sliders and illustrations. */
+  --coin: #fece6f;
+  --coin-light: #ffe6a6;
+  --coin-deep: #dc9d36;
+  --coin-ink: #6b4310;
+  --on-coin: var(--coin-ink);
+  /* Ledger rules: the faint lines of account-book paper. */
+  --rule: rgba(43, 31, 27, 0.08);
+  --rule-red: rgba(208, 110, 93, 0.45);
+
+  /* iOS system colours, light. The app keeps every one of them. */
+  --ios-bg: #f2f2f7;
+  --ios-cell: #ffffff;
+  --ios-label: #000000;
+  --ios-secondary: rgba(60, 60, 67, 0.6);
+  --ios-tertiary: rgba(60, 60, 67, 0.3);
+  --ios-separator: rgba(60, 60, 67, 0.18);
+  --ios-fill: rgba(118, 118, 128, 0.12);
+  --ios-bar: rgba(249, 249, 249, 0.94);
+  --ios-blue: #007aff;
+  --ios-green: #34c759;
+  --ios-orange: #ff9500;
+  --ios-gray: #8e8e93;
+  --ios-gray-tab: #999999;
+  /* Swift Charts' default series colours, in order. */
+  --ios-chart-1: #007aff;
+  --ios-chart-2: #34c759;
+  --ios-chart-3: #ff9500;
+
+  --shadow-card:
+    0 1px 2px rgba(90, 50, 30, 0.06), 0 14px 30px -18px rgba(90, 50, 30, 0.28);
+  --shadow-float:
+    0 2px 4px rgba(90, 50, 30, 0.06), 0 24px 44px -20px rgba(90, 50, 30, 0.34);
+  --shadow-button:
+    0 1px 2px rgba(43, 31, 27, 0.2), 0 12px 26px -12px rgba(43, 31, 27, 0.55);
+  --shadow-button-hover:
+    0 2px 4px rgba(43, 31, 27, 0.2), 0 18px 32px -12px rgba(43, 31, 27, 0.55);
+  --shadow-panel: 0 40px 80px -40px rgba(47, 34, 29, 0.6);
+  --shadow-coin:
+    0 0 0 8px var(--bg-alt), inset 0 0 0 4px rgba(220, 157, 54, 0.55),
+    inset 0 -6px 10px rgba(180, 110, 20, 0.25),
+    0 14px 26px -10px rgba(180, 110, 20, 0.55);
+  --shadow-icon: 0 18px 26px rgba(150, 80, 50, 0.24);
+
+  /* Step coins: the icon's gold coin, numbered in the serif. */
+  --coin-fill: radial-gradient(
+    circle at 34% 28%,
+    var(--coin-light),
+    var(--coin) 48%,
+    var(--coin-deep)
+  );
+  --coin-font-style: normal;
+  --coin-axes: normal;
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --page: min(1180px, 100% - 2 * var(--gutter));
+  --radius-xl: clamp(28px, 4vw, 44px);
+  --radius-lg: 24px;
+
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme {
+    --bg: #1a1513;
+    --bg-alt: #211a17;
+    --surface: #261e1b;
+    --ink: #f8efe6;
+    --ink-soft: #d8cbc1;
+    --ink-faint: #ab9d93;
+    --line: #3b2f2a;
+    --accent: #e8836f;
+    --accent-light: #ffb8a6;
+    --accent-deep: #ffa48f;
+    --accent-ink: #ffa48f;
+    --accent-wash: #3d2620;
+    --accent-shade: #cf6c58;
+    --on-accent: #1a1513;
+    --panel: #2a1f1b;
+    --icon-ring: rgba(248, 239, 230, 0.14);
+
+    --coin: #f2c25f;
+    --coin-light: #ffdf94;
+    --coin-deep: #c98a26;
+    --rule: rgba(248, 239, 230, 0.07);
+    --rule-red: rgba(232, 131, 111, 0.4);
+
+    --ios-bg: #000000;
+    --ios-cell: #1c1c1e;
+    --ios-label: #ffffff;
+    --ios-secondary: rgba(235, 235, 245, 0.6);
+    --ios-tertiary: rgba(235, 235, 245, 0.3);
+    --ios-separator: rgba(84, 84, 88, 0.6);
+    --ios-fill: rgba(118, 118, 128, 0.24);
+    --ios-bar: rgba(22, 22, 22, 0.94);
+    --ios-blue: #0a84ff;
+    --ios-green: #30d158;
+    --ios-orange: #ff9f0a;
+    --ios-gray: #8e8e93;
+    --ios-gray-tab: #757575;
+    --ios-chart-1: #0a84ff;
+    --ios-chart-2: #30d158;
+    --ios-chart-3: #ff9f0a;
+
+    --shadow-card:
+      0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 30px -18px rgba(0, 0, 0, 0.7);
+    --shadow-float:
+      0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 44px -20px rgba(0, 0, 0, 0.75);
+    --shadow-button:
+      0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 26px -12px rgba(0, 0, 0, 0.7);
+    --shadow-button-hover:
+      0 2px 4px rgba(0, 0, 0, 0.3), 0 18px 32px -12px rgba(0, 0, 0, 0.7);
+    --shadow-coin:
+      0 0 0 8px var(--bg-alt), inset 0 0 0 4px rgba(150, 95, 20, 0.5),
+      inset 0 -6px 10px rgba(120, 70, 10, 0.3),
+      0 14px 26px -10px rgba(0, 0, 0, 0.6);
+    --shadow-icon: 0 18px 26px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Paint the overscroll area to match, and keep anchored headings clear of the sticky nav. */
+:global(html):has(.theme) {
+  background: #f6f1e5;
+  scroll-padding-top: 104px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(html):has(.theme) {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :global(html):has(.theme) {
+    background: #1a1513;
+  }
+}
+
+/* Base element styles use :where() so any component class overrides them. */
+:where(.theme) :where(h1, h2, h3) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+:where(.theme) :where(h3) {
+  letter-spacing: -0.005em;
+  line-height: 1.15;
+}
+
+/*
+ * Emphasis is the serif's italic in the accent, ruled off twice beneath:
+ * the double line a bookkeeper draws under a total. Drawn per line, so it
+ * follows a wrapped phrase.
+ */
+:where(.theme) :where(h1, h2, h3) em {
+  --ruling: color-mix(in srgb, var(--accent) 75%, transparent);
+
+  font-style: italic;
+  color: var(--accent-ink);
+  background:
+    linear-gradient(var(--ruling), var(--ruling)) 0 94% / 100% 0.04em no-repeat,
+    linear-gradient(var(--ruling), var(--ruling)) 0 calc(94% - 0.09em) / 100%
+      0.04em no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.04em;
+}
+
+:where(.theme) :where(p, li) {
+  text-wrap: pretty;
+}
+
+:where(.theme) :where(a) {
+  color: inherit;
+}
+
+:where(.theme) :where(a, button, input, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+:where(.theme) ::selection {
+  background: var(--accent-wash);
+  color: var(--ink);
+}

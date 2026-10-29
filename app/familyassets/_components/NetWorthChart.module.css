@@ -1,0 +1,59 @@
+.chart {
+  position: relative;
+}
+
+.svg {
+  display: block;
+  overflow: visible;
+}
+
+.grid {
+  stroke: var(--ios-separator);
+  stroke-width: 0.5;
+}
+
+.label {
+  fill: var(--ios-secondary);
+  font-size: 10px;
+  font-family: inherit;
+}
+
+.line {
+  fill: none;
+  stroke: var(--ios-chart-1);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The scrubbing RuleMark, in .secondary. */
+.rule {
+  stroke: var(--ios-secondary);
+  stroke-width: 1;
+}
+
+/* The annotation: date, net worth and the split, on the background, 6 pt padding. */
+.callout {
+  position: absolute;
+  top: calc(-58 * var(--pt));
+  display: grid;
+  gap: calc(2 * var(--pt));
+  padding: calc(6 * var(--pt));
+  border-radius: calc(6 * var(--pt));
+  background: var(--ios-cell);
+  box-shadow: 0 0 0 0.5px var(--ios-separator);
+  color: var(--ios-label);
+  font-size: calc(16 * var(--pt));
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.calloutDate {
+  color: var(--ios-secondary);
+  font-size: calc(12 * var(--pt));
+}
+
+.calloutSplit {
+  color: var(--ios-secondary);
+  font-size: calc(11 * var(--pt));
+}

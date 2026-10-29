@@ -6,7 +6,6 @@ import { readLegalDoc } from "@/lib/content";
 // Pages not yet moved to the content/apps model. Remove an entry when its app gets a redesigned page.
 const legacyPages = [
   "/benefittracker",
-  "/familyassets",
   "/koda",
   "/koda/terms",
   "/medicalrecord",

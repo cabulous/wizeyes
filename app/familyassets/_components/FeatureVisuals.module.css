@@ -1,0 +1,365 @@
+/*
+ * Pieces of the app's stock iOS screens, at about 0.86 points per pixel.
+ * --pt also sizes the shared Ios.module.css classes used inside.
+ */
+.card,
+.stackCards,
+.ruler,
+.file {
+  --pt: 0.86px;
+
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans),
+    system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.card,
+.stackCards {
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--ios-bg);
+  color: var(--ios-label);
+  box-shadow: inset 0 0 0 0.5px var(--ios-separator);
+}
+
+.card {
+  display: grid;
+  gap: 2px;
+}
+
+.big {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardTitle {
+  margin-bottom: 8px;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-block: 12px 26px;
+  padding: 2px;
+  border-radius: 8px;
+  background: var(--ios-fill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.segmented span {
+  padding-block: 3px;
+}
+
+.on {
+  border-radius: 6px;
+  background: var(--ios-cell);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .on {
+    background: #636366;
+  }
+}
+
+.header {
+  margin: 14px 14px 5px;
+  color: var(--ios-secondary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.stackCards > .header:first-child {
+  margin-top: 2px;
+}
+
+.list {
+  border-radius: 10px;
+  background: var(--ios-cell);
+  list-style: none;
+  overflow: hidden;
+}
+
+.gap {
+  margin-top: 14px;
+}
+
+.row,
+.activity {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 14px;
+}
+
+.row + .row::before,
+.activity + .activity::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 14px;
+  border-top: 0.5px solid var(--ios-separator);
+}
+
+.activity {
+  display: grid;
+  gap: 3px;
+}
+
+.activityHead {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ios-secondary);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+}
+
+.activityHead span:last-child {
+  text-transform: none;
+}
+
+.inflow {
+  color: var(--ios-green);
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+
+/* .buttonStyle(.bordered), .controlSize(.small): a tinted capsule. */
+.renew {
+  flex: none;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--ios-fill);
+  color: var(--ios-blue);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.trailing {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.gray {
+  color: var(--ios-gray);
+}
+
+/* A switch, on, in the system green. */
+.toggle {
+  flex: none;
+  position: relative;
+  width: 44px;
+  height: 27px;
+  margin-left: auto;
+  border-radius: 999px;
+  background: var(--ios-green);
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+/* The rate ruler: the site's own diagram, on ledger paper. */
+.ruler {
+  padding: 16px 18px 12px;
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(transparent 0 25px, var(--rule) 25px 26px),
+    var(--bg);
+  box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+}
+
+.rulerHead {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.0625rem;
+}
+
+.rulerHead span:last-child {
+  color: var(--ink-faint);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.scale {
+  position: relative;
+  height: 102px;
+  border-bottom: 2px solid var(--ink);
+}
+
+/* Rates at or above the portfolio return: the costlier side. */
+.zone {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--ios-orange) 14%, transparent) 0 6px,
+    transparent 6px 12px
+  );
+}
+
+.return {
+  position: absolute;
+  top: -2px;
+  bottom: -8px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+  gap: 4px;
+  padding-right: 6px;
+  border-right: 2px dashed var(--ios-green);
+  color: var(--ink-soft);
+  font-size: 0.6875rem;
+  line-height: 1;
+  white-space: nowrap;
+  /* The line marks the return; its label reads to the left of it. */
+  translate: calc(-100% + 1px) 0;
+}
+
+.return b {
+  color: var(--ink);
+}
+
+.pin {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  translate: -7px 0;
+  padding-right: 4px;
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pin i {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--ios-gray);
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.above {
+  color: var(--ios-orange);
+}
+
+.above i {
+  border-color: var(--ios-orange);
+}
+
+/* The last pin sits near the end of the ruler, so its label goes to its left. */
+.pin:last-child {
+  flex-direction: row-reverse;
+  padding: 0 0 0 4px;
+  translate: calc(-100% + 7px) 0;
+}
+
+.rulerAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+  color: var(--ink-faint);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.file {
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px var(--line);
+}
+
+.fileName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fileName svg {
+  color: var(--ios-blue);
+}
+
+.csv {
+  display: grid;
+  padding: 0;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    var(--surface) 0 26px,
+    var(--bg-alt) 26px 52px
+  );
+  color: var(--ink);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.6875rem;
+  line-height: 26px;
+}
+
+.csv span {
+  padding-inline: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.csv span:first-child {
+  color: var(--accent-ink);
+  font-weight: 600;
+}

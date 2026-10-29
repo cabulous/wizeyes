@@ -1,0 +1,179 @@
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 560px);
+  padding-block: 24px 40px;
+}
+
+/*
+ * Account-book paper: faint blue-grey rules every line, and a red margin
+ * rule down the left, the way a household ledger is printed.
+ */
+/* In front of the phone, low on its left, so the amounts show. */
+.sheet {
+  position: absolute;
+  z-index: 1;
+  bottom: 7%;
+  left: -8%;
+  width: 46%;
+  padding: 14px 16px 18px 26px;
+  border-radius: 3px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 17px,
+      var(--rule-red) 17px,
+      var(--rule-red) 18px,
+      transparent 18px
+    ),
+    repeating-linear-gradient(transparent 0 19px, var(--rule) 19px 20px),
+    var(--surface);
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px var(--line);
+  color: var(--ink-soft);
+  font-size: 0.6875rem;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+  rotate: -5deg;
+  animation: settle 900ms 120ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.sheetHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--ink);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 0.9375rem;
+}
+
+.sheetHead span:last-child {
+  color: var(--ink-faint);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.625rem;
+}
+
+.ledgerTitle {
+  margin-top: 4px;
+  color: var(--accent-ink);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ledger {
+  list-style: none;
+}
+
+.ledger li,
+.subtotal,
+.bottomLine {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.ledger li span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtotal {
+  border-top: 1px solid var(--ink-faint);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.subtotal span:first-child {
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+/* The total, ruled off twice beneath, like the headings' emphasis. */
+.bottomLine {
+  margin-top: 6px;
+  padding-bottom: 2px;
+  border-bottom: 3px double var(--accent);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.phone {
+  position: relative;
+  translate: 12% 0;
+  rotate: 2deg;
+  animation: settlePhone 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.coin {
+  position: absolute;
+  top: 0;
+  right: -2%;
+  width: 104px;
+  rotate: 10deg;
+  filter: drop-shadow(0 14px 16px rgba(180, 110, 20, 0.3));
+  animation: settle 900ms 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+}
+
+/* The phone keeps its offset while it settles. */
+@keyframes settlePhone {
+  from {
+    opacity: 0;
+    translate: 12% 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .phone,
+  .coin {
+    animation: none;
+  }
+}
+
+@media (max-width: 920px) {
+  .stage {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .stage {
+    padding-block: 12px 32px;
+  }
+
+  .sheet {
+    bottom: 5%;
+    left: -2%;
+    width: 52%;
+    padding: 10px 10px 14px 22px;
+    font-size: 0.5625rem;
+    line-height: 17px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 14px,
+        var(--rule-red) 14px,
+        var(--rule-red) 15px,
+        transparent 15px
+      ),
+      repeating-linear-gradient(transparent 0 16px, var(--rule) 16px 17px),
+      var(--surface);
+  }
+
+  .coin {
+    width: 72px;
+    right: 0;
+  }
+}
