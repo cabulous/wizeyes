@@ -1,5 +1,5 @@
 import type { AppContent } from "@/content/types";
-import { familyAssets } from "./familyassets/app";
+import { familyAssets } from "./family-assets/app";
 import { lablog } from "./lablog/app";
 import { ourLittleKitchen } from "./our-little-kitchen/app";
 import { savingsRoom } from "./savings-room/app";

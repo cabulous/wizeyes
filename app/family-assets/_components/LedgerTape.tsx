@@ -1,4 +1,4 @@
-import { extras, ledger } from "@/content/apps/familyassets/app";
+import { extras, ledger } from "@/content/apps/family-assets/app";
 import { Glyph } from "./Glyph";
 import styles from "./LedgerTape.module.css";
 

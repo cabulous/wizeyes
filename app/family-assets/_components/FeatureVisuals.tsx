@@ -6,7 +6,7 @@ import {
   indexFundActivities,
   netWorthHistory,
   portfolioReturn,
-} from "@/content/apps/familyassets/app";
+} from "@/content/apps/family-assets/app";
 import { Glyph } from "./Glyph";
 import { changeLabel, mediumDate, money, netWorth, percent } from "./money";
 import { NetWorthChart } from "./NetWorthChart";

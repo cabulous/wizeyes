@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, Manrope } from "next/font/google";
-import { familyAssets as app } from "@/content/apps/familyassets/app";
+import { familyAssets as app } from "@/content/apps/family-assets/app";
 import { AppFooter } from "@/components/app-page/AppFooter";
 import { AppNav } from "@/components/app-page/AppNav";
 import styles from "./theme.module.css";
@@ -24,8 +24,8 @@ const sans = Manrope({
 // Shared by the app page and its policy page; each page adds its own title and description.
 export const metadata: Metadata = {
   icons: {
-    icon: "/apps/familyassets/icon-64.png",
-    apple: "/apps/familyassets/icon-180.png",
+    icon: "/apps/family-assets/icon-64.png",
+    apple: "/apps/family-assets/icon-180.png",
   },
   twitter: { card: "summary_large_image" },
   // Safari's Smart App Banner.

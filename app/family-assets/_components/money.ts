@@ -3,7 +3,7 @@ import {
   currency,
   debts,
   netWorthHistory,
-} from "@/content/apps/familyassets/app";
+} from "@/content/apps/family-assets/app";
 
 const decimal = (value: number, digits = 2, min = digits) =>
   value.toLocaleString("en-US", {

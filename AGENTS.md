@@ -57,9 +57,8 @@ Redesigned so far:
 - **Lablog** at `/lablog` (source app: `cabulous/Lablog`). Like Spendwise,
   the slug didn't change: the old policy URL now opens the marketing page,
   and the policy lives at `/lablog/privacy`.
-- **Family Assets** at `/familyassets` (source app: `cabulous/FamilyAssets`).
-  The slug didn't change either: the old policy URL now opens the marketing
-  page, and the policy lives at `/familyassets/privacy`.
+- **Family Assets** at `/family-assets` (source app: `cabulous/FamilyAssets`).
+  Its old URL `/familyassets` redirects to `/family-assets/privacy`.
 
 ## Rules
 

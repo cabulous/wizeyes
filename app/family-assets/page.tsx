@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { extras, familyAssets as app } from "@/content/apps/familyassets/app";
+import { extras, familyAssets as app } from "@/content/apps/family-assets/app";
 import { CtaBand } from "@/components/app-page/CtaBand";
 import { Faq } from "@/components/app-page/Faq";
 import { FeatureGrid } from "@/components/app-page/FeatureGrid";
