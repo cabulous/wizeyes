@@ -36,7 +36,7 @@ export const savingsRoom: AppContent = {
   pricing: "One-time purchase",
   icon: {
     src: "/apps/savings-room/icon-512.png",
-    alt: "Savings Room app icon: a cream piggy bank with a red maple leaf on a coral tile",
+    alt: "Savings Room app icon: a smiling pink pig holding a wallet beside a piggy bank with a red maple leaf, gold coins and a rising bar chart",
   },
   themeColor: "#EB7C6C",
 
