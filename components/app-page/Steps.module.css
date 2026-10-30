@@ -30,6 +30,8 @@
 .step {
   position: relative;
   display: grid;
+  /* Keep each title under its coin when the bodies differ in length. */
+  align-content: start;
   justify-items: center;
   text-align: center;
 }

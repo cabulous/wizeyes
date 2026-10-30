@@ -1,6 +1,7 @@
 /*
- * Pieces of the app's stock iOS screens, at about 0.86 points per pixel.
- * --pt also sizes the shared Ios.module.css classes used inside.
+ * Pieces of the app's screens in its Theme.swift (see Ios.module.css), at
+ * about 0.86 points per pixel. --pt also sizes the shared Ios.module.css
+ * classes used inside.
  */
 .card,
 .stackCards,
@@ -23,9 +24,9 @@
 .stackCards {
   padding: 14px;
   border-radius: 16px;
-  background: var(--ios-bg);
+  background: var(--bg);
   color: var(--ios-label);
-  box-shadow: inset 0 0 0 0.5px var(--ios-separator);
+  box-shadow: inset 0 0 0 0.5px var(--line);
 }
 
 .card {
@@ -33,17 +34,21 @@
   gap: 2px;
 }
 
+/* The net worth: Theme.serif(.largeTitle), ruled off twice (with ios.ruled). */
 .big {
+  margin-bottom: 4px;
   font-size: 1.75rem;
-  font-weight: 700;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
 }
 
+/* The investment's name, as its serif navigation title. */
 .cardTitle {
   margin-bottom: 8px;
-  font-size: 1.125rem;
-  font-weight: 700;
+  color: var(--ink);
+  font-family: var(--ios-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .segmented {
@@ -64,7 +69,7 @@
 
 .on {
   border-radius: 6px;
-  background: var(--ios-cell);
+  background: var(--surface);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   font-weight: 600;
 }
@@ -75,10 +80,13 @@
   }
 }
 
+/* ledgerHeader(): spaced capitals in the accent ink. */
 .header {
   margin: 14px 14px 5px;
-  color: var(--ios-secondary);
-  font-size: 0.75rem;
+  color: var(--accent-ink);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -88,7 +96,7 @@
 
 .list {
   border-radius: 10px;
-  background: var(--ios-cell);
+  background: var(--surface);
   list-style: none;
   overflow: hidden;
 }
@@ -114,7 +122,7 @@
   top: 0;
   right: 0;
   left: 14px;
-  border-top: 0.5px solid var(--ios-separator);
+  border-top: 0.5px solid var(--line);
 }
 
 .activity {
@@ -125,7 +133,7 @@
 .activityHead {
   display: flex;
   justify-content: space-between;
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
   font-size: 0.6875rem;
   text-transform: uppercase;
 }
@@ -153,13 +161,13 @@
   min-width: 0;
 }
 
-/* .buttonStyle(.bordered), .controlSize(.small): a tinted capsule. */
+/* .buttonStyle(.bordered), .controlSize(.small): a capsule in a wash of the tint. */
 .renew {
   flex: none;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--ios-fill);
-  color: var(--ios-blue);
+  background: color-mix(in srgb, var(--accent-ink) 15%, transparent);
+  color: var(--accent-ink);
   font-size: 0.8125rem;
   font-weight: 500;
 }
@@ -169,11 +177,11 @@
   white-space: nowrap;
 }
 
-.gray {
-  color: var(--ios-gray);
+.faint {
+  color: var(--ink-faint);
 }
 
-/* A switch, on, in the system green. */
+/* A switch, on, in the coin's gold (.tint(Theme.coinDeep)). */
 .toggle {
   flex: none;
   position: relative;
@@ -181,7 +189,7 @@
   height: 27px;
   margin-left: auto;
   border-radius: 999px;
-  background: var(--ios-green);
+  background: var(--coin-deep);
 }
 
 .toggle::after {
@@ -282,7 +290,7 @@
   flex: none;
   width: 14px;
   height: 14px;
-  border: 3px solid var(--ios-gray);
+  border: 3px solid var(--ink-faint);
   border-radius: 50%;
   background: var(--surface);
 }
@@ -335,7 +343,7 @@
 }
 
 .fileName svg {
-  color: var(--ios-blue);
+  color: var(--accent-ink);
 }
 
 .csv {

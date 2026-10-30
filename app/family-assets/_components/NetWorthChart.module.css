@@ -8,31 +8,31 @@
 }
 
 .grid {
-  stroke: var(--ios-separator);
+  stroke: var(--line);
   stroke-width: 0.5;
 }
 
 .label {
-  fill: var(--ios-secondary);
+  fill: var(--ink-faint);
   font-size: 10px;
   font-family: inherit;
 }
 
 .line {
   fill: none;
-  stroke: var(--ios-chart-1);
+  stroke: var(--accent);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-/* The scrubbing RuleMark, in .secondary. */
+/* The scrubbing RuleMark, in Theme.inkFaint. */
 .rule {
-  stroke: var(--ios-secondary);
+  stroke: var(--ink-faint);
   stroke-width: 1;
 }
 
-/* The annotation: date, net worth and the split, on the background, 6 pt padding. */
+/* The annotation: date, net worth and the split, on --surface inside a --line border, 6 pt padding. */
 .callout {
   position: absolute;
   top: calc(-58 * var(--pt));
@@ -40,8 +40,8 @@
   gap: calc(2 * var(--pt));
   padding: calc(6 * var(--pt));
   border-radius: calc(6 * var(--pt));
-  background: var(--ios-cell);
-  box-shadow: 0 0 0 0.5px var(--ios-separator);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line);
   color: var(--ios-label);
   font-size: calc(16 * var(--pt));
   line-height: 1.15;
@@ -49,11 +49,11 @@
 }
 
 .calloutDate {
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
   font-size: calc(12 * var(--pt));
 }
 
 .calloutSplit {
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
   font-size: calc(11 * var(--pt));
 }

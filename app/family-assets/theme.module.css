@@ -5,9 +5,11 @@
  * serif, and headings whose emphasis is ruled off twice, like the total at
  * the foot of a balance sheet.
  *
- * The app itself is stock iOS: no theme of its own, the system tint and
- * system colours (FamilyAssets/View). So the phone mock-ups use the --ios-*
- * tokens below throughout, and the site's colours stay around them.
+ * The app uses the same tokens, light and dark, in FamilyAssets/View/
+ * Theme.swift: its lists on the paper, rows on --surface, serif titles,
+ * the accent ink as its tint and the net worth ruled off twice. So the
+ * phone mock-ups use these tokens too; the --ios-* ones below are only
+ * for what the app still draws as stock iOS.
  * Token names are shared by every app theme (see AGENTS.md).
  */
 .theme {
@@ -43,24 +45,16 @@
   --rule: rgba(43, 31, 27, 0.08);
   --rule-red: rgba(208, 110, 93, 0.45);
 
-  /* iOS system colours, light. The app keeps every one of them. */
-  --ios-bg: #f2f2f7;
-  --ios-cell: #ffffff;
+  /*
+   * What the app keeps from iOS, light: the label colour for body text,
+   * the segmented control's fill, the status colours (green gains, orange
+   * warnings) and New York, the serif Theme.serif() sets titles in.
+   */
   --ios-label: #000000;
-  --ios-secondary: rgba(60, 60, 67, 0.6);
-  --ios-tertiary: rgba(60, 60, 67, 0.3);
-  --ios-separator: rgba(60, 60, 67, 0.18);
   --ios-fill: rgba(118, 118, 128, 0.12);
-  --ios-bar: rgba(249, 249, 249, 0.94);
-  --ios-blue: #007aff;
   --ios-green: #34c759;
   --ios-orange: #ff9500;
-  --ios-gray: #8e8e93;
-  --ios-gray-tab: #999999;
-  /* Swift Charts' default series colours, in order. */
-  --ios-chart-1: #007aff;
-  --ios-chart-2: #34c759;
-  --ios-chart-3: #ff9500;
+  --ios-serif: ui-serif, "New York", var(--font-display), Georgia, serif;
 
   --shadow-card:
     0 1px 2px rgba(90, 50, 30, 0.06), 0 14px 30px -18px rgba(90, 50, 30, 0.28);
@@ -127,22 +121,10 @@
     --rule: rgba(248, 239, 230, 0.07);
     --rule-red: rgba(232, 131, 111, 0.4);
 
-    --ios-bg: #000000;
-    --ios-cell: #1c1c1e;
     --ios-label: #ffffff;
-    --ios-secondary: rgba(235, 235, 245, 0.6);
-    --ios-tertiary: rgba(235, 235, 245, 0.3);
-    --ios-separator: rgba(84, 84, 88, 0.6);
     --ios-fill: rgba(118, 118, 128, 0.24);
-    --ios-bar: rgba(22, 22, 22, 0.94);
-    --ios-blue: #0a84ff;
     --ios-green: #30d158;
     --ios-orange: #ff9f0a;
-    --ios-gray: #8e8e93;
-    --ios-gray-tab: #757575;
-    --ios-chart-1: #0a84ff;
-    --ios-chart-2: #30d158;
-    --ios-chart-3: #ff9f0a;
 
     --shadow-card:
       0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 30px -18px rgba(0, 0, 0, 0.7);

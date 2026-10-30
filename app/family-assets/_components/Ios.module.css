@@ -1,10 +1,12 @@
 /*
- * Stock iOS, as Family Assets uses it: an inset-grouped List on the system
- * grouped background, large navigation titles, the system tint and a tab
- * bar. Sized in iOS points via the frame's --pt.
+ * Family Assets' screens (Theme.swift): an inset-grouped List on the cream
+ * paper with its rows on --surface (ledgerList, ledgerRows), serif large
+ * titles, section headers in spaced capitals in the accent (ledgerHeader),
+ * the accent ink as the tint, and a paper tab bar. Sized in iOS points via
+ * the frame's --pt.
  */
 .screen {
-  background: var(--ios-bg);
+  background: var(--bg);
   color: var(--ios-label);
 }
 
@@ -16,7 +18,7 @@
   gap: calc(16 * var(--pt));
   height: calc(44 * var(--pt));
   padding-inline: calc(16 * var(--pt)) calc(20 * var(--pt));
-  color: var(--ios-blue);
+  color: var(--accent-ink);
   font-size: calc(17 * var(--pt));
 }
 
@@ -33,12 +35,14 @@
   margin-left: calc(-6 * var(--pt));
 }
 
+/* The navigation bar's serif large title (Theme.applyAppearance). */
 .largeTitle {
   flex: none;
   padding: 0 calc(16 * var(--pt)) calc(8 * var(--pt));
+  color: var(--ink);
+  font-family: var(--ios-serif);
   font-size: calc(34 * var(--pt));
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -49,23 +53,26 @@
   padding-bottom: calc(12 * var(--pt));
 }
 
+/* ledgerHeader(): .caption, semibold, tracked 1.2 pt, in the accent ink. */
 .header {
   margin: calc(18 * var(--pt)) calc(32 * var(--pt)) calc(6 * var(--pt));
-  color: var(--ios-secondary);
-  font-size: calc(13 * var(--pt));
+  color: var(--accent-ink);
+  font-size: calc(12 * var(--pt));
+  font-weight: 600;
+  letter-spacing: calc(1.2 * var(--pt));
   text-transform: uppercase;
 }
 
 .footer {
   margin: calc(6 * var(--pt)) calc(32 * var(--pt)) 0;
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
   font-size: calc(13 * var(--pt));
 }
 
 .group {
   margin-inline: calc(16 * var(--pt));
   border-radius: calc(10 * var(--pt));
-  background: var(--ios-cell);
+  background: var(--surface);
   list-style: none;
   overflow: hidden;
 }
@@ -91,22 +98,22 @@
   top: 0;
   right: 0;
   left: calc(16 * var(--pt));
-  border-top: 0.5px solid var(--ios-separator);
+  border-top: 0.5px solid var(--line);
 }
 
 .caption {
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
   font-size: calc(12 * var(--pt));
   font-weight: 600;
 }
 
 .secondary {
-  color: var(--ios-secondary);
+  color: var(--ink-faint);
 }
 
 .chevron {
   margin-left: auto;
-  color: var(--ios-tertiary);
+  color: var(--ink-faint);
 }
 
 /* A Section's VStack of stats: caption over value, 30 pt apart. */
@@ -132,9 +139,9 @@
   grid-template-columns: repeat(4, 1fr);
   height: calc(83 * var(--pt));
   padding-top: calc(7 * var(--pt));
-  border-top: 0.5px solid var(--ios-separator);
-  background: var(--ios-bar);
-  color: var(--ios-gray-tab);
+  border-top: 0.5px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  color: var(--ink-faint);
   font-size: calc(10 * var(--pt));
   font-weight: 500;
 }
@@ -152,7 +159,28 @@
 }
 
 .tabActive {
-  color: var(--ios-blue);
+  color: var(--accent-ink);
+}
+
+/* doubleRuled(): two 1 pt rules, 2 pt apart, 6 pt under a total. */
+.ruled {
+  --ruling: color-mix(in srgb, var(--accent) 75%, transparent);
+  --hair: max(1px, calc(1 * var(--pt)));
+
+  justify-self: start;
+  padding-bottom: calc(6 * var(--pt));
+  background:
+    linear-gradient(var(--ruling), var(--ruling)) 0 100% / 100% var(--hair)
+      no-repeat,
+    linear-gradient(var(--ruling), var(--ruling)) 0
+      calc(100% - var(--hair) - 2 * var(--pt)) / 100% var(--hair) no-repeat;
+}
+
+/* The serif, Theme.serif(), for the net worth. */
+.serif {
+  color: var(--ink);
+  font-family: var(--ios-serif);
+  font-weight: 600;
 }
 
 .green {
@@ -163,8 +191,9 @@
   color: var(--ios-orange);
 }
 
-.blue {
-  color: var(--ios-blue);
+/* The app's tint (AccentColor). */
+.tint {
+  color: var(--accent-ink);
 }
 
 .num {

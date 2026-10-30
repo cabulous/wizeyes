@@ -8,7 +8,7 @@ const tabs = [
   { label: "Settings", icon: "gear" },
 ] as const;
 
-/** ContentView.swift's four tabs, the active one in the system tint. */
+/** ContentView.swift's four tabs, on the paper bar (Theme.applyAppearance), the active one in the tint. */
 export function TabBar({ active }: { active: (typeof tabs)[number]["label"] }) {
   return (
     <div className={ios.tabs} aria-hidden="true">

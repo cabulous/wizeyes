@@ -112,7 +112,7 @@ const paths: Record<Name, ReactNode> = {
       <path d="M14 20.5H6a2.5 2.5 0 0 1-2.5-2.5V7.5A2.5 2.5 0 0 1 6 5h10a2.5 2.5 0 0 1 2.5 2.5V11" />
       <path d="M3.5 10h15M8 3v4M14 3v4" />
       <circle cx="18.5" cy="17.5" r="4.5" fill="currentColor" stroke="none" />
-      <path d="M18.5 15.3v2.6M18.5 19.9v.1" stroke="var(--ios-cell, #fff)" />
+      <path d="M18.5 15.3v2.6M18.5 19.9v.1" stroke="var(--surface, #fff)" />
     </>
   ),
   "square.and.arrow.up": (

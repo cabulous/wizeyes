@@ -183,7 +183,7 @@
 .rowHead {
   display: flex;
   justify-content: space-between;
-  color: var(--ios-gray);
+  color: var(--ink-faint);
   font-size: calc(12 * var(--pt));
   font-weight: 700;
 }
@@ -208,13 +208,13 @@
 }
 
 .within {
-  color: var(--ios-gray);
+  color: var(--ink-faint);
   font-size: calc(12 * var(--pt));
 }
 
 .off {
   margin-left: auto;
-  color: var(--ios-gray);
+  color: var(--ink-faint);
 }
 
 @media (max-width: 920px) {
