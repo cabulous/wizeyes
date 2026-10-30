@@ -1,12 +1,25 @@
 /*
- * Family Assets' screens (Theme.swift): an inset-grouped List on the cream
- * paper with its rows on --surface (ledgerList, ledgerRows), serif large
+ * Family Assets' screens (Theme.swift): an inset-grouped List on
+ * account-book paper (LedgerPaper: the cream, ruled every 24 pt, with a red
+ * margin rule 10 pt in from the left) with its rows on --surface
+ * (ledgerList, ledgerRows), serif large
  * titles, section headers in spaced capitals in the accent (ledgerHeader),
  * the accent ink as the tint, and a paper tab bar. Sized in iOS points via
  * the frame's --pt.
  */
+.screen,
+.paper {
+  background:
+    linear-gradient(var(--rule-red), var(--rule-red)) calc(10 * var(--pt)) 0 /
+      max(1px, calc(1 * var(--pt))) 100% no-repeat,
+    repeating-linear-gradient(
+      transparent 0 calc(23 * var(--pt)),
+      var(--rule) calc(23 * var(--pt)) calc(24 * var(--pt))
+    ),
+    var(--bg);
+}
+
 .screen {
-  background: var(--bg);
   color: var(--ios-label);
 }
 
@@ -174,6 +187,36 @@
       no-repeat,
     linear-gradient(var(--ruling), var(--ruling)) 0
       calc(100% - var(--hair) - 2 * var(--pt)) / 100% var(--hair) no-repeat;
+}
+
+/* ledgerLine(): an entry on a ruled line, Own or Owe before it. */
+.entry {
+  display: flex;
+  align-items: baseline;
+  gap: calc(8 * var(--pt));
+  padding-block: calc(6 * var(--pt));
+  border-bottom: max(1px, calc(1 * var(--pt))) solid var(--rule);
+}
+
+.entry > :first-child {
+  width: calc(40 * var(--pt));
+  color: var(--accent-ink);
+  font-size: calc(12 * var(--pt));
+  font-weight: 600;
+  letter-spacing: calc(1.2 * var(--pt));
+  text-transform: uppercase;
+}
+
+.entry > :nth-child(2) {
+  color: var(--ink-faint);
+}
+
+.entry strong {
+  margin-left: auto;
+  font-size: calc(20 * var(--pt));
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 /* The serif, Theme.serif(), for the net worth. */

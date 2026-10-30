@@ -24,7 +24,8 @@ const ranges = ["3M", "1Y", "5Y", "All"];
 /**
  * Mirrors NetWorthDashboard.swift: the Net Worth tab's large title, then a
  * section with net worth in the serif, ruled off twice, its change over
- * the range in green, and assets and debts; the History section's segmented range picker over the chart,
+ * the range in green, and assets and debts entered on ruled lines as Own
+ * and Owe; the History section's segmented range picker over the chart,
  * here scrubbed to today; and Debt vs. Investments (DebtCostSection), each
  * debt's rate against the portfolio return, highest rate first. Drawn in
  * the app's Theme.swift, as Ios.module.css describes.
@@ -47,15 +48,17 @@ export function PhoneDashboard() {
                 {changeLabel()}
               </span>
             </div>
-            <div className={ios.stats}>
-              <span className={ios.stat}>
-                <span className={ios.caption}>Assets</span>
+            <div>
+              <p className={ios.entry}>
+                <span>Own</span>
+                <span>Assets</span>
                 <strong>{money(totalAssets)}</strong>
-              </span>
-              <span className={ios.stat}>
-                <span className={ios.caption}>Debts</span>
+              </p>
+              <p className={ios.entry}>
+                <span>Owe</span>
+                <span>Debts</span>
                 <strong>{money(totalDebts)}</strong>
-              </span>
+              </p>
             </div>
           </div>
         </div>

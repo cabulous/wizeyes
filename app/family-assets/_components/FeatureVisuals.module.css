@@ -24,7 +24,7 @@
 .stackCards {
   padding: 14px;
   border-radius: 16px;
-  background: var(--bg);
+  /* The background is account-book paper, from ios.paper. */
   color: var(--ios-label);
   box-shadow: inset 0 0 0 0.5px var(--line);
 }

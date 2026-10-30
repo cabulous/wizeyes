@@ -16,7 +16,7 @@ import styles from "./FeatureVisuals.module.css";
 /** The top of the Net Worth tab (NetWorthDashboard.swift), range picker and all. */
 function NetWorth() {
   return (
-    <div className={styles.card}>
+    <div className={`${ios.paper} ${styles.card}`}>
       <span className={ios.caption}>Net Worth</span>
       <strong className={`${ios.serif} ${ios.ruled} ${styles.big}`}>
         {money(netWorth)}
@@ -41,7 +41,7 @@ function NetWorth() {
 function Returns() {
   const fund = assets[1];
   return (
-    <div className={styles.card}>
+    <div className={`${ios.paper} ${styles.card}`}>
       <p className={styles.cardTitle}>{fund.name}</p>
       <span className={ios.stats}>
         <span className={ios.stat}>
@@ -90,7 +90,7 @@ function Debts() {
     year: "numeric",
   });
   return (
-    <div className={styles.stackCards}>
+    <div className={`${ios.paper} ${styles.stackCards}`}>
       <ul className={styles.list}>
         <li className={styles.row}>
           <Glyph name={mortgage.icon} />
@@ -176,7 +176,7 @@ const rates = [
 /** Settings › Currencies (CurrencyList.swift): the base currency, the others with their rate, and automatic updates. */
 function Currencies() {
   return (
-    <div className={styles.stackCards}>
+    <div className={`${ios.paper} ${styles.stackCards}`}>
       <p className={styles.header}>Base Currency</p>
       <ul className={styles.list}>
         <li className={styles.row}>
