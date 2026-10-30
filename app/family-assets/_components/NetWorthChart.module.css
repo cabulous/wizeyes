@@ -7,9 +7,11 @@
   overflow: visible;
 }
 
+/* Theme.draftingStroke: 0.5 pt dashes, like construction lines. */
 .grid {
-  stroke: var(--line);
+  stroke: var(--ink-faint);
   stroke-width: 0.5;
+  stroke-dasharray: 2 3;
 }
 
 .label {
@@ -26,10 +28,11 @@
   stroke-linejoin: round;
 }
 
-/* The scrubbing RuleMark, in Theme.inkFaint. */
+/* The scrubbing RuleMark, dashed in the accent (Theme.scrubStroke). */
 .rule {
-  stroke: var(--ink-faint);
+  stroke: var(--accent);
   stroke-width: 1;
+  stroke-dasharray: 3 3;
 }
 
 /* The annotation: date, net worth and the split, on --surface inside a --line border, 6 pt padding. */
