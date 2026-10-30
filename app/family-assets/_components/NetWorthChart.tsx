@@ -4,8 +4,8 @@ import styles from "./NetWorthChart.module.css";
 const months = ["Jan", "Apr", "Jul", "Oct"];
 
 /**
- * NetWorthChart in NetWorthDashboard.swift: a 2 pt line in the system tint
- * that steps at each recorded value (.stepStart), gridlines with compact
+ * NetWorthChart in NetWorthDashboard.swift: a 2 pt line in Theme.accent
+ * that steps at each recorded value (.stepStart), --line gridlines with compact
  * labels on the trailing edge, and month marks along the bottom. Swift
  * Charts' automatic scale starts at zero, so the line rides high. Drawn in
  * points: the SVG's units are iOS points, scaled by the parent's --pt.

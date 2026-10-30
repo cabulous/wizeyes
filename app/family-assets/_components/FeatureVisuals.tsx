@@ -18,7 +18,9 @@ function NetWorth() {
   return (
     <div className={styles.card}>
       <span className={ios.caption}>Net Worth</span>
-      <strong className={styles.big}>{money(netWorth)}</strong>
+      <strong className={`${ios.serif} ${ios.ruled} ${styles.big}`}>
+        {money(netWorth)}
+      </strong>
       <span className={ios.green}>{changeLabel()}</span>
       <span className={styles.segmented}>
         {["3M", "1Y", "5Y", "All"].map((range) => (
@@ -179,7 +181,7 @@ function Currencies() {
       <ul className={styles.list}>
         <li className={styles.row}>
           {currency.code}
-          <span className={`${styles.trailing} ${styles.gray}`}>
+          <span className={`${styles.trailing} ${styles.faint}`}>
             1 {currency.code}
           </span>
         </li>
@@ -188,7 +190,7 @@ function Currencies() {
         {rates.map((r) => (
           <li key={r.code} className={styles.row}>
             {r.code}
-            <span className={`${styles.trailing} ${styles.gray}`}>
+            <span className={`${styles.trailing} ${styles.faint}`}>
               {r.rate} {r.code}
             </span>
           </li>

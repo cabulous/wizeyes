@@ -16,7 +16,7 @@ const initialTargets = active.map((c) => c.target);
 /**
  * Rebalance (InvestmentRebalance.swift), opened from the Assets tab. Each
  * category being rebalanced shows its icon and name, its share now and its
- * target ("69% → 60%"), then what to do: Buy in green, Sell in blue, both
+ * target ("69% → 60%"), then what to do: Buy in green, Sell in the tint, both
  * in the base currency's ISO code, or On Target, with "within 5%
  * threshold" when the threshold is what keeps it there. Categories not
  * being rebalanced are listed as Off. The sliders stand in for the
@@ -165,7 +165,7 @@ function Row({
   const action = row.onTarget
     ? "On Target"
     : `${row.amount > 0 ? "Buy" : "Sell"} ${moneyISO(row.amount)}`;
-  const tone = row.onTarget ? "" : row.amount > 0 ? ios.green : ios.blue;
+  const tone = row.onTarget ? "" : row.amount > 0 ? ios.green : ios.tint;
   return (
     <li className={`${ios.cell} ${styles.row}`}>
       <button

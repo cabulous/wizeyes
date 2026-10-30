@@ -72,16 +72,15 @@ Redesigned so far:
   out and says nothing about payment.
 - **The app and the site share one design.** Each app's Swift theme
   (`Theme.swift`, or `Palette.swift` in Our Little Kitchen; Lablog's is
-  `SharedUtill/Theme.swift`) uses the same tokens as its
-  `app/<slug>/theme.module.css` (Savings Room's clay, Spendwise's sticker
-  look, Our Little Kitchen's pink paper, Lablog's lab notebook), and the
+  `SharedUtill/Theme.swift`, Family Assets' `View/Theme.swift`) uses the
+  same tokens as its `app/<slug>/theme.module.css` (Savings Room's clay,
+  Spendwise's sticker look, Our Little Kitchen's pink paper, Lablog's lab
+  notebook, Family Assets' family books), and the
   phone mock-up and demos mirror the app's views. `--ios-*` system colours
   are only for what is still stock iOS: other apps' screens, like the
   Shortcuts automation, and the system controls and status colours an app
-  keeps (Lablog's green and yellow results, its search field and keyboard).
-  Family Assets has no theme of its own: the app is stock iOS, so its
-  mock-ups use `--ios-*` throughout and the site's palette comes from the
-  icon alone (cream paper, the pig's pink, the gold coin).
+  keeps (Lablog's green and yellow results, its search field and keyboard;
+  Family Assets' green gains, orange warnings and segmented controls).
   When an app's look changes, update `_components/` to match, citing the
   Swift file each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
@@ -132,8 +131,8 @@ only its own `_components/` use, such as Our Little Kitchen's `--font-hand`
 (Caveat, for handwritten notes) and its doodle colours, or Lablog's
 `--font-mono` (Geist Mono, for readings), its `--paper-grid`, `--ios-serif`
 and `--ios-mono` (the app's graph paper and type) and its `--ios-*` colours,
-or Family Assets' `--coin` shades, its ledger `--rule` and `--rule-red`
-and its `--ios-*` colours; shared
+or Family Assets' `--coin` shades, its ledger `--rule` and `--rule-red`,
+its `--ios-serif` (New York, the app's titles) and its `--ios-*` colours; shared
 sections never read those. Our Little Kitchen's crayon doodles (leaves, sparkles, hearts and
 handwritten notes) live in `_components/Doodles.tsx`, and the app draws
 the same marks from the same paths in `Design/Doodles.swift`; `DoodleCluster` groups
