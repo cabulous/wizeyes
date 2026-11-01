@@ -1,40 +1,39 @@
 .summary {
-  flex-direction: column;
-  align-items: stretch;
-  gap: calc(12 * var(--pt));
-  padding-block: calc(15 * var(--pt));
-}
-
-.headline {
-  display: grid;
+  display: block;
+  padding-block: calc(12 * var(--pt));
 }
 
 /* Theme.serif(.largeTitle), .monospacedDigit(), .doubleRuled(). */
 .total {
-  margin-bottom: calc(2 * var(--pt));
   font-size: calc(34 * var(--pt));
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .change {
+  justify-self: end;
   font-size: calc(15 * var(--pt));
 }
 
 .history {
   flex-direction: column;
   align-items: stretch;
-  gap: calc(70 * var(--pt));
+  gap: calc(64 * var(--pt));
   padding-bottom: calc(14 * var(--pt));
 }
 
-/* .pickerStyle(.segmented). */
+/*
+ * .pickerStyle(.segmented), as Theme.applyAppearance sets it: the chosen
+ * segment a card on the paper, in ink; the others in faint ink.
+ */
 .segmented {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: calc(2 * var(--pt));
   border-radius: calc(9 * var(--pt));
   background: var(--ios-fill);
+  color: var(--ink-faint);
   font-size: calc(13 * var(--pt));
   font-weight: 500;
   text-align: center;
@@ -50,13 +49,20 @@
   box-shadow:
     0 calc(3 * var(--pt)) calc(8 * var(--pt)) rgba(0, 0, 0, 0.12),
     0 0 0 0.5px rgba(0, 0, 0, 0.04);
+  color: var(--ink);
   font-weight: 600;
 }
 
-@media (prefers-color-scheme: dark) {
-  .segmentOn {
-    background: #636366;
-  }
+/* DebtCostSection's stats: equal columns 16 pt apart, captions on one line. */
+.costs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(16 * var(--pt));
+  width: 100%;
+}
+
+.costs > span > :first-child {
+  white-space: nowrap;
 }
 
 .chart {
@@ -77,4 +83,9 @@
 .rate {
   margin-left: auto;
   justify-items: end;
+}
+
+/* Written on the paper: a touch heavier than regular (ledgerOnPaper). */
+.costs strong {
+  font-weight: 500;
 }

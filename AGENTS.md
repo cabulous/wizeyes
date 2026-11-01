@@ -80,7 +80,8 @@ Redesigned so far:
   are only for what is still stock iOS: other apps' screens, like the
   Shortcuts automation, and the system controls and status colours an app
   keeps (Lablog's green and yellow results, its search field and keyboard;
-  Family Assets' green gains, orange warnings and segmented controls).
+  Family Assets' segmented-control track; its gains, losses and warnings
+  are ledger inks of its own).
   When an app's look changes, update `_components/` to match, citing the
   Swift file each one mirrors.
 - **Legal text is verbatim.** Change `privacy.md` or `terms.md` only when the
@@ -132,7 +133,10 @@ only its own `_components/` use, such as Our Little Kitchen's `--font-hand`
 `--font-mono` (Geist Mono, for readings), its `--paper-grid`, `--ios-serif`
 and `--ios-mono` (the app's graph paper and type) and its `--ios-*` colours,
 or Family Assets' `--coin` shades, its ledger `--rule` and `--rule-red`,
-its `--ios-serif` (New York, the app's titles) and its `--ios-*` colours; shared
+its gold `--highlighter` (section headers), its status inks `--gain`,
+`--loss` and `--warning`, its `--ios-serif` (New York, the app's titles) and
+its `--ios-*` colours, with its pencil marks drawn by `_components/pencil.ts`
+after the app's `View/Theme.swift`; shared
 sections never read those. Our Little Kitchen's crayon doodles (leaves, sparkles, hearts and
 handwritten notes) live in `_components/Doodles.tsx`, and the app draws
 the same marks from the same paths in `Design/Doodles.swift`; `DoodleCluster` groups

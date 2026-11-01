@@ -8,20 +8,48 @@ import {
   portfolioReturn,
 } from "@/content/apps/family-assets/app";
 import { Glyph } from "./Glyph";
-import { changeLabel, mediumDate, money, netWorth, percent } from "./money";
+import {
+  changeLabel,
+  mediumDate,
+  money,
+  netWorth,
+  percent,
+  totalAssets,
+  totalDebts,
+} from "./money";
 import { NetWorthChart } from "./NetWorthChart";
 import ios from "./Ios.module.css";
 import styles from "./FeatureVisuals.module.css";
 
-/** The top of the Net Worth tab (NetWorthDashboard.swift), range picker and all. */
+/**
+ * The top of the Net Worth tab (NetWorthDashboard.swift): the sum worked
+ * down the page, its change in the gain ink, and the range picker over
+ * the pencilled chart.
+ */
 function NetWorth() {
   return (
     <div className={`${ios.paper} ${styles.card}`}>
-      <span className={ios.caption}>Net Worth</span>
-      <strong className={`${ios.serif} ${ios.ruled} ${styles.big}`}>
-        {money(netWorth)}
-      </strong>
-      <span className={ios.green}>{changeLabel()}</span>
+      <div className={ios.sum}>
+        <p className={ios.sumLine}>
+          <span>Assets</span>
+          <strong>{money(totalAssets)}</strong>
+        </p>
+        <p className={ios.sumLine}>
+          <span>Debts</span>
+          <strong>
+            <span className={ios.minus}>− </span>
+            {money(totalDebts)}
+          </strong>
+        </p>
+        <span className={ios.sumRule} />
+        <p className={ios.sumTotal}>
+          <span>Net Worth</span>
+          <strong className={`${ios.serif} ${ios.ruled} ${styles.big}`}>
+            {money(netWorth)}
+          </strong>
+        </p>
+        <span className={`${ios.gain} ${styles.change}`}>{changeLabel()}</span>
+      </div>
       <span className={styles.segmented}>
         {["3M", "1Y", "5Y", "All"].map((range) => (
           <span key={range} className={range === "1Y" ? styles.on : undefined}>
@@ -36,7 +64,8 @@ function NetWorth() {
 
 /**
  * InvestmentDetail.swift: XIRR, Change and Latest, then the activities,
- * newest first, each type in small capitals and money coming back in green.
+ * newest first, each type in small capitals and money coming back in the
+ * gain ink.
  */
 function Returns() {
   const fund = assets[1];
@@ -76,8 +105,10 @@ function Returns() {
 }
 
 /**
- * DebtList.swift's row for a debt renewing soon, and the Terms section of
- * DebtDetail.swift: the orange calendar badge 120 days out, and Renew.
+ * DebtList.swift's rows, the mortgage flagged 120 days before its term
+ * ends, then the top of its page (DebtDetail.swift): the rate with the
+ * warning to renew under it, which opens the terms, the outstanding
+ * balance and the month's interest. All warnings in the coin's amber.
  */
 function Debts() {
   const mortgage = debts[0];
@@ -95,7 +126,7 @@ function Debts() {
         <li className={styles.row}>
           <Glyph name={mortgage.icon} />
           {mortgage.name}
-          <span className={`${styles.badge} ${ios.orange}`}>
+          <span className={`${styles.badge} ${ios.warning}`}>
             <Glyph name="calendar.badge.exclamationmark" />
             Term ends in {days} days
           </span>
@@ -105,22 +136,27 @@ function Debts() {
           {debts[1].name}
         </li>
       </ul>
-      <p className={styles.header}>Terms</p>
-      <ul className={styles.list}>
-        <li className={`${styles.row} ${ios.orange}`}>
-          <Glyph name="calendar.badge.exclamationmark" />
-          <span className={styles.grow}>
-            Term ends {endText}, in {days} days
+      <p className={styles.cardTitle}>{mortgage.name}</p>
+      <span className={`${ios.stats} ${styles.debtStats}`}>
+        <span className={ios.stat}>
+          <span className={ios.caption}>{mortgage.rateType} Rate</span>
+          <strong>{percent(mortgage.rate / 100)}</strong>
+          <span className={`${styles.until} ${ios.warning}`}>
+            <Glyph name="calendar.badge.exclamationmark" />
+            until {endText}
           </span>
-          <span className={styles.renew}>Renew</span>
-        </li>
-        <li className={styles.row}>
-          All Terms
-          <span className={`${styles.trailing} ${ios.secondary}`}>
-            {percent(mortgage.rate / 100)} {mortgage.rateType}
-          </span>
-        </li>
-      </ul>
+        </span>
+        <span className={ios.stat}>
+          <span className={ios.caption}>Outstanding</span>
+          <strong>{money(mortgage.balance)}</strong>
+        </span>
+        <span className={ios.stat}>
+          <span className={ios.caption}>Monthly Interest</span>
+          <strong>
+            {money((mortgage.balance * mortgage.rate) / 100 / 12)}
+          </strong>
+        </span>
+      </span>
     </div>
   );
 }
@@ -128,7 +164,7 @@ function Debts() {
 /**
  * The site's own diagram of Debt vs. Investments (DebtCostSection): each
  * debt's rate on a ruler, against the portfolio return. Those at or above
- * it are marked in orange, as the app marks "Above your return".
+ * it are marked in the warning amber, as the app marks "Above your return".
  */
 function Compare() {
   const max = 0.1;

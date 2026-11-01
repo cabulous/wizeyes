@@ -6,10 +6,11 @@
  * the foot of a balance sheet.
  *
  * The app uses the same tokens, light and dark, in FamilyAssets/View/
- * Theme.swift: its lists on the paper, rows on --surface, serif titles,
- * the accent ink as its tint and the net worth ruled off twice. So the
- * phone mock-ups use these tokens too; the --ios-* ones below are only
- * for what the app still draws as stock iOS.
+ * Theme.swift: rows written straight on the paper, section headers marked
+ * with a gold highlighter, charts drawn in pencil, serif titles, the
+ * accent ink as its tint and the net worth ruled off twice. So the phone
+ * mock-ups use these tokens too; the --ios-* ones below are only for what
+ * the app still draws as stock iOS.
  * Token names are shared by every app theme (see AGENTS.md).
  */
 .theme {
@@ -41,19 +42,27 @@
   --coin-deep: #dc9d36;
   --coin-ink: #6b4310;
   --on-coin: var(--coin-ink);
-  /* Ledger rules: the faint lines of account-book paper. */
-  --rule: rgba(43, 31, 27, 0.08);
+  /* Ledger rules: the faint lines of account-book paper, fine and close. */
+  --rule: rgba(43, 31, 27, 0.055);
   --rule-red: rgba(208, 110, 93, 0.45);
+  /* A highlighter in the coin's gold, see-through like marker ink. */
+  --highlighter: rgba(254, 206, 111, 0.6);
+
+  /*
+   * Status inks (Theme.gain, .loss, .warning): gains in a bookkeeper's
+   * green, losses in red ink, warnings in the coin's amber.
+   */
+  --gain: #3e7b4f;
+  --loss: #b23a2e;
+  --warning: #b36b12;
 
   /*
    * What the app keeps from iOS, light: the label colour for body text,
-   * the segmented control's fill, the status colours (green gains, orange
-   * warnings) and New York, the serif Theme.serif() sets titles in.
+   * the segmented control's track and New York, the serif Theme.serif()
+   * sets titles in.
    */
   --ios-label: #000000;
   --ios-fill: rgba(118, 118, 128, 0.12);
-  --ios-green: #34c759;
-  --ios-orange: #ff9500;
   --ios-serif: ui-serif, "New York", var(--font-display), Georgia, serif;
 
   --shadow-card:
@@ -118,13 +127,17 @@
     --coin: #f2c25f;
     --coin-light: #ffdf94;
     --coin-deep: #c98a26;
-    --rule: rgba(248, 239, 230, 0.07);
+    --rule: rgba(248, 239, 230, 0.05);
     --rule-red: rgba(232, 131, 111, 0.4);
+    /* Fainter in the dark, so the heading stays legible. */
+    --highlighter: rgba(201, 138, 38, 0.4);
+
+    --gain: #8fcb9c;
+    --loss: #ff8e7e;
+    --warning: #f2b24f;
 
     --ios-label: #ffffff;
     --ios-fill: rgba(118, 118, 128, 0.24);
-    --ios-green: #30d158;
-    --ios-orange: #ff9f0a;
 
     --shadow-card:
       0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 30px -18px rgba(0, 0, 0, 0.7);
