@@ -20,12 +20,19 @@
   font-family: inherit;
 }
 
-.line {
+/* PencilTrace: 1.5 pt, then again at 0.8 pt and 45% for the lighter pass. */
+.line,
+.echo {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 2;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.echo {
+  stroke-width: 0.8;
+  opacity: 0.45;
 }
 
 /* The scrubbing RuleMark, dashed in the accent (Theme.scrubStroke). */

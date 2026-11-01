@@ -36,10 +36,14 @@
 
 /* The net worth: Theme.serif(.largeTitle), ruled off twice (with ios.ruled). */
 .big {
-  margin-bottom: 4px;
   font-size: 1.75rem;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.change {
+  justify-self: end;
 }
 
 /* The investment's name, as its serif navigation title. */
@@ -51,6 +55,11 @@
   font-weight: 600;
 }
 
+/* A debt's page, after the list it was opened from. */
+.list + .cardTitle {
+  margin: 14px 9px 6px;
+}
+
 .segmented {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -58,6 +67,7 @@
   padding: 2px;
   border-radius: 8px;
   background: var(--ios-fill);
+  color: var(--ink-faint);
   font-size: 0.75rem;
   font-weight: 500;
   text-align: center;
@@ -71,38 +81,49 @@
   border-radius: 6px;
   background: var(--surface);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  color: var(--ink);
   font-weight: 600;
 }
 
-@media (prefers-color-scheme: dark) {
-  .on {
-    background: #636366;
-  }
-}
-
-/* ledgerHeader(): spaced capitals in the accent ink. */
+/*
+ * ledgerHeader(): spaced capitals in ink over a highlighter swipe in the
+ * coin's gold (see ios.header), the words in line with the rows.
+ */
 .header {
-  margin: 14px 14px 5px;
-  color: var(--accent-ink);
+  position: relative;
+  width: fit-content;
+  margin: 14px 4px 4px;
+  padding: 2px 5px;
+  color: var(--ink);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  isolation: isolate;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: -1px -1.5px;
+  z-index: -1;
+  background: var(--highlighter);
+  clip-path: polygon(3% 0, 100% 12%, 97% 100%, 0 92%);
+  rotate: -0.6deg;
 }
 
 .stackCards > .header:first-child {
   margin-top: 2px;
 }
 
+/* ledgerOnPaper(): rows written on the paper, no card and no hairlines. */
 .list {
-  border-radius: 10px;
-  background: var(--surface);
   list-style: none;
-  overflow: hidden;
+  font-weight: 500;
 }
 
 .gap {
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .row,
@@ -111,18 +132,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 40px;
-  padding: 9px 14px;
-}
-
-.row + .row::before,
-.activity + .activity::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 14px;
-  border-top: 0.5px solid var(--line);
+  min-height: 38px;
+  padding: 7px 9px;
 }
 
 .activity {
@@ -143,7 +154,7 @@
 }
 
 .inflow {
-  color: var(--ios-green);
+  color: var(--gain);
   font-weight: 700;
 }
 
@@ -161,15 +172,28 @@
   min-width: 0;
 }
 
-/* .buttonStyle(.bordered), .controlSize(.small): a capsule in a wash of the tint. */
-.renew {
-  flex: none;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--accent-ink) 15%, transparent);
-  color: var(--accent-ink);
-  font-size: 0.8125rem;
+/*
+ * DebtDetail's figures, each column as wide as its figure, at the size
+ * that fits them on one line (its ViewThatFits steps down to .headline).
+ */
+.debtStats {
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding-inline: 9px;
+}
+
+.debtStats strong {
+  font-size: 0.9375rem;
+}
+
+/* The warning under the rate: .caption, medium, with its calendar. */
+.until {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.6875rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .trailing {
@@ -209,7 +233,7 @@
   padding: 16px 18px 12px;
   border-radius: 12px;
   background:
-    repeating-linear-gradient(transparent 0 25px, var(--rule) 25px 26px),
+    repeating-linear-gradient(transparent 0 17px, var(--rule) 17px 18px),
     var(--bg);
   box-shadow: inset 0 0 0 1px var(--line);
   color: var(--ink);
@@ -245,7 +269,7 @@
   bottom: 0;
   background: repeating-linear-gradient(
     -45deg,
-    color-mix(in srgb, var(--ios-orange) 14%, transparent) 0 6px,
+    color-mix(in srgb, var(--warning) 14%, transparent) 0 6px,
     transparent 6px 12px
   );
 }
@@ -259,7 +283,7 @@
   flex-direction: row-reverse;
   gap: 4px;
   padding-right: 6px;
-  border-right: 2px dashed var(--ios-green);
+  border-right: 2px dashed var(--gain);
   color: var(--ink-soft);
   font-size: 0.6875rem;
   line-height: 1;
@@ -296,11 +320,11 @@
 }
 
 .above {
-  color: var(--ios-orange);
+  color: var(--warning);
 }
 
 .above i {
-  border-color: var(--ios-orange);
+  border-color: var(--warning);
 }
 
 /* The last pin sits near the end of the ruler, so its label goes to its left. */

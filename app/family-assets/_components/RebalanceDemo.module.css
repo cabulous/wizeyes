@@ -164,12 +164,12 @@
 
 .rowButton {
   display: grid;
-  gap: calc(16 * var(--pt));
+  gap: calc(6 * var(--pt));
   width: 100%;
-  padding: calc(12 * var(--pt)) calc(16 * var(--pt));
+  padding: calc(8 * var(--pt)) calc(20 * var(--pt));
   border: 0;
   background: none;
-  color: inherit;
+  color: var(--ink);
   font: inherit;
   text-align: left;
   cursor: pointer;
@@ -179,42 +179,98 @@
   background: var(--ios-fill);
 }
 
-/* Caption, bold, in .gray. */
+/* Room for a row's icon, so names line up and the gauge lines up under them. */
+.icon {
+  display: inline-flex;
+  flex: none;
+  justify-content: center;
+  width: calc(22 * var(--pt));
+}
+
 .rowHead {
   display: flex;
-  justify-content: space-between;
-  color: var(--ink-faint);
-  font-size: calc(12 * var(--pt));
-  font-weight: 700;
+  align-items: baseline;
+  gap: calc(10 * var(--pt));
 }
 
-.rowHead > span {
-  display: inline-flex;
-  align-items: center;
-  gap: calc(4 * var(--pt));
+.rowHead .icon {
+  align-self: center;
 }
 
-.rowAction {
-  display: flex;
-  justify-content: space-between;
-  align-items: last baseline;
-  gap: calc(8 * var(--pt));
+.name {
+  flex: 1;
+  min-width: 0;
 }
 
+/* Buy or Sell in small capitals before the figure, semibold, in its colour. */
 .amount {
-  font-weight: 500;
+  flex: none;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
   transition: color 200ms;
 }
 
-.within {
-  color: var(--ink-faint);
+.amount small {
   font-size: calc(12 * var(--pt));
+  letter-spacing: calc(0.6 * var(--pt));
+  text-transform: uppercase;
 }
 
-.off {
-  margin-left: auto;
+/* On target: .subheadline in faint ink. */
+.onTarget {
   color: var(--ink-faint);
+  font-size: calc(15 * var(--pt));
+  font-weight: 500;
+}
+
+.gaugeLine {
+  display: flex;
+  align-items: center;
+  gap: calc(10 * var(--pt));
+  padding-left: calc(32 * var(--pt));
+}
+
+.gauge {
+  flex: none;
+  width: calc(230 * var(--pt));
+  height: calc(16 * var(--pt));
+  overflow: visible;
+}
+
+/* PencilShading, stroked 1 pt in the row's colour. */
+.shading {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gauge.onTarget {
+  color: var(--ink-faint);
+}
+
+.shares {
+  color: var(--ink-faint);
+  font-size: calc(12 * var(--pt));
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Set aside: .subheadline in faint ink, the kind in .caption. */
+.setAside {
+  color: var(--ink-faint);
+  font-size: calc(15 * var(--pt));
+}
+
+.setAside li {
+  font-size: inherit;
+}
+
+.kind {
+  margin-left: auto;
+  font-size: calc(12 * var(--pt));
 }
 
 @media (max-width: 920px) {

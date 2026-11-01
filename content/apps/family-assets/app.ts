@@ -5,12 +5,12 @@ import type { AppContent } from "@/content/types";
  * com.wizeyes.www.FamilyAssets). Every claim below is backed by the app's
  * source as of its net-worth and debt-terms release; check it there before
  * changing a feature claim. Interface words ("Net Worth", "Rebalance",
- * "On Target", "Debt vs. Investments", "Above your return", "Update Rates
+ * "On target", "Debt vs. Investments", "Above your return", "Update Rates
  * Automatically", "Export All Data to CSV") are the app's own strings from
  * FamilyAssets/View.
  *
  * Not claimed: bank or brokerage connections, live prices, budgeting,
- * reminders or notifications, widgets, and any language but English. The
+ * widgets, and any language but English. The
  * app's one network request is the exchange-rate fetch
  * (Utills/ExchangeRateService.swift), which sends currency codes and dates
  * to the Frankfurter API and can be turned off.
@@ -40,10 +40,10 @@ export const familyAssets: AppContent = {
   category: "Finance",
   schemaCategory: "FinanceApplication",
   platforms: ["iPhone", "iPad"],
-  minimumOS: "iOS 17.0",
+  minimumOS: "iOS 27.0",
   icon: {
     src: "/apps/family-assets/icon-512.png",
-    alt: "Family Assets app icon: a smiling pink pig hugging a little house and holding up a gold coin with a rising arrow",
+    alt: "Family Assets app icon: a smiling pink pig peeking over the red piggy-bank roof of a little house, beside a stack of gold coins stamped with a heart",
   },
   themeColor: "#F6F1E5",
 
@@ -75,7 +75,7 @@ export const familyAssets: AppContent = {
       {
         id: "debts",
         title: "Debts, with their terms",
-        body: "Keep each mortgage, loan or card with its rate, fixed or variable, and every term it has had. A debt is flagged 120 days before its term ends, with a Renew button. Track the balance from your statements, or from what you borrowed and repaid.",
+        body: "Keep each mortgage, loan or card with its rate, fixed or variable, and every term it has had. A debt is flagged 120 days before its term ends, and the warning takes you to its terms to add the next one. Track the balance from your statements, or from what you borrowed and repaid.",
       },
       {
         id: "compare",
@@ -143,12 +143,12 @@ export const familyAssets: AppContent = {
       {
         question: "How does rebalancing work?",
         answer:
-          "Give a category, like Stock or Bond, or a single investment a target share of the portfolio and a threshold. Rebalance shows how much to buy or sell to reach each target, in your base currency, and says On Target while you're within the threshold.",
+          "Give a category, like Stock or Bond, or a single investment a target share and a threshold. Targets are shares of what you rebalance, so a home with no target doesn't skew them. Rebalance shows how much to buy or sell to reach each target, in your base currency, and says On target while you're within the threshold.",
       },
       {
         question: "Can I track a mortgage renewal?",
         answer:
-          "Yes. Give a debt a term with its rate, fixed or variable, and an end date. It's flagged 120 days before the term ends, and Renew starts the next term. Rate changes in a variable term are kept as a history.",
+          "Yes. Give a debt a term with its rate, fixed or variable, and an end date. It's flagged 120 days before the term ends, and the warning opens its terms, where you add the next one. Rate changes in a variable term are kept as a history.",
       },
       {
         question: "Can I hold assets in more than one currency?",
@@ -172,7 +172,7 @@ export const familyAssets: AppContent = {
       },
       {
         question: "What do I need?",
-        answer: "An iPhone or iPad running iOS 17 or later.",
+        answer: "An iPhone or iPad running iOS 27 or later.",
       },
     ],
   },
@@ -316,7 +316,7 @@ export const indexFundActivities: {
 /**
  * The portfolio for the Rebalance demo: one investment in each of the
  * categories the app rebalances by default, drifted from the default
- * targets. Inactive categories show as "Off".
+ * targets. Categories with no target are set aside under Not Rebalanced.
  */
 export const rebalancePortfolio = {
   active: [

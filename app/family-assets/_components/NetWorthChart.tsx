@@ -1,11 +1,13 @@
 import { compact } from "./money";
+import { pencilLine } from "./pencil";
 import styles from "./NetWorthChart.module.css";
 
 const months = ["Jan", "Apr", "Jul", "Oct"];
 
 /**
- * NetWorthChart in NetWorthDashboard.swift: a 2 pt line in Theme.accent
- * that steps at each recorded value (.stepStart), dashed drafting gridlines with compact
+ * NetWorthChart in NetWorthDashboard.swift: a line in Theme.accent drawn
+ * in pencil (PencilTrace), gone over twice, the second time more lightly,
+ * stepping at each recorded value; dashed drafting gridlines with compact
  * labels on the trailing edge, and month marks along the bottom. Swift
  * Charts' automatic scale starts at zero, so the line rides high. Drawn in
  * points: the SVG's units are iOS points, scaled by the parent's --pt.
@@ -35,14 +37,13 @@ export function NetWorthChart({
   const x = (time: number) => ((time - t0) / (t1 - t0)) * plotW;
   const y = (value: number) => plotH - (value / top) * plotH;
 
-  // .stepStart: each new value takes effect from the previous point.
-  const line = points
-    .map((p, i) =>
-      i === 0
-        ? `M0 ${y(p.value)}`
-        : `L${x(t[i - 1])} ${y(p.value)} L${x(t[i])} ${y(p.value)}`,
-    )
-    .join(" ");
+  // Stepped: a value holds level until the next point, then rises or falls to it.
+  const corners: [number, number][] = points.map((p, i) => [
+    x(t[i]),
+    y(p.value),
+  ]);
+  const line = pencilLine(corners, { stepped: true, seed: 1 });
+  const echo = pencilLine(corners, { stepped: true, seed: 2 });
 
   const ticks = Array.from({ length: top / step + 1 }, (_, i) => i * step);
   const monthTicks = points
@@ -100,6 +101,7 @@ export function NetWorthChart({
           <line x1={selX} x2={selX} y1={0} y2={plotH} className={styles.rule} />
         )}
         <path d={line} className={styles.line} />
+        <path d={echo} className={styles.echo} />
       </svg>
       {sel && selected && (
         <div
